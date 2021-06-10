@@ -2,7 +2,7 @@
 #include "common.h"
 
 void func_800004B0(void *arg0);
-void func_80000C50(s32 arg0);
+void gameMain(s32 arg0);
 
 extern OSThread D_80074E90;
 extern OSThread D_80075040;
@@ -18,7 +18,7 @@ void func_80000450(s32 arg0) {
 
 void func_800004B0(void *arg0) {
     osCreatePiManager(150, &D_800781F0, &D_80078208, 50);
-    osCreateThread(&D_80075040, 6, (void*)func_80000C50, arg0, &D_800781F0, 5);
+    osCreateThread(&D_80075040, 6, (void*)gameMain, arg0, &D_800781F0, 5);
     osStartThread(&D_80075040);
     do {} while (TRUE);
 }
