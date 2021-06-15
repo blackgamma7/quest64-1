@@ -38,6 +38,7 @@ segments:
       - [0x1E4B0, asm]
       - [0x1EDF0, asm]
 <<<<<<< HEAD
+<<<<<<< HEAD
       - [0x21D70, asm]
       - [0x234E0, asm]
       - [0x23740, asm]
@@ -48,6 +49,12 @@ segments:
       - [0x23740, asm]
       - [0x23BD0, asm, srand]
 >>>>>>> parent of 3d8ddf6 (matched some tiny funcs)
+=======
+      - [0x21D70, asm]
+      - [0x234E0, asm]
+      - [0x23740, asm]
+      - [0x23BD0, asm]
+>>>>>>> parent of dc1743b (First compilable commit.)
       - [0x24E60, asm]
       - [0x25290, asm]
       - [0x271F0, asm]
