@@ -1218,13 +1218,13 @@ glabel func_8000FF54
 
 glabel checkForKeyItems
 /* 10BE8 8000FFE8 94820014 */  lhu        $v0, 0x14($a0)
-/* 10BEC 8000FFEC 3C068009 */  lui        $a2, %hi(invSlot)
-/* 10BF0 8000FFF0 24C6CF78 */  addiu      $a2, $a2, %lo(invSlot)
+/* 10BEC 8000FFEC 3C068009 */  lui        $a2, %hi(gInvSlot)
+/* 10BF0 8000FFF0 24C6CF78 */  addiu      $a2, $a2, %lo(gInvSlot)
 /* 10BF4 8000FFF4 304E0030 */  andi       $t6, $v0, 0x30
 /* 10BF8 8000FFF8 11C0001E */  beqz       $t6, .L80010074
 /* 10BFC 8000FFFC 24030001 */   addiu     $v1, $zero, 1
-/* 10C00 80010000 3C038009 */  lui        $v1, %hi(inventoryOverflow)
-/* 10C04 80010004 2463D00E */  addiu      $v1, $v1, %lo(inventoryOverflow)
+/* 10C00 80010000 3C038009 */  lui        $v1, %hi(gInventoryOverflow)
+/* 10C04 80010004 2463D00E */  addiu      $v1, $v1, %lo(gInventoryOverflow)
 /* 10C08 80010008 94850016 */  lhu        $a1, 0x16($a0)
 /* 10C0C 8001000C 90CF0000 */  lbu        $t7, ($a2)
 .L80010010:
@@ -1237,8 +1237,8 @@ glabel checkForKeyItems
 .L80010028:
 /* 10C28 80010028 1300000A */  beqz       $t8, .L80010054
 /* 10C2C 8001002C 3C088009 */   lui       $t0, 0x8009
-/* 10C30 80010030 3C198009 */  lui        $t9, %hi(inventoryOverflow)
-/* 10C34 80010034 2739D00E */  addiu      $t9, $t9, %lo(inventoryOverflow)
+/* 10C30 80010030 3C198009 */  lui        $t9, %hi(gInventoryOverflow)
+/* 10C34 80010034 2739D00E */  addiu      $t9, $t9, %lo(gInventoryOverflow)
 /* 10C38 80010038 00D9082B */  sltu       $at, $a2, $t9
 /* 10C3C 8001003C 10200003 */  beqz       $at, .L8001004C
 /* 10C40 80010040 00000000 */   nop
@@ -1501,11 +1501,11 @@ glabel changeTimeOfDay
 /* 10FE4 800103E4 11200024 */  beqz       $t1, .L80010478
 /* 10FE8 800103E8 00000000 */   nop
 /* 10FEC 800103EC 954AC592 */  lhu        $t2, %lo(BattleState)($t2)
-/* 10FF0 800103F0 3C0C8008 */  lui        $t4, %hi(HUDState)
+/* 10FF0 800103F0 3C0C8008 */  lui        $t4, %hi(gHUDState)
 /* 10FF4 800103F4 314B0001 */  andi       $t3, $t2, 1
 /* 10FF8 800103F8 15600030 */  bnez       $t3, .L800104BC
 /* 10FFC 800103FC 00000000 */   nop
-/* 11000 80010400 8D8CB2E4 */  lw         $t4, %lo(HUDState)($t4)
+/* 11000 80010400 8D8CB2E4 */  lw         $t4, %lo(gHUDState)($t4)
 /* 11004 80010404 3C0E8009 */  lui        $t6, %hi(D_8008C638)
 /* 11008 80010408 318D0003 */  andi       $t5, $t4, 3
 /* 1100C 8001040C 15A0002B */  bnez       $t5, .L800104BC

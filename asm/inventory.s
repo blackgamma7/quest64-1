@@ -27,8 +27,8 @@ glabel initInventory
 /* 21DAC 800211AC 24420001 */   addiu     $v0, $v0, 1
 /* 21DB0 800211B0 3C028009 */  lui        $v0, %hi(invSlot2)
 /* 21DB4 800211B4 2442CF79 */  addiu      $v0, $v0, %lo(invSlot2)
-/* 21DB8 800211B8 3C018009 */  lui        $at, %hi(invSlot)
-/* 21DBC 800211BC A024CF78 */  sb         $a0, %lo(invSlot)($at)
+/* 21DB8 800211B8 3C018009 */  lui        $at, %hi(gInvSlot)
+/* 21DBC 800211BC A024CF78 */  sb         $a0, %lo(gInvSlot)($at)
 /* 21DC0 800211C0 A0440001 */  sb         $a0, 1($v0)
 /* 21DC4 800211C4 A0440000 */  sb         $a0, ($v0)
 /* 21DC8 800211C8 24420002 */  addiu      $v0, $v0, 2
@@ -72,8 +72,8 @@ glabel func_80021240
 /* 21E48 80021248 01C02025 */  or         $a0, $t6, $zero
 /* 21E4C 8002124C 00001025 */  or         $v0, $zero, $zero
 /* 21E50 80021250 244F0095 */  addiu      $t7, $v0, 0x95
-/* 21E54 80021254 3C188009 */  lui        $t8, %hi(invSlot)
-/* 21E58 80021258 2718CF78 */  addiu      $t8, $t8, %lo(invSlot)
+/* 21E54 80021254 3C188009 */  lui        $t8, %hi(gInvSlot)
+/* 21E58 80021258 2718CF78 */  addiu      $t8, $t8, %lo(gInvSlot)
 /* 21E5C 8002125C 3C028009 */  lui        $v0, %hi(D_8008CF77)
 /* 21E60 80021260 00001825 */  or         $v1, $zero, $zero
 /* 21E64 80021264 2442CF77 */  addiu      $v0, $v0, %lo(D_8008CF77)
@@ -99,10 +99,10 @@ glabel addItemToEmptySlot
 /* 21EA0 800212A0 AFA40000 */  sw         $a0, ($sp)
 /* 21EA4 800212A4 308E00FF */  andi       $t6, $a0, 0xff
 /* 21EA8 800212A8 01C02025 */  or         $a0, $t6, $zero
-/* 21EAC 800212AC 3C038009 */  lui        $v1, %hi(invSlot)
-/* 21EB0 800212B0 3C058009 */  lui        $a1, %hi(inventoryOverflow)
-/* 21EB4 800212B4 24A5D00E */  addiu      $a1, $a1, %lo(inventoryOverflow)
-/* 21EB8 800212B8 2463CF78 */  addiu      $v1, $v1, %lo(invSlot)
+/* 21EAC 800212AC 3C038009 */  lui        $v1, %hi(gInvSlot)
+/* 21EB0 800212B0 3C058009 */  lui        $a1, %hi(gInventoryOverflow)
+/* 21EB4 800212B4 24A5D00E */  addiu      $a1, $a1, %lo(gInventoryOverflow)
+/* 21EB8 800212B8 2463CF78 */  addiu      $v1, $v1, %lo(gInvSlot)
 /* 21EBC 800212BC 240200FF */  addiu      $v0, $zero, 0xff
 /* 21EC0 800212C0 906F0000 */  lbu        $t7, ($v1)
 .L800212C4:
@@ -211,12 +211,12 @@ glabel func_800213D8
 glabel func_80021434
 /* 22034 80021434 AFA40000 */  sw         $a0, ($sp)
 /* 22038 80021438 3087FFFF */  andi       $a3, $a0, 0xffff
-/* 2203C 8002143C 3C0E8009 */  lui        $t6, %hi(invSlot)
-/* 22040 80021440 91CECF78 */  lbu        $t6, %lo(invSlot)($t6)
-/* 22044 80021444 3C028009 */  lui        $v0, %hi(invSlot)
+/* 2203C 8002143C 3C0E8009 */  lui        $t6, %hi(gInvSlot)
+/* 22040 80021440 91CECF78 */  lbu        $t6, %lo(gInvSlot)($t6)
+/* 22044 80021444 3C028009 */  lui        $v0, %hi(gInvSlot)
 /* 22048 80021448 240800FF */  addiu      $t0, $zero, 0xff
 /* 2204C 8002144C 00001825 */  or         $v1, $zero, $zero
-/* 22050 80021450 2442CF78 */  addiu      $v0, $v0, %lo(invSlot)
+/* 22050 80021450 2442CF78 */  addiu      $v0, $v0, %lo(gInvSlot)
 /* 22054 80021454 110E0015 */  beq        $t0, $t6, .L800214AC
 /* 22058 80021458 24050096 */   addiu     $a1, $zero, 0x96
 /* 2205C 8002145C 3C09803B */  lui        $t1, %hi(ItemData)
@@ -342,8 +342,8 @@ glabel inventory
 /* 22214 80021614 00008825 */  or         $s1, $zero, $zero
 .L80021618:
 /* 22218 80021618 8DADC760 */  lw         $t5, -0x38a0($t5)
-/* 2221C 8002161C 3C0F8009 */  lui        $t7, %hi(invSlot)
-/* 22220 80021620 25EFCF78 */  addiu      $t7, $t7, %lo(invSlot)
+/* 2221C 8002161C 3C0F8009 */  lui        $t7, %hi(gInvSlot)
+/* 22220 80021620 25EFCF78 */  addiu      $t7, $t7, %lo(gInvSlot)
 /* 22224 80021624 01AF2821 */  addu       $a1, $t5, $t7
 /* 22228 80021628 90B80000 */  lbu        $t8, ($a1)
 /* 2222C 8002162C 240900FF */  addiu      $t1, $zero, 0xff
@@ -449,8 +449,8 @@ glabel inventory
 .L800217A0:
 /* 223A0 800217A0 3C188009 */  lui        $t8, %hi(InvScrollIndex)
 /* 223A4 800217A4 8F18C760 */  lw         $t8, %lo(InvScrollIndex)($t8)
-/* 223A8 800217A8 3C198009 */  lui        $t9, %hi(invSlot)
-/* 223AC 800217AC 2739CF78 */  addiu      $t9, $t9, %lo(invSlot)
+/* 223A8 800217A8 3C198009 */  lui        $t9, %hi(gInvSlot)
+/* 223AC 800217AC 2739CF78 */  addiu      $t9, $t9, %lo(gInvSlot)
 /* 223B0 800217B0 03192821 */  addu       $a1, $t8, $t9
 /* 223B4 800217B4 10000006 */  b          .L800217D0
 /* 223B8 800217B8 00A03825 */   or        $a3, $a1, $zero
@@ -485,8 +485,8 @@ glabel inventory
 /* 22418 80021818 A1B80000 */  sb         $t8, ($t5)
 /* 2241C 8002181C 3C198009 */  lui        $t9, %hi(InvScrollIndex)
 /* 22420 80021820 8F39C760 */  lw         $t9, %lo(InvScrollIndex)($t9)
-/* 22424 80021824 3C0E8009 */  lui        $t6, %hi(invSlot)
-/* 22428 80021828 25CECF78 */  addiu      $t6, $t6, %lo(invSlot)
+/* 22424 80021824 3C0E8009 */  lui        $t6, %hi(gInvSlot)
+/* 22428 80021828 25CECF78 */  addiu      $t6, $t6, %lo(gInvSlot)
 /* 2242C 8002182C 25AD0001 */  addiu      $t5, $t5, 1
 /* 22430 80021830 032E2821 */  addu       $a1, $t9, $t6
 .L80021834:
@@ -1015,11 +1015,11 @@ glabel inventory
 /* 22C30 80022030 3C0E8009 */  lui        $t6, %hi(VisableInvIndex)
 /* 22C34 80022034 8DCEC764 */  lw         $t6, %lo(VisableInvIndex)($t6)
 /* 22C38 80022038 8F39C760 */  lw         $t9, %lo(InvScrollIndex)($t9)
-/* 22C3C 8002203C 3C0F8009 */  lui        $t7, %hi(invSlot)
+/* 22C3C 8002203C 3C0F8009 */  lui        $t7, %hi(gInvSlot)
 /* 22C40 80022040 3C06803B */  lui        $a2, 0x803b
 /* 22C44 80022044 032EC021 */  addu       $t8, $t9, $t6
 /* 22C48 80022048 01F87821 */  addu       $t7, $t7, $t8
-/* 22C4C 8002204C 91EFCF78 */  lbu        $t7, %lo(invSlot)($t7)
+/* 22C4C 8002204C 91EFCF78 */  lbu        $t7, %lo(gInvSlot)($t7)
 /* 22C50 80022050 24040077 */  addiu      $a0, $zero, 0x77
 /* 22C54 80022054 2405003E */  addiu      $a1, $zero, 0x3e
 /* 22C58 80022058 000FC880 */  sll        $t9, $t7, 2
@@ -1030,11 +1030,11 @@ glabel inventory
 /* 22C6C 8002206C 3C188009 */  lui        $t8, %hi(VisableInvIndex)
 /* 22C70 80022070 8F18C764 */  lw         $t8, %lo(VisableInvIndex)($t8)
 /* 22C74 80022074 8DCEC760 */  lw         $t6, %lo(InvScrollIndex)($t6)
-/* 22C78 80022078 3C198009 */  lui        $t9, %hi(invSlot)
+/* 22C78 80022078 3C198009 */  lui        $t9, %hi(gInvSlot)
 /* 22C7C 8002207C 3C06803B */  lui        $a2, 0x803b
 /* 22C80 80022080 01D87821 */  addu       $t7, $t6, $t8
 /* 22C84 80022084 032FC821 */  addu       $t9, $t9, $t7
-/* 22C88 80022088 9339CF78 */  lbu        $t9, %lo(invSlot)($t9)
+/* 22C88 80022088 9339CF78 */  lbu        $t9, %lo(gInvSlot)($t9)
 /* 22C8C 8002208C 2404004E */  addiu      $a0, $zero, 0x4e
 /* 22C90 80022090 24050050 */  addiu      $a1, $zero, 0x50
 /* 22C94 80022094 00197080 */  sll        $t6, $t9, 2
@@ -1050,20 +1050,20 @@ glabel inventory
 /* 22CBC 800220BC 00000000 */   nop
 /* 22CC0 800220C0 8F39C760 */  lw         $t9, %lo(InvScrollIndex)($t9)
 /* 22CC4 800220C4 8DCEC764 */  lw         $t6, %lo(VisableInvIndex)($t6)
-/* 22CC8 800220C8 3C048009 */  lui        $a0, %hi(invSlot)
+/* 22CC8 800220C8 3C048009 */  lui        $a0, %hi(gInvSlot)
 /* 22CCC 800220CC 032EC021 */  addu       $t8, $t9, $t6
 /* 22CD0 800220D0 00982021 */  addu       $a0, $a0, $t8
 /* 22CD4 800220D4 0C0084B9 */  jal        useItemIfAble
-/* 22CD8 800220D8 9084CF78 */   lbu       $a0, %lo(invSlot)($a0)
+/* 22CD8 800220D8 9084CF78 */   lbu       $a0, %lo(gInvSlot)($a0)
 /* 22CDC 800220DC 1040004D */  beqz       $v0, .L80022214
 /* 22CE0 800220E0 3C0D8009 */   lui       $t5, %hi(InvScrollIndex)
 /* 22CE4 800220E4 8DADC760 */  lw         $t5, %lo(InvScrollIndex)($t5)
 /* 22CE8 800220E8 3C028009 */  lui        $v0, %hi(VisableInvIndex)
 /* 22CEC 800220EC 8C42C764 */  lw         $v0, %lo(VisableInvIndex)($v0)
 /* 22CF0 800220F0 000D7023 */  negu       $t6, $t5
-/* 22CF4 800220F4 3C198009 */  lui        $t9, %hi(invSlot)
+/* 22CF4 800220F4 3C198009 */  lui        $t9, %hi(gInvSlot)
 /* 22CF8 800220F8 01C26023 */  subu       $t4, $t6, $v0
-/* 22CFC 800220FC 2739CF78 */  addiu      $t9, $t9, %lo(invSlot)
+/* 22CFC 800220FC 2739CF78 */  addiu      $t9, $t9, %lo(gInvSlot)
 /* 22D00 80022100 258C0095 */  addiu      $t4, $t4, 0x95
 /* 22D04 80022104 01A27821 */  addu       $t7, $t5, $v0
 /* 22D08 80022108 11800017 */  beqz       $t4, .L80022168
@@ -1093,9 +1093,9 @@ glabel inventory
 /* 22D60 80022160 1580FFF6 */  bnez       $t4, .L8002213C
 /* 22D64 80022164 A0F8FFFF */   sb        $t8, -1($a3)
 .L80022168:
-/* 22D68 80022168 3C028008 */  lui        $v0, %hi(HUDState)
+/* 22D68 80022168 3C028008 */  lui        $v0, %hi(gHUDState)
 /* 22D6C 8002216C 240F00FF */  addiu      $t7, $zero, 0xff
-/* 22D70 80022170 2442B2E4 */  addiu      $v0, $v0, %lo(HUDState)
+/* 22D70 80022170 2442B2E4 */  addiu      $v0, $v0, %lo(gHUDState)
 /* 22D74 80022174 A0EF0000 */  sb         $t7, ($a3)
 /* 22D78 80022178 8C590000 */  lw         $t9, ($v0)
 /* 22D7C 8002217C 2401FFFE */  addiu      $at, $zero, -2
@@ -1110,8 +1110,8 @@ glabel inventory
 /* 22DA0 800221A0 8DADC760 */  lw         $t5, %lo(InvScrollIndex)($t5)
 /* 22DA4 800221A4 3C028009 */  lui        $v0, %hi(VisableInvIndex)
 /* 22DA8 800221A8 8C42C764 */  lw         $v0, %lo(VisableInvIndex)($v0)
-/* 22DAC 800221AC 3C188009 */  lui        $t8, %hi(invSlot)
-/* 22DB0 800221B0 2718CF78 */  addiu      $t8, $t8, %lo(invSlot)
+/* 22DAC 800221AC 3C188009 */  lui        $t8, %hi(gInvSlot)
+/* 22DB0 800221B0 2718CF78 */  addiu      $t8, $t8, %lo(gInvSlot)
 /* 22DB4 800221B4 01B82821 */  addu       $a1, $t5, $t8
 /* 22DB8 800221B8 00A27821 */  addu       $t7, $a1, $v0
 /* 22DBC 800221BC 91F90000 */  lbu        $t9, ($t7)
@@ -1328,8 +1328,8 @@ glabel useWings
 /* 2309C 8002249C 3C03803B */  lui        $v1, 0x803b
 /* 230A0 800224A0 3C088009 */  lui        $t0, %hi(D_8008D010)
 /* 230A4 800224A4 3C0A8008 */  lui        $t2, %hi(temp_CurrMap)
-/* 230A8 800224A8 3C0B8008 */  lui        $t3, %hi(HUDState)
-/* 230AC 800224AC 256BB2E4 */  addiu      $t3, $t3, %lo(HUDState)
+/* 230A8 800224A8 3C0B8008 */  lui        $t3, %hi(gHUDState)
+/* 230AC 800224AC 256BB2E4 */  addiu      $t3, $t3, %lo(gHUDState)
 /* 230B0 800224B0 254A5368 */  addiu      $t2, $t2, %lo(temp_CurrMap)
 /* 230B4 800224B4 2508D010 */  addiu      $t0, $t0, %lo(D_8008D010)
 /* 230B8 800224B8 24639A68 */  addiu      $v1, $v1, -0x6598

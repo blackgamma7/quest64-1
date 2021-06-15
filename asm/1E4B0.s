@@ -377,8 +377,8 @@ glabel func_8001DC78
 /* 1E9EC 8001DDEC 02002025 */   or        $a0, $s0, $zero
 /* 1E9F0 8001DDF0 0C008FA0 */  jal        func_80023E80
 /* 1E9F4 8001DDF4 02A03025 */   or        $a2, $s5, $zero
-/* 1E9F8 8001DDF8 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
-/* 1E9FC 8001DDFC 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 1E9F8 8001DDF8 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
+/* 1E9FC 8001DDFC 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 1EA00 8001DE00 C44A000C */  lwc1       $f10, 0xc($v0)
 /* 1EA04 8001DE04 C4500010 */  lwc1       $f16, 0x10($v0)
 /* 1EA08 8001DE08 C4520014 */  lwc1       $f18, 0x14($v0)

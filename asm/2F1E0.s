@@ -316,8 +316,8 @@ glabel printMsg
 /* 2F644 8002EA44 24010004 */  addiu      $at, $zero, 4
 /* 2F648 8002EA48 1641FF63 */  bne        $s2, $at, .L8002E7D8
 /* 2F64C 8002EA4C 254A089C */   addiu     $t2, $t2, 0x89c
-/* 2F650 8002EA50 3C048008 */  lui        $a0, %hi(HUDState)
-/* 2F654 8002EA54 2484B2E4 */  addiu      $a0, $a0, %lo(HUDState)
+/* 2F650 8002EA50 3C048008 */  lui        $a0, %hi(gHUDState)
+/* 2F654 8002EA54 2484B2E4 */  addiu      $a0, $a0, %lo(gHUDState)
 /* 2F658 8002EA58 8C8F0000 */  lw         $t7, ($a0)
 /* 2F65C 8002EA5C 3C018009 */  lui        $at, %hi(D_80092850)
 /* 2F660 8002EA60 00601025 */  or         $v0, $v1, $zero
@@ -653,8 +653,8 @@ glabel func_8002EAA0
 /* 2FB18 8002EF18 2719FFFF */  addiu      $t9, $t8, -1
 /* 2FB1C 8002EF1C 1DA002C5 */  bgtz       $t5, .L8002FA34
 /* 2FB20 8002EF20 AC590000 */   sw        $t9, ($v0)
-/* 2FB24 8002EF24 3C028008 */  lui        $v0, %hi(HUDState)
-/* 2FB28 8002EF28 2442B2E4 */  addiu      $v0, $v0, %lo(HUDState)
+/* 2FB24 8002EF24 3C028008 */  lui        $v0, %hi(gHUDState)
+/* 2FB28 8002EF28 2442B2E4 */  addiu      $v0, $v0, %lo(gHUDState)
 /* 2FB2C 8002EF2C 8C4E0000 */  lw         $t6, ($v0)
 /* 2FB30 8002EF30 2401FFFD */  addiu      $at, $zero, -3
 /* 2FB34 8002EF34 01C17824 */  and        $t7, $t6, $at

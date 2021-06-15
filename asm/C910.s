@@ -19,8 +19,8 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* C930 8000BD30 AFB40030 */  sw         $s4, 0x30($sp)
 /* C934 8000BD34 AFB20028 */  sw         $s2, 0x28($sp)
 /* C938 8000BD38 AFB00020 */  sw         $s0, 0x20($sp)
-/* C93C 8000BD3C 3C028008 */  lui        $v0, %hi(CurrentMap)
-/* C940 8000BD40 8C424EEC */  lw         $v0, %lo(CurrentMap)($v0)
+/* C93C 8000BD3C 3C028008 */  lui        $v0, %hi(gCurrentMap)
+/* C940 8000BD40 8C424EEC */  lw         $v0, %lo(gCurrentMap)($v0)
 /* C944 8000BD44 8E240000 */  lw         $a0, ($s1)
 /* C948 8000BD48 3C0F8005 */  lui        $t7, %hi(D_80054F10)
 /* C94C 8000BD4C 00027100 */  sll        $t6, $v0, 4
@@ -36,10 +36,10 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* C974 8000BD74 3C198008 */   lui       $t9, %hi(nextSubmap)
 /* C978 8000BD78 8F394EE8 */  lw         $t9, %lo(nextSubmap)($t9)
 /* C97C 8000BD7C 24010002 */  addiu      $at, $zero, 2
-/* C980 8000BD80 3C038008 */  lui        $v1, %hi(CurrentSubmap)
+/* C980 8000BD80 3C038008 */  lui        $v1, %hi(gCurrentSubmap)
 /* C984 8000BD84 1721004B */  bne        $t9, $at, .L8000BEB4
 /* C988 8000BD88 00000000 */   nop
-/* C98C 8000BD8C 8C634EF0 */  lw         $v1, %lo(CurrentSubmap)($v1)
+/* C98C 8000BD8C 8C634EF0 */  lw         $v1, %lo(gCurrentSubmap)($v1)
 /* C990 8000BD90 3C018008 */  lui        $at, %hi(D_80084EF8)
 /* C994 8000BD94 3C088008 */  lui        $t0, %hi(LastExitID)
 /* C998 8000BD98 14600046 */  bnez       $v1, .L8000BEB4
@@ -55,8 +55,8 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* C9BC 8000BDBC 24010006 */  addiu      $at, $zero, 6
 /* C9C0 8000BDC0 1441000C */  bne        $v0, $at, .L8000BDF4
 /* C9C4 8000BDC4 3C128008 */   lui       $s2, 0x8008
-/* C9C8 8000BDC8 3C098008 */  lui        $t1, %hi(CurrentSubmap)
-/* C9CC 8000BDCC 8D294EF0 */  lw         $t1, %lo(CurrentSubmap)($t1)
+/* C9C8 8000BDC8 3C098008 */  lui        $t1, %hi(gCurrentSubmap)
+/* C9CC 8000BDCC 8D294EF0 */  lw         $t1, %lo(gCurrentSubmap)($t1)
 /* C9D0 8000BDD0 3C018008 */  lui        $at, %hi(D_80084EF8)
 /* C9D4 8000BDD4 AC224EF8 */  sw         $v0, %lo(D_80084EF8)($at)
 /* C9D8 8000BDD8 3C018008 */  lui        $at, %hi(D_80084EFC)
@@ -101,8 +101,8 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* CA6C 8000BE6C 11400011 */  beqz       $t2, .L8000BEB4
 /* CA70 8000BE70 3C068008 */   lui       $a2, %hi(unk_lastExitTemp2)
 /* CA74 8000BE74 AC620000 */  sw         $v0, ($v1)
-/* CA78 8000BE78 3C0B8008 */  lui        $t3, %hi(CurrentSubmap)
-/* CA7C 8000BE7C 8D6B4EF0 */  lw         $t3, %lo(CurrentSubmap)($t3)
+/* CA78 8000BE78 3C0B8008 */  lui        $t3, %hi(gCurrentSubmap)
+/* CA7C 8000BE7C 8D6B4EF0 */  lw         $t3, %lo(gCurrentSubmap)($t3)
 /* CA80 8000BE80 3C0C8008 */  lui        $t4, %hi(LastExitID)
 /* CA84 8000BE84 24C64F0C */  addiu      $a2, $a2, %lo(unk_lastExitTemp2)
 /* CA88 8000BE88 ACAB0000 */  sw         $t3, ($a1)
@@ -141,8 +141,8 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* CB08 8000BF08 24848AF0 */  addiu      $a0, $a0, -0x7510
 /* CB0C 8000BF0C 0C009098 */  jal        loadData
 /* CB10 8000BF10 24060200 */   addiu     $a2, $zero, 0x200
-/* CB14 8000BF14 3C028008 */  lui        $v0, %hi(CurrentMap)
-/* CB18 8000BF18 8C424EEC */  lw         $v0, %lo(CurrentMap)($v0)
+/* CB14 8000BF14 3C028008 */  lui        $v0, %hi(gCurrentMap)
+/* CB18 8000BF18 8C424EEC */  lw         $v0, %lo(gCurrentMap)($v0)
 /* CB1C 8000BF1C 8E240000 */  lw         $a0, ($s1)
 .L8000BF20:
 /* CB20 8000BF20 10440038 */  beq        $v0, $a0, .L8000C004
@@ -218,8 +218,8 @@ glabel VOID_UNK_MoreMapTransitionStuff
 /* CC24 8000C024 2442FFFE */  addiu      $v0, $v0, -2
 /* CC28 8000C028 1620FFFB */  bnez       $s1, .L8000C018
 /* CC2C 8000C02C A468FFFE */   sh        $t0, -2($v1)
-/* CC30 8000C030 3C098008 */  lui        $t1, %hi(CurrentSubmap)
-/* CC34 8000C034 8D294EF0 */  lw         $t1, %lo(CurrentSubmap)($t1)
+/* CC30 8000C030 3C098008 */  lui        $t1, %hi(gCurrentSubmap)
+/* CC34 8000C034 8D294EF0 */  lw         $t1, %lo(gCurrentSubmap)($t1)
 /* CC38 8000C038 3C018008 */  lui        $at, %hi(nextSubmap)
 /* CC3C 8000C03C 3C128008 */  lui        $s2, 0x8008
 /* CC40 8000C040 AC294EE8 */  sw         $t1, %lo(nextSubmap)($at)
@@ -1939,11 +1939,11 @@ glabel func_8000D518
 
 glabel func_8000D9BC
 /* E5BC 8000D9BC 27BDFFD8 */  addiu      $sp, $sp, -0x28
-/* E5C0 8000D9C0 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
+/* E5C0 8000D9C0 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
 /* E5C4 8000D9C4 3C088008 */  lui        $t0, %hi(DLToLoad)
 /* E5C8 8000D9C8 44800000 */  mtc1       $zero, $f0
 /* E5CC 8000D9CC 2508B2F8 */  addiu      $t0, $t0, %lo(DLToLoad)
-/* E5D0 8000D9D0 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* E5D0 8000D9D0 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* E5D4 8000D9D4 AFBF0024 */  sw         $ra, 0x24($sp)
 /* E5D8 8000D9D8 AFA40028 */  sw         $a0, 0x28($sp)
 /* E5DC 8000D9DC 3C013F80 */  lui        $at, 0x3f80

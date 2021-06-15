@@ -29,7 +29,7 @@ segments:
       - [0xC120, asm]
       - [0xC910, asm]
       - [0xFA60, asm]
-      - [0x12450, asm]
+      - [0x12450, c, shadow]
       - [0x12740, asm]
       - [0x15440, asm]
       - [0x191F0, asm]

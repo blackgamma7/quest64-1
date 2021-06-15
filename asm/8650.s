@@ -974,9 +974,9 @@ glabel NPC_Talk_GiveItem
 /* 948C 8000888C 8E020080 */  lw         $v0, 0x80($s0)
 .L80008890:
 /* 9490 80008890 24010007 */  addiu      $at, $zero, 7
-/* 9494 80008894 3C038008 */  lui        $v1, %hi(HUDState)
+/* 9494 80008894 3C038008 */  lui        $v1, %hi(gHUDState)
 /* 9498 80008898 944A0006 */  lhu        $t2, 6($v0)
-/* 949C 8000889C 2463B2E4 */  addiu      $v1, $v1, %lo(HUDState)
+/* 949C 8000889C 2463B2E4 */  addiu      $v1, $v1, %lo(gHUDState)
 /* 94A0 800088A0 9445000A */  lhu        $a1, 0xa($v0)
 /* 94A4 800088A4 15410007 */  bne        $t2, $at, .L800088C4
 /* 94A8 800088A8 00000000 */   nop

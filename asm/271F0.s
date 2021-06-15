@@ -8,8 +8,8 @@
 .section .text, "ax"
 
 glabel initBGM
-/* 271F0 800265F0 3C048009 */  lui        $a0, %hi(currBGM)
-/* 271F4 800265F4 2484FCC1 */  addiu      $a0, $a0, %lo(currBGM)
+/* 271F0 800265F0 3C048009 */  lui        $a0, %hi(gCurrBGM)
+/* 271F4 800265F4 2484FCC1 */  addiu      $a0, $a0, %lo(gCurrBGM)
 /* 271F8 800265F8 3C018009 */  lui        $at, %hi(BGMPlayFlag)
 /* 271FC 800265FC A420FCC2 */  sh         $zero, %lo(BGMPlayFlag)($at)
 /* 27200 80026600 3C018009 */  lui        $at, %hi(BGMStartDelay)
@@ -94,11 +94,11 @@ glabel startBGM
 /* 2731C 8002671C 14400011 */  bnez       $v0, .L80026764
 /* 27320 80026720 00000000 */   nop
 /* 27324 80026724 96180000 */  lhu        $t8, ($s0)
-/* 27328 80026728 3C088009 */  lui        $t0, %hi(currBGM)
+/* 27328 80026728 3C088009 */  lui        $t0, %hi(gCurrBGM)
 /* 2732C 8002672C 2401FFFF */  addiu      $at, $zero, -1
 /* 27330 80026730 3319FFFB */  andi       $t9, $t8, 0xfffb
 /* 27334 80026734 A6190000 */  sh         $t9, ($s0)
-/* 27338 80026738 8108FCC1 */  lb         $t0, %lo(currBGM)($t0)
+/* 27338 80026738 8108FCC1 */  lb         $t0, %lo(gCurrBGM)($t0)
 /* 2733C 8002673C A2280000 */  sb         $t0, ($s1)
 /* 27340 80026740 82250000 */  lb         $a1, ($s1)
 /* 27344 80026744 10A10007 */  beq        $a1, $at, .L80026764
@@ -137,8 +137,8 @@ glabel startBGM
 glabel updateBGM
 /* 273B8 800267B8 AFA40000 */  sw         $a0, ($sp)
 /* 273BC 800267BC 00047600 */  sll        $t6, $a0, 0x18
-/* 273C0 800267C0 3C028009 */  lui        $v0, %hi(currBGM)
-/* 273C4 800267C4 2442FCC1 */  addiu      $v0, $v0, %lo(currBGM)
+/* 273C0 800267C0 3C028009 */  lui        $v0, %hi(gCurrBGM)
+/* 273C4 800267C4 2442FCC1 */  addiu      $v0, $v0, %lo(gCurrBGM)
 /* 273C8 800267C8 000E2603 */  sra        $a0, $t6, 0x18
 /* 273CC 800267CC 80580000 */  lb         $t8, ($v0)
 /* 273D0 800267D0 3C038009 */  lui        $v1, %hi(BGMPlayFlag)
@@ -158,8 +158,8 @@ glabel PlayVictoryTheme
 /* 273FC 800267FC 00047600 */  sll        $t6, $a0, 0x18
 /* 27400 80026800 AFA50004 */  sw         $a1, 4($sp)
 /* 27404 80026804 30B8FFFF */  andi       $t8, $a1, 0xffff
-/* 27408 80026808 3C028009 */  lui        $v0, %hi(currBGM)
-/* 2740C 8002680C 2442FCC1 */  addiu      $v0, $v0, %lo(currBGM)
+/* 27408 80026808 3C028009 */  lui        $v0, %hi(gCurrBGM)
+/* 2740C 8002680C 2442FCC1 */  addiu      $v0, $v0, %lo(gCurrBGM)
 /* 27410 80026810 03002825 */  or         $a1, $t8, $zero
 /* 27414 80026814 000E2603 */  sra        $a0, $t6, 0x18
 /* 27418 80026818 80590000 */  lb         $t9, ($v0)
@@ -199,8 +199,8 @@ glabel updateBGM_mapTransition
 /* 2748C 8002688C 24420006 */   addiu     $v0, $v0, 6
 .L80026890:
 /* 27490 80026890 1060000E */  beqz       $v1, .L800268CC
-/* 27494 80026894 3C048009 */   lui       $a0, %hi(currBGM)
-/* 27498 80026898 2484FCC1 */  addiu      $a0, $a0, %lo(currBGM)
+/* 27494 80026894 3C048009 */   lui       $a0, %hi(gCurrBGM)
+/* 27498 80026898 2484FCC1 */  addiu      $a0, $a0, %lo(gCurrBGM)
 /* 2749C 8002689C 808F0000 */  lb         $t7, ($a0)
 /* 274A0 800268A0 80430004 */  lb         $v1, 4($v0)
 /* 274A4 800268A4 3C028009 */  lui        $v0, %hi(BGMPlayFlag)

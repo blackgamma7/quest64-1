@@ -98,8 +98,8 @@ glabel gameMain
 /* 19A4 80000DA4 0C0003FA */  jal        loadSpiritsSpells_and_Hud
 /* 19A8 80000DA8 AC22B9D8 */   sw        $v0, %lo(D_8007B9D8)($at)
 /* 19AC 80000DAC 3C128008 */  lui        $s2, %hi(GameMode)
-/* 19B0 80000DB0 3C108008 */  lui        $s0, %hi(HUDState)
-/* 19B4 80000DB4 2610B2E4 */  addiu      $s0, $s0, %lo(HUDState)
+/* 19B0 80000DB0 3C108008 */  lui        $s0, %hi(gHUDState)
+/* 19B4 80000DB4 2610B2E4 */  addiu      $s0, $s0, %lo(gHUDState)
 /* 19B8 80000DB8 2652B2E0 */  addiu      $s2, $s2, %lo(GameMode)
 /* 19BC 80000DBC 24130001 */  addiu      $s3, $zero, 1
 /* 19C0 80000DC0 2411FFFC */  addiu      $s1, $zero, -4
@@ -187,8 +187,8 @@ glabel setupNewGame
 /* 1AEC 80000EEC 44800000 */  mtc1       $zero, $f0
 /* 1AF0 80000EF0 2402FFFF */  addiu      $v0, $zero, -1
 /* 1AF4 80000EF4 240E0160 */  addiu      $t6, $zero, 0x160
-/* 1AF8 80000EF8 3C018008 */  lui        $at, %hi(HUDState)
-/* 1AFC 80000EFC AC2EB2E4 */  sw         $t6, %lo(HUDState)($at)
+/* 1AF8 80000EF8 3C018008 */  lui        $at, %hi(gHUDState)
+/* 1AFC 80000EFC AC2EB2E4 */  sw         $t6, %lo(gHUDState)($at)
 /* 1B00 80000F00 3C018008 */  lui        $at, %hi(GameMode)
 /* 1B04 80000F04 240F0004 */  addiu      $t7, $zero, 4
 /* 1B08 80000F08 A42FB2E0 */  sh         $t7, %lo(GameMode)($at)
@@ -205,12 +205,12 @@ glabel setupNewGame
 /* 1B34 80000F34 E4206E44 */  swc1       $f0, %lo(D_80086E44)($at)
 /* 1B38 80000F38 3C018008 */  lui        $at, %hi(D_800859E2)
 /* 1B3C 80000F3C A42059E2 */  sh         $zero, %lo(D_800859E2)($at)
-/* 1B40 80000F40 3C018008 */  lui        $at, %hi(CurrentMap)
+/* 1B40 80000F40 3C018008 */  lui        $at, %hi(gCurrentMap)
 /* 1B44 80000F44 2419000D */  addiu      $t9, $zero, 0xd
-/* 1B48 80000F48 AC394EEC */  sw         $t9, %lo(CurrentMap)($at)
-/* 1B4C 80000F4C 3C018008 */  lui        $at, %hi(CurrentSubmap)
+/* 1B48 80000F48 AC394EEC */  sw         $t9, %lo(gCurrentMap)($at)
+/* 1B4C 80000F4C 3C018008 */  lui        $at, %hi(gCurrentSubmap)
 /* 1B50 80000F50 24080011 */  addiu      $t0, $zero, 0x11
-/* 1B54 80000F54 AC284EF0 */  sw         $t0, %lo(CurrentSubmap)($at)
+/* 1B54 80000F54 AC284EF0 */  sw         $t0, %lo(gCurrentSubmap)($at)
 /* 1B58 80000F58 3C018008 */  lui        $at, %hi(LastExitID)
 /* 1B5C 80000F5C AC225370 */  sw         $v0, %lo(LastExitID)($at)
 /* 1B60 80000F60 3C018008 */  lui        $at, %hi(saveDataMap)
@@ -618,16 +618,16 @@ glabel graphicsMain
 /* 2180 80001580 8FA40024 */   lw        $a0, 0x24($sp)
 /* 2184 80001584 0C008A3E */  jal        unk_dimsScreenWhenOpeningMenu
 /* 2188 80001588 8FA40024 */   lw        $a0, 0x24($sp)
-/* 218C 8000158C 3C028008 */  lui        $v0, %hi(HUDState)
-/* 2190 80001590 8C42B2E4 */  lw         $v0, %lo(HUDState)($v0)
+/* 218C 8000158C 3C028008 */  lui        $v0, %hi(gHUDState)
+/* 2190 80001590 8C42B2E4 */  lw         $v0, %lo(gHUDState)($v0)
 /* 2194 80001594 304C0002 */  andi       $t4, $v0, 2
 /* 2198 80001598 11800006 */  beqz       $t4, .L800015B4
 /* 219C 8000159C 304E4000 */   andi      $t6, $v0, 0x4000
 /* 21A0 800015A0 0C00BAA8 */  jal        func_8002EAA0
 /* 21A4 800015A4 00000000 */   nop
-/* 21A8 800015A8 3C028008 */  lui        $v0, %hi(HUDState)
+/* 21A8 800015A8 3C028008 */  lui        $v0, %hi(gHUDState)
 /* 21AC 800015AC 1000000B */  b          .L800015DC
-/* 21B0 800015B0 8C42B2E4 */   lw        $v0, %lo(HUDState)($v0)
+/* 21B0 800015B0 8C42B2E4 */   lw        $v0, %lo(gHUDState)($v0)
 .L800015B4:
 /* 21B4 800015B4 15C00009 */  bnez       $t6, .L800015DC
 /* 21B8 800015B8 3C198008 */   lui       $t9, %hi(cutsceneNum)
@@ -637,8 +637,8 @@ glabel graphicsMain
 /* 21C8 800015C8 304F0001 */   andi      $t7, $v0, 1
 /* 21CC 800015CC 0C007897 */  jal        HUDSometing
 /* 21D0 800015D0 8FA40024 */   lw        $a0, 0x24($sp)
-/* 21D4 800015D4 3C028008 */  lui        $v0, %hi(HUDState)
-/* 21D8 800015D8 8C42B2E4 */  lw         $v0, %lo(HUDState)($v0)
+/* 21D4 800015D4 3C028008 */  lui        $v0, %hi(gHUDState)
+/* 21D8 800015D8 8C42B2E4 */  lw         $v0, %lo(gHUDState)($v0)
 .L800015DC:
 /* 21DC 800015DC 304F0001 */  andi       $t7, $v0, 1
 .L800015E0:
@@ -797,8 +797,8 @@ glabel graphicsMain
 glabel Mode_NormalPlay
 /* 2400 80001800 27BDFFA0 */  addiu      $sp, $sp, -0x60
 /* 2404 80001804 AFB60038 */  sw         $s6, 0x38($sp)
-/* 2408 80001808 3C168008 */  lui        $s6, %hi(HUDState)
-/* 240C 8000180C 26D6B2E4 */  addiu      $s6, $s6, %lo(HUDState)
+/* 2408 80001808 3C168008 */  lui        $s6, %hi(gHUDState)
+/* 240C 8000180C 26D6B2E4 */  addiu      $s6, $s6, %lo(gHUDState)
 /* 2410 80001810 AFBF0044 */  sw         $ra, 0x44($sp)
 /* 2414 80001814 AFBE0040 */  sw         $fp, 0x40($sp)
 /* 2418 80001818 AFB7003C */  sw         $s7, 0x3c($sp)
@@ -1157,12 +1157,12 @@ glabel Mode_NormalPlay
 .L80001D50:
 /* 2950 80001D50 24845368 */  addiu      $a0, $a0, 0x5368
 /* 2954 80001D54 8C980000 */  lw         $t8, ($a0)
-/* 2958 80001D58 3C018008 */  lui        $at, %hi(CurrentMap)
-/* 295C 80001D5C AC384EEC */  sw         $t8, %lo(CurrentMap)($at)
+/* 2958 80001D58 3C018008 */  lui        $at, %hi(gCurrentMap)
+/* 295C 80001D5C AC384EEC */  sw         $t8, %lo(gCurrentMap)($at)
 /* 2960 80001D60 8C990004 */  lw         $t9, 4($a0)
-/* 2964 80001D64 3C018008 */  lui        $at, %hi(CurrentSubmap)
+/* 2964 80001D64 3C018008 */  lui        $at, %hi(gCurrentSubmap)
 /* 2968 80001D68 1040001D */  beqz       $v0, .L80001DE0
-/* 296C 80001D6C AC394EF0 */   sw        $t9, %lo(CurrentSubmap)($at)
+/* 296C 80001D6C AC394EF0 */   sw        $t9, %lo(gCurrentSubmap)($at)
 /* 2970 80001D70 8EA20010 */  lw         $v0, 0x10($s5)
 /* 2974 80001D74 3C038008 */  lui        $v1, %hi(currentTime)
 /* 2978 80001D78 246359D0 */  addiu      $v1, $v1, %lo(currentTime)
@@ -1852,8 +1852,8 @@ glabel Mode_EndCredits
 /* 3354 80002754 2404FFFF */   addiu     $a0, $zero, -1
 /* 3358 80002758 0C009996 */  jal        startBGM
 /* 335C 8000275C 00000000 */   nop
-/* 3360 80002760 3C028008 */  lui        $v0, %hi(HUDState)
-/* 3364 80002764 2442B2E4 */  addiu      $v0, $v0, %lo(HUDState)
+/* 3360 80002760 3C028008 */  lui        $v0, %hi(gHUDState)
+/* 3364 80002764 2442B2E4 */  addiu      $v0, $v0, %lo(gHUDState)
 /* 3368 80002768 8C590000 */  lw         $t9, ($v0)
 /* 336C 8000276C 37288000 */  ori        $t0, $t9, 0x8000
 /* 3370 80002770 AC480000 */  sw         $t0, ($v0)

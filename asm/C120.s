@@ -479,8 +479,8 @@ glabel UNK_BossBattleSomething
 /* C7F4 8000BBF4 0C00B9DA */  jal        printMsg
 /* C7F8 8000BBF8 24040001 */   addiu     $a0, $zero, 1
 /* C7FC 8000BBFC 3C028008 */  lui        $v0, %hi(brianAction)
-/* C800 8000BC00 3C048008 */  lui        $a0, %hi(HUDState)
-/* C804 8000BC04 2484B2E4 */  addiu      $a0, $a0, %lo(HUDState)
+/* C800 8000BC00 3C048008 */  lui        $a0, %hi(gHUDState)
+/* C804 8000BC04 2484B2E4 */  addiu      $a0, $a0, %lo(gHUDState)
 /* C808 8000BC08 2442BAB8 */  addiu      $v0, $v0, %lo(brianAction)
 /* C80C 8000BC0C 944A0008 */  lhu        $t2, 8($v0)
 /* C810 8000BC10 8C8C0000 */  lw         $t4, ($a0)

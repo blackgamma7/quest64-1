@@ -3183,9 +3183,9 @@ glabel createSaveFile
 /* 2EF9C 8002E39C 14A0FFFB */  bnez       $a1, .L8002E38C
 /* 2EFA0 8002E3A0 A059FFFF */   sb        $t9, -1($v0)
 /* 2EFA4 8002E3A4 3C028009 */  lui        $v0, %hi(D_800903C8)
-/* 2EFA8 8002E3A8 3C038009 */  lui        $v1, %hi(invSlot)
+/* 2EFA8 8002E3A8 3C038009 */  lui        $v1, %hi(gInvSlot)
 /* 2EFAC 8002E3AC 244203C8 */  addiu      $v0, $v0, %lo(D_800903C8)
-/* 2EFB0 8002E3B0 2463CF78 */  addiu      $v1, $v1, %lo(invSlot)
+/* 2EFB0 8002E3B0 2463CF78 */  addiu      $v1, $v1, %lo(gInvSlot)
 /* 2EFB4 8002E3B4 24050097 */  addiu      $a1, $zero, 0x97
 .L8002E3B8:
 /* 2EFB8 8002E3B8 90690000 */  lbu        $t1, ($v1)
@@ -3306,9 +3306,9 @@ glabel loadSave
 /* 2F16C 8002E56C 14A0FFFB */  bnez       $a1, .L8002E55C
 /* 2F170 8002E570 A079FFFF */   sb        $t9, -1($v1)
 /* 2F174 8002E574 3C028009 */  lui        $v0, %hi(D_800903C8)
-/* 2F178 8002E578 3C038009 */  lui        $v1, %hi(invSlot)
+/* 2F178 8002E578 3C038009 */  lui        $v1, %hi(gInvSlot)
 /* 2F17C 8002E57C 244203C8 */  addiu      $v0, $v0, %lo(D_800903C8)
-/* 2F180 8002E580 2463CF78 */  addiu      $v1, $v1, %lo(invSlot)
+/* 2F180 8002E580 2463CF78 */  addiu      $v1, $v1, %lo(gInvSlot)
 /* 2F184 8002E584 24050097 */  addiu      $a1, $zero, 0x97
 .L8002E588:
 /* 2F188 8002E588 90490000 */  lbu        $t1, ($v0)

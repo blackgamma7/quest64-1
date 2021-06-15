@@ -2362,9 +2362,9 @@ glabel func_800169C8
 /* 17644 80016A44 AC2ABA4C */  sw         $t2, %lo(sideOfDoorEnteredFlag)($at)
 /* 17648 80016A48 8CA30010 */  lw         $v1, 0x10($a1)
 /* 1764C 80016A4C A4A00006 */  sh         $zero, 6($a1)
-/* 17650 80016A50 3C068008 */  lui        $a2, %hi(HUDState)
+/* 17650 80016A50 3C068008 */  lui        $a2, %hi(gHUDState)
 /* 17654 80016A54 946B002A */  lhu        $t3, 0x2a($v1)
-/* 17658 80016A58 24C6B2E4 */  addiu      $a2, $a2, %lo(HUDState)
+/* 17658 80016A58 24C6B2E4 */  addiu      $a2, $a2, %lo(gHUDState)
 /* 1765C 80016A5C 3C018008 */  lui        $at, 0x8008
 /* 17660 80016A60 256C0001 */  addiu      $t4, $t3, 1
 /* 17664 80016A64 A46C002A */  sh         $t4, 0x2a($v1)
@@ -2461,9 +2461,9 @@ glabel func_80016B18
 /* 177B0 80016BB0 AC2BBA4C */  sw         $t3, %lo(sideOfDoorEnteredFlag)($at)
 /* 177B4 80016BB4 8CC30010 */  lw         $v1, 0x10($a2)
 /* 177B8 80016BB8 A4C00006 */  sh         $zero, 6($a2)
-/* 177BC 80016BBC 3C078008 */  lui        $a3, %hi(HUDState)
+/* 177BC 80016BBC 3C078008 */  lui        $a3, %hi(gHUDState)
 /* 177C0 80016BC0 946C002A */  lhu        $t4, 0x2a($v1)
-/* 177C4 80016BC4 24E7B2E4 */  addiu      $a3, $a3, %lo(HUDState)
+/* 177C4 80016BC4 24E7B2E4 */  addiu      $a3, $a3, %lo(gHUDState)
 /* 177C8 80016BC8 3C018008 */  lui        $at, 0x8008
 /* 177CC 80016BCC 258D0001 */  addiu      $t5, $t4, 1
 /* 177D0 80016BD0 A46D002A */  sh         $t5, 0x2a($v1)

@@ -3095,41 +3095,41 @@ glabel Pause_Elements
 /* 2A428 80029828 240600AD */  addiu      $a2, $zero, 0xad
 /* 2A42C 8002982C 0C00AAD9 */  jal        func_8002AB64
 /* 2A430 80029830 24070032 */   addiu     $a3, $zero, 0x32
-/* 2A434 80029834 3C108008 */  lui        $s0, %hi(numFireSpirits)
+/* 2A434 80029834 3C108008 */  lui        $s0, %hi(gNumFireSpirits)
 /* 2A438 80029838 26250078 */  addiu      $a1, $s1, 0x78
 /* 2A43C 8002983C 240D000A */  addiu      $t5, $zero, 0xa
-/* 2A440 80029840 9207BAA4 */  lbu        $a3, %lo(numFireSpirits)($s0)
+/* 2A440 80029840 9207BAA4 */  lbu        $a3, %lo(gNumFireSpirits)($s0)
 /* 2A444 80029844 AFAD0010 */  sw         $t5, 0x10($sp)
 /* 2A448 80029848 AFA50028 */  sw         $a1, 0x28($sp)
 /* 2A44C 8002984C 24040002 */  addiu      $a0, $zero, 2
 /* 2A450 80029850 0C00AAD9 */  jal        func_8002AB64
 /* 2A454 80029854 24060034 */   addiu     $a2, $zero, 0x34
-/* 2A458 80029858 3C108008 */  lui        $s0, %hi(numEarthSpirits)
+/* 2A458 80029858 3C108008 */  lui        $s0, %hi(gNumEarthSpirits)
 /* 2A45C 8002985C 240E000A */  addiu      $t6, $zero, 0xa
-/* 2A460 80029860 9207BAA5 */  lbu        $a3, %lo(numEarthSpirits)($s0)
+/* 2A460 80029860 9207BAA5 */  lbu        $a3, %lo(gNumEarthSpirits)($s0)
 /* 2A464 80029864 AFAE0010 */  sw         $t6, 0x10($sp)
 /* 2A468 80029868 24040002 */  addiu      $a0, $zero, 2
 /* 2A46C 8002986C 26250039 */  addiu      $a1, $s1, 0x39
 /* 2A470 80029870 0C00AAD9 */  jal        func_8002AB64
 /* 2A474 80029874 2406006B */   addiu     $a2, $zero, 0x6b
-/* 2A478 80029878 3C108008 */  lui        $s0, %hi(numWindSpirits)
+/* 2A478 80029878 3C108008 */  lui        $s0, %hi(gNumWindSpirits)
 /* 2A47C 8002987C 240F000A */  addiu      $t7, $zero, 0xa
-/* 2A480 80029880 9207BAA7 */  lbu        $a3, %lo(numWindSpirits)($s0)
+/* 2A480 80029880 9207BAA7 */  lbu        $a3, %lo(gNumWindSpirits)($s0)
 /* 2A484 80029884 AFAF0010 */  sw         $t7, 0x10($sp)
 /* 2A488 80029888 24040002 */  addiu      $a0, $zero, 2
 /* 2A48C 8002988C 262500E2 */  addiu      $a1, $s1, 0xe2
 /* 2A490 80029890 0C00AAD9 */  jal        func_8002AB64
 /* 2A494 80029894 2406006B */   addiu     $a2, $zero, 0x6b
-/* 2A498 80029898 3C108008 */  lui        $s0, %hi(numWaterSpirits)
+/* 2A498 80029898 3C108008 */  lui        $s0, %hi(gNumWaterSpirits)
 /* 2A49C 8002989C 2418000A */  addiu      $t8, $zero, 0xa
-/* 2A4A0 800298A0 9207BAA6 */  lbu        $a3, %lo(numWaterSpirits)($s0)
+/* 2A4A0 800298A0 9207BAA6 */  lbu        $a3, %lo(gNumWaterSpirits)($s0)
 /* 2A4A4 800298A4 AFB80010 */  sw         $t8, 0x10($sp)
 /* 2A4A8 800298A8 24040002 */  addiu      $a0, $zero, 2
 /* 2A4AC 800298AC 8FA50028 */  lw         $a1, 0x28($sp)
 /* 2A4B0 800298B0 0C00AAD9 */  jal        func_8002AB64
 /* 2A4B4 800298B4 240600AD */   addiu     $a2, $zero, 0xad
-/* 2A4B8 800298B8 3C198008 */  lui        $t9, %hi(numFireSpirits)
-/* 2A4BC 800298BC 9339BAA4 */  lbu        $t9, %lo(numFireSpirits)($t9)
+/* 2A4B8 800298B8 3C198008 */  lui        $t9, %hi(gNumFireSpirits)
+/* 2A4BC 800298BC 9339BAA4 */  lbu        $t9, %lo(gNumFireSpirits)($t9)
 /* 2A4C0 800298C0 3C014248 */  lui        $at, 0x4248
 /* 2A4C4 800298C4 44811000 */  mtc1       $at, $f2
 /* 2A4C8 800298C8 44992000 */  mtc1       $t9, $f4
@@ -3152,8 +3152,8 @@ glabel Pause_Elements
 /* 2A508 80029908 44074000 */  mfc1       $a3, $f8
 /* 2A50C 8002990C 0C00A6D6 */  jal        drawMenues
 /* 2A510 80029910 00000000 */   nop
-/* 2A514 80029914 3C0B8008 */  lui        $t3, %hi(numEarthSpirits)
-/* 2A518 80029918 916BBAA5 */  lbu        $t3, %lo(numEarthSpirits)($t3)
+/* 2A514 80029914 3C0B8008 */  lui        $t3, %hi(gNumEarthSpirits)
+/* 2A518 80029918 916BBAA5 */  lbu        $t3, %lo(gNumEarthSpirits)($t3)
 /* 2A51C 8002991C 3C014248 */  lui        $at, 0x4248
 /* 2A520 80029920 44811000 */  mtc1       $at, $f2
 /* 2A524 80029924 448B5000 */  mtc1       $t3, $f10
@@ -3175,8 +3175,8 @@ glabel Pause_Elements
 /* 2A560 80029960 44079000 */  mfc1       $a3, $f18
 /* 2A564 80029964 0C00A6D6 */  jal        drawMenues
 /* 2A568 80029968 00000000 */   nop
-/* 2A56C 8002996C 3C0E8008 */  lui        $t6, %hi(numWindSpirits)
-/* 2A570 80029970 91CEBAA7 */  lbu        $t6, %lo(numWindSpirits)($t6)
+/* 2A56C 8002996C 3C0E8008 */  lui        $t6, %hi(gNumWindSpirits)
+/* 2A570 80029970 91CEBAA7 */  lbu        $t6, %lo(gNumWindSpirits)($t6)
 /* 2A574 80029974 3C014248 */  lui        $at, 0x4248
 /* 2A578 80029978 44811000 */  mtc1       $at, $f2
 /* 2A57C 8002997C 448E2000 */  mtc1       $t6, $f4
@@ -3198,8 +3198,8 @@ glabel Pause_Elements
 /* 2A5B8 800299B8 44074000 */  mfc1       $a3, $f8
 /* 2A5BC 800299BC 0C00A6D6 */  jal        drawMenues
 /* 2A5C0 800299C0 00000000 */   nop
-/* 2A5C4 800299C4 3C198008 */  lui        $t9, %hi(numWaterSpirits)
-/* 2A5C8 800299C8 9339BAA6 */  lbu        $t9, %lo(numWaterSpirits)($t9)
+/* 2A5C4 800299C4 3C198008 */  lui        $t9, %hi(gNumWaterSpirits)
+/* 2A5C8 800299C8 9339BAA6 */  lbu        $t9, %lo(gNumWaterSpirits)($t9)
 /* 2A5CC 800299CC 3C014248 */  lui        $at, 0x4248
 /* 2A5D0 800299D0 44811000 */  mtc1       $at, $f2
 /* 2A5D4 800299D4 44995000 */  mtc1       $t9, $f10

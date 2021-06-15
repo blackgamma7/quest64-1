@@ -1116,8 +1116,8 @@ glabel func_80012780
 /* 13744 80012B44 E4286ED0 */  swc1       $f8, %lo(D_80086ED0)($at)
 /* 13748 80012B48 24010004 */  addiu      $at, $zero, 4
 /* 1374C 80012B4C 1581001E */  bne        $t4, $at, .L80012BC8
-/* 13750 80012B50 3C018008 */   lui       $at, %hi(cameraFuncIndex)
-/* 13754 80012B54 AC2D6DC0 */  sw         $t5, %lo(cameraFuncIndex)($at)
+/* 13750 80012B50 3C018008 */   lui       $at, %hi(gCameraFuncIndex)
+/* 13754 80012B54 AC2D6DC0 */  sw         $t5, %lo(gCameraFuncIndex)($at)
 /* 13758 80012B58 3C018007 */  lui        $at, %hi(D_8007132C)
 /* 1375C 80012B5C C42A132C */  lwc1       $f10, %lo(D_8007132C)($at)
 /* 13760 80012B60 3C018008 */  lui        $at, %hi(D_80086DCC)
@@ -1180,18 +1180,18 @@ glabel func_80012BE0
 /* 13838 80012C38 0C004FD7 */  jal        cameraZoomSomething
 /* 1383C 80012C3C 00000000 */   nop
 .L80012C40:
-/* 13840 80012C40 3C0F8008 */  lui        $t7, %hi(cameraFuncIndex)
-/* 13844 80012C44 8DEF6DC0 */  lw         $t7, %lo(cameraFuncIndex)($t7)
+/* 13840 80012C40 3C0F8008 */  lui        $t7, %hi(gCameraFuncIndex)
+/* 13844 80012C44 8DEF6DC0 */  lw         $t7, %lo(gCameraFuncIndex)($t7)
 /* 13848 80012C48 3C198005 */  lui        $t9, %hi(cameraModeTable)
-/* 1384C 80012C4C 3C048008 */  lui        $a0, %hi(cameraFuncIndex)
+/* 1384C 80012C4C 3C048008 */  lui        $a0, %hi(gCameraFuncIndex)
 /* 13850 80012C50 000FC080 */  sll        $t8, $t7, 2
 /* 13854 80012C54 0338C821 */  addu       $t9, $t9, $t8
 /* 13858 80012C58 8F39CC98 */  lw         $t9, %lo(cameraModeTable)($t9)
-/* 1385C 80012C5C 24846DC0 */  addiu      $a0, $a0, %lo(cameraFuncIndex)
+/* 1385C 80012C5C 24846DC0 */  addiu      $a0, $a0, %lo(gCameraFuncIndex)
 /* 13860 80012C60 0320F809 */  jalr       $t9
 /* 13864 80012C64 00000000 */   nop
-/* 13868 80012C68 3C0B8008 */  lui        $t3, %hi(HUDState)
-/* 1386C 80012C6C 8D6BB2E4 */  lw         $t3, %lo(HUDState)($t3)
+/* 13868 80012C68 3C0B8008 */  lui        $t3, %hi(gHUDState)
+/* 1386C 80012C6C 8D6BB2E4 */  lw         $t3, %lo(gHUDState)($t3)
 /* 13870 80012C70 3C038008 */  lui        $v1, %hi(cameraZoomMode)
 /* 13874 80012C74 24636ED8 */  addiu      $v1, $v1, %lo(cameraZoomMode)
 /* 13878 80012C78 316C0082 */  andi       $t4, $t3, 0x82
@@ -1434,8 +1434,8 @@ glabel camModeFollow
 /* 13C14 80013014 AFA40048 */  sw         $a0, 0x48($sp)
 /* 13C18 80013018 0C004F4C */  jal        EmptyCameraFunc
 /* 13C1C 8001301C AFAE0020 */   sw        $t6, 0x20($sp)
-/* 13C20 80013020 3C0F8008 */  lui        $t7, %hi(HUDState)
-/* 13C24 80013024 8DEFB2E4 */  lw         $t7, %lo(HUDState)($t7)
+/* 13C20 80013020 3C0F8008 */  lui        $t7, %hi(gHUDState)
+/* 13C24 80013024 8DEFB2E4 */  lw         $t7, %lo(gHUDState)($t7)
 /* 13C28 80013028 8FA40048 */  lw         $a0, 0x48($sp)
 /* 13C2C 8001302C 31F80082 */  andi       $t8, $t7, 0x82
 /* 13C30 80013030 17000018 */  bnez       $t8, .L80013094
@@ -1572,8 +1572,8 @@ glabel camModeFollow
 /* 13E18 80013218 E4880048 */  swc1       $f8, 0x48($a0)
 /* 13E1C 8001321C A3A00047 */  sb         $zero, 0x47($sp)
 /* 13E20 80013220 4500003F */  bc1f       .L80013320
-/* 13E24 80013224 3C198008 */   lui       $t9, %hi(HUDState)
-/* 13E28 80013228 8F39B2E4 */  lw         $t9, %lo(HUDState)($t9)
+/* 13E24 80013224 3C198008 */   lui       $t9, %hi(gHUDState)
+/* 13E28 80013228 8F39B2E4 */  lw         $t9, %lo(gHUDState)($t9)
 /* 13E2C 8001322C 8FA90020 */  lw         $t1, 0x20($sp)
 /* 13E30 80013230 33280080 */  andi       $t0, $t9, 0x80
 /* 13E34 80013234 5500003B */  bnel       $t0, $zero, .L80013324
@@ -2320,8 +2320,8 @@ glabel func_80013C80
 /* 148E8 80013CE8 1580000B */  bnez       $t4, .L80013D18
 /* 148EC 80013CEC AC4C0004 */   sw        $t4, 4($v0)
 /* 148F0 80013CF0 8C4E0008 */  lw         $t6, 8($v0)
-/* 148F4 80013CF4 3C038008 */  lui        $v1, %hi(cameraFuncIndex)
-/* 148F8 80013CF8 24636DC0 */  addiu      $v1, $v1, %lo(cameraFuncIndex)
+/* 148F4 80013CF4 3C038008 */  lui        $v1, %hi(gCameraFuncIndex)
+/* 148F8 80013CF8 24636DC0 */  addiu      $v1, $v1, %lo(gCameraFuncIndex)
 /* 148FC 80013CFC AC8E0000 */  sw         $t6, ($a0)
 /* 14900 80013D00 944F000C */  lhu        $t7, 0xc($v0)
 /* 14904 80013D04 A48F0008 */  sh         $t7, 8($a0)
@@ -2509,10 +2509,10 @@ glabel cameraZoomSomething
 /* 14B98 80013F98 000210C0 */  sll        $v0, $v0, 3
 /* 14B9C 80013F9C 03224021 */  addu       $t0, $t9, $v0
 /* 14BA0 80013FA0 8D090000 */  lw         $t1, ($t0)
-/* 14BA4 80013FA4 3C018008 */  lui        $at, %hi(cameraFuncIndex)
-/* 14BA8 80013FA8 3C0A8008 */  lui        $t2, %hi(cameraFuncIndex)
-/* 14BAC 80013FAC AC296DC0 */  sw         $t1, %lo(cameraFuncIndex)($at)
-/* 14BB0 80013FB0 8D4A6DC0 */  lw         $t2, %lo(cameraFuncIndex)($t2)
+/* 14BA4 80013FA4 3C018008 */  lui        $at, %hi(gCameraFuncIndex)
+/* 14BA8 80013FA8 3C0A8008 */  lui        $t2, %hi(gCameraFuncIndex)
+/* 14BAC 80013FAC AC296DC0 */  sw         $t1, %lo(gCameraFuncIndex)($at)
+/* 14BB0 80013FB0 8D4A6DC0 */  lw         $t2, %lo(gCameraFuncIndex)($t2)
 /* 14BB4 80013FB4 24010002 */  addiu      $at, $zero, 2
 /* 14BB8 80013FB8 3C198008 */  lui        $t9, 0x8008
 /* 14BBC 80013FBC 11400011 */  beqz       $t2, .L80014004
@@ -2600,8 +2600,8 @@ glabel cameraPosSomething
 /* 14CF8 800140F8 00A03025 */  or         $a2, $a1, $zero
 /* 14CFC 800140FC 3C0E8009 */  lui        $t6, %hi(BattleState)
 /* 14D00 80014100 95CEC592 */  lhu        $t6, %lo(BattleState)($t6)
-/* 14D04 80014104 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
-/* 14D08 80014108 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 14D04 80014104 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
+/* 14D08 80014108 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 14D0C 8001410C 31CF0001 */  andi       $t7, $t6, 1
 /* 14D10 80014110 51E000A8 */  beql       $t7, $zero, .L800143B4
 /* 14D14 80014114 8FBF0014 */   lw        $ra, 0x14($sp)
@@ -2753,8 +2753,8 @@ glabel cameraPosSomething
 /* 14F34 80014334 24A56B90 */  addiu      $a1, $a1, %lo(D_80086B90)
 /* 14F38 80014338 C4AA0000 */  lwc1       $f10, ($a1)
 /* 14F3C 8001433C C4C80000 */  lwc1       $f8, ($a2)
-/* 14F40 80014340 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
-/* 14F44 80014344 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 14F40 80014340 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
+/* 14F44 80014344 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 14F48 80014348 460A4400 */  add.s      $f16, $f8, $f10
 /* 14F4C 8001434C C4520058 */  lwc1       $f18, 0x58($v0)
 /* 14F50 80014350 3C018007 */  lui        $at, %hi(D_80071420)
@@ -2792,8 +2792,8 @@ glabel func_800143C0
 /* 14FC4 800143C4 AFBF0014 */  sw         $ra, 0x14($sp)
 /* 14FC8 800143C8 0C004FD7 */  jal        cameraZoomSomething
 /* 14FCC 800143CC 00000000 */   nop
-/* 14FD0 800143D0 3C038008 */  lui        $v1, %hi(cameraFuncIndex)
-/* 14FD4 800143D4 24636DC0 */  addiu      $v1, $v1, %lo(cameraFuncIndex)
+/* 14FD0 800143D0 3C038008 */  lui        $v1, %hi(gCameraFuncIndex)
+/* 14FD4 800143D4 24636DC0 */  addiu      $v1, $v1, %lo(gCameraFuncIndex)
 /* 14FD8 800143D8 3C028008 */  lui        $v0, %hi(D_80086EE0)
 /* 14FDC 800143DC 24426EE0 */  addiu      $v0, $v0, %lo(D_80086EE0)
 /* 14FE0 800143E0 8C6F0000 */  lw         $t7, ($v1)
@@ -2820,9 +2820,9 @@ glabel func_800143C0
 
 glabel func_80014434
 /* 15034 80014434 27BDFFE8 */  addiu      $sp, $sp, -0x18
-/* 15038 80014438 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
+/* 15038 80014438 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
 /* 1503C 8001443C 44800000 */  mtc1       $zero, $f0
-/* 15040 80014440 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 15040 80014440 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 15044 80014444 AFBF0014 */  sw         $ra, 0x14($sp)
 /* 15048 80014448 00A03025 */  or         $a2, $a1, $zero
 /* 1504C 8001444C 8C8E0000 */  lw         $t6, ($a0)
@@ -2879,8 +2879,8 @@ glabel func_80014434
 /* 15114 80014514 24A56B90 */  addiu      $a1, $a1, %lo(D_80086B90)
 /* 15118 80014518 C4B20000 */  lwc1       $f18, ($a1)
 /* 1511C 8001451C C4D00000 */  lwc1       $f16, ($a2)
-/* 15120 80014520 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
-/* 15124 80014524 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 15120 80014520 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
+/* 15124 80014524 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 15128 80014528 46128101 */  sub.s      $f4, $f16, $f18
 /* 1512C 8001452C C4A80004 */  lwc1       $f8, 4($a1)
 /* 15130 80014530 8FA40018 */  lw         $a0, 0x18($sp)
@@ -2915,10 +2915,10 @@ glabel func_80014434
 /* 15198 80014598 27BD0018 */   addiu     $sp, $sp, 0x18
 
 glabel func_8001459C
-/* 1519C 8001459C 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
+/* 1519C 8001459C 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
 /* 151A0 800145A0 3C018007 */  lui        $at, %hi(D_80071440)
 /* 151A4 800145A4 D42C1440 */  ldc1       $f12, %lo(D_80071440)($at)
-/* 151A8 800145A8 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 151A8 800145A8 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 151AC 800145AC 3C018008 */  lui        $at, %hi(BrianYRot)
 /* 151B0 800145B0 C426BADC */  lwc1       $f6, %lo(BrianYRot)($at)
 /* 151B4 800145B4 C4440028 */  lwc1       $f4, 0x28($v0)

@@ -503,9 +503,9 @@ glabel battleCameraSomething
 /* 1D8B0 8001CCB0 44815800 */  mtc1       $at, $f11
 /* 1D8B4 8001CCB4 44805000 */  mtc1       $zero, $f10
 /* 1D8B8 8001CCB8 46003221 */  cvt.d.s    $f8, $f6
-/* 1D8BC 8001CCBC 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
+/* 1D8BC 8001CCBC 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
 /* 1D8C0 8001CCC0 462A4102 */  mul.d      $f4, $f8, $f10
-/* 1D8C4 8001CCC4 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 1D8C4 8001CCC4 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 1D8C8 8001CCC8 46007306 */  mov.s      $f12, $f14
 /* 1D8CC 8001CCCC AFA30018 */  sw         $v1, 0x18($sp)
 /* 1D8D0 8001CCD0 462021A0 */  cvt.s.d    $f6, $f4
@@ -516,8 +516,8 @@ glabel battleCameraSomething
 /* 1D8E4 8001CCE4 24A5C580 */  addiu      $a1, $a1, %lo(D_8008C580)
 /* 1D8E8 8001CCE8 C4AA0000 */  lwc1       $f10, ($a1)
 /* 1D8EC 8001CCEC C4680000 */  lwc1       $f8, ($v1)
-/* 1D8F0 8001CCF0 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
-/* 1D8F4 8001CCF4 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 1D8F0 8001CCF0 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
+/* 1D8F4 8001CCF4 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 1D8F8 8001CCF8 460A4100 */  add.s      $f4, $f8, $f10
 /* 1D8FC 8001CCFC C4A80004 */  lwc1       $f8, 4($a1)
 /* 1D900 8001CD00 3C01402E */  lui        $at, 0x402e
@@ -642,9 +642,9 @@ glabel battleCameraSomething
 /* 1DAC8 8001CEC8 46062200 */  add.s      $f8, $f4, $f6
 /* 1DACC 8001CECC 44803000 */  mtc1       $zero, $f6
 /* 1DAD0 8001CED0 44813800 */  mtc1       $at, $f7
-/* 1DAD4 8001CED4 3C028008 */  lui        $v0, %hi(cameraFuncIndex)
+/* 1DAD4 8001CED4 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
 /* 1DAD8 8001CED8 46005121 */  cvt.d.s    $f4, $f10
-/* 1DADC 8001CEDC 24426DC0 */  addiu      $v0, $v0, %lo(cameraFuncIndex)
+/* 1DADC 8001CEDC 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
 /* 1DAE0 8001CEE0 E448000C */  swc1       $f8, 0xc($v0)
 /* 1DAE4 8001CEE4 46262200 */  add.d      $f8, $f4, $f6
 /* 1DAE8 8001CEE8 44808000 */  mtc1       $zero, $f16
