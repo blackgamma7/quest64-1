@@ -26,18 +26,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/changeTimeOfDay.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/checkIfDayHasPassed_and_Inc.s")
-void checkIfDayHasPassed_and_Inc(s32 arg0) {
-
-    gCurrentTime = arg0;
-    if (arg0 >= gDayLength) {
-        gCurrentTime -= gDayLength; // more like this?
-        if (gCurrentDay < 0x270F) {
-            gCurrentDay++;
-        }
-    }
-    gTempTime = (s32) gCurrentTime;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/FA60/checkIfDayHasPassed_and_Inc.s")
 	
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/setLightingRGB.s")
 

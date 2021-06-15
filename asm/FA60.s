@@ -1286,14 +1286,14 @@ glabel UNK_calledWhenGettingNearDoor_RENAME
 
 glabel initLights_and_Fog
 /* 10CD0 800100D0 240E1EC3 */  addiu      $t6, $zero, 0x1ec3
-/* 10CD4 800100D4 3C018008 */  lui        $at, %hi(currentTime)
-/* 10CD8 800100D8 AC2E59D0 */  sw         $t6, %lo(currentTime)($at)
-/* 10CDC 800100DC 3C018008 */  lui        $at, %hi(dayLength)
+/* 10CD4 800100D4 3C018008 */  lui        $at, %hi(gCurrentTime)
+/* 10CD8 800100D8 AC2E59D0 */  sw         $t6, %lo(gCurrentTime)($at)
+/* 10CDC 800100DC 3C018008 */  lui        $at, %hi(gDayLength)
 /* 10CE0 800100E0 240F6978 */  addiu      $t7, $zero, 0x6978
-/* 10CE4 800100E4 AC2F59D4 */  sw         $t7, %lo(dayLength)($at)
-/* 10CE8 800100E8 3C018008 */  lui        $at, %hi(CurrentDay)
+/* 10CE4 800100E4 AC2F59D4 */  sw         $t7, %lo(gDayLength)($at)
+/* 10CE8 800100E8 3C018008 */  lui        $at, %hi(gCurrentDay)
 /* 10CEC 800100EC 24180001 */  addiu      $t8, $zero, 1
-/* 10CF0 800100F0 A43859E0 */  sh         $t8, %lo(CurrentDay)($at)
+/* 10CF0 800100F0 A43859E0 */  sh         $t8, %lo(gCurrentDay)($at)
 /* 10CF4 800100F4 3C018009 */  lui        $at, %hi(D_8008C634)
 /* 10CF8 800100F8 24190007 */  addiu      $t9, $zero, 7
 /* 10CFC 800100FC AC39C634 */  sw         $t9, %lo(D_8008C634)($at)
@@ -1326,8 +1326,8 @@ glabel timeOfDaySomething
 /* 10D60 80010160 3C0E8005 */  lui        $t6, %hi(D_8004C454)
 /* 10D64 80010164 8DCEC454 */  lw         $t6, %lo(D_8004C454)($t6)
 /* 10D68 80010168 3C018008 */  lui        $at, %hi(D_80085384)
-/* 10D6C 8001016C 3C088008 */  lui        $t0, %hi(currentTime)
-/* 10D70 80010170 250859D0 */  addiu      $t0, $t0, %lo(currentTime)
+/* 10D6C 8001016C 3C088008 */  lui        $t0, %hi(gCurrentTime)
+/* 10D70 80010170 250859D0 */  addiu      $t0, $t0, %lo(gCurrentTime)
 /* 10D74 80010174 AC2E5384 */  sw         $t6, %lo(D_80085384)($at)
 /* 10D78 80010178 8D030000 */  lw         $v1, ($t0)
 /* 10D7C 8001017C 00E02825 */  or         $a1, $a3, $zero
@@ -1393,27 +1393,27 @@ glabel timeOfDaySomething
 /* 10E54 80010254 11600008 */  beqz       $t3, .L80010278
 /* 10E58 80010258 00000000 */   nop
 /* 10E5C 8001025C 8D0C0000 */  lw         $t4, ($t0)
-/* 10E60 80010260 3C018008 */  lui        $at, %hi(tempTime)
+/* 10E60 80010260 3C018008 */  lui        $at, %hi(gTempTime)
 /* 10E64 80010264 8DAD59D4 */  lw         $t5, 0x59d4($t5)
-/* 10E68 80010268 AC2C59D8 */  sw         $t4, %lo(tempTime)($at)
-/* 10E6C 8001026C 3C018008 */  lui        $at, %hi(tempDayLength)
+/* 10E68 80010268 AC2C59D8 */  sw         $t4, %lo(gTempTime)($at)
+/* 10E6C 8001026C 3C018008 */  lui        $at, %hi(tempgDayLength)
 /* 10E70 80010270 1000000F */  b          .L800102B0
-/* 10E74 80010274 AC2D59DC */   sw        $t5, %lo(tempDayLength)($at)
+/* 10E74 80010274 AC2D59DC */   sw        $t5, %lo(tempgDayLength)($at)
 .L80010278:
 /* 10E78 80010278 3C028008 */  lui        $v0, %hi(D_800859E4)
 /* 10E7C 8001027C 8C4259E4 */  lw         $v0, %lo(D_800859E4)($v0)
-/* 10E80 80010280 3C018008 */  lui        $at, %hi(tempTime)
+/* 10E80 80010280 3C018008 */  lui        $at, %hi(gTempTime)
 /* 10E84 80010284 8C4F0004 */  lw         $t7, 4($v0)
 /* 10E88 80010288 8C4E0000 */  lw         $t6, ($v0)
-/* 10E8C 8001028C AC2059D8 */  sw         $zero, %lo(tempTime)($at)
+/* 10E8C 8001028C AC2059D8 */  sw         $zero, %lo(gTempTime)($at)
 /* 10E90 80010290 000FC100 */  sll        $t8, $t7, 4
 /* 10E94 80010294 030FC023 */  subu       $t8, $t8, $t7
 /* 10E98 80010298 0018C080 */  sll        $t8, $t8, 2
 /* 10E9C 8001029C 01D81821 */  addu       $v1, $t6, $t8
 /* 10EA0 800102A0 8C79FFC4 */  lw         $t9, -0x3c($v1)
-/* 10EA4 800102A4 3C018008 */  lui        $at, %hi(tempDayLength)
+/* 10EA4 800102A4 3C018008 */  lui        $at, %hi(tempgDayLength)
 /* 10EA8 800102A8 2463FFC4 */  addiu      $v1, $v1, -0x3c
-/* 10EAC 800102AC AC3959DC */  sw         $t9, %lo(tempDayLength)($at)
+/* 10EAC 800102AC AC3959DC */  sw         $t9, %lo(tempgDayLength)($at)
 .L800102B0:
 /* 10EB0 800102B0 0C004434 */  jal        VOID_FUN_UNK_setsSeveralBytesToZero
 /* 10EB4 800102B4 00000000 */   nop
@@ -1426,8 +1426,8 @@ glabel timeOfDaySomething
 
 glabel changeTimeOfDay
 /* 10ED0 800102D0 27BDFFE8 */  addiu      $sp, $sp, -0x18
-/* 10ED4 800102D4 3C088008 */  lui        $t0, %hi(tempTime)
-/* 10ED8 800102D8 250859D8 */  addiu      $t0, $t0, %lo(tempTime)
+/* 10ED4 800102D4 3C088008 */  lui        $t0, %hi(gTempTime)
+/* 10ED8 800102D8 250859D8 */  addiu      $t0, $t0, %lo(gTempTime)
 /* 10EDC 800102DC AFBF0014 */  sw         $ra, 0x14($sp)
 /* 10EE0 800102E0 3C058008 */  lui        $a1, %hi(D_800859E4)
 /* 10EE4 800102E4 8CA559E4 */  lw         $a1, %lo(D_800859E4)($a1)
@@ -1436,8 +1436,8 @@ glabel changeTimeOfDay
 /* 10EF0 800102F0 3C028008 */  lui        $v0, %hi(D_8008538C)
 /* 10EF4 800102F4 2442538C */  addiu      $v0, $v0, %lo(D_8008538C)
 /* 10EF8 800102F8 8C440000 */  lw         $a0, ($v0)
-/* 10EFC 800102FC 3C088008 */  lui        $t0, %hi(tempTime)
-/* 10F00 80010300 250859D8 */  addiu      $t0, $t0, %lo(tempTime)
+/* 10EFC 800102FC 3C088008 */  lui        $t0, %hi(gTempTime)
+/* 10F00 80010300 250859D8 */  addiu      $t0, $t0, %lo(gTempTime)
 /* 10F04 80010304 1080000C */  beqz       $a0, .L80010338
 /* 10F08 80010308 3C078008 */   lui       $a3, 0x8008
 /* 10F0C 8001030C 248EFFFF */  addiu      $t6, $a0, -1
@@ -1449,9 +1449,9 @@ glabel changeTimeOfDay
 .L80010324:
 /* 10F24 80010324 0C0043B1 */  jal        func_80010EC4
 /* 10F28 80010328 00000000 */   nop
-/* 10F2C 8001032C 3C088008 */  lui        $t0, %hi(tempTime)
+/* 10F2C 8001032C 3C088008 */  lui        $t0, %hi(gTempTime)
 /* 10F30 80010330 10000027 */  b          .L800103D0
-/* 10F34 80010334 250859D8 */   addiu     $t0, $t0, %lo(tempTime)
+/* 10F34 80010334 250859D8 */   addiu     $t0, $t0, %lo(gTempTime)
 .L80010338:
 /* 10F38 80010338 24E75380 */  addiu      $a3, $a3, 0x5380
 /* 10F3C 8001033C 8CE40000 */  lw         $a0, ($a3)
@@ -1485,8 +1485,8 @@ glabel changeTimeOfDay
 /* 10FA8 800103A8 3C078008 */  lui        $a3, %hi(skyboxState)
 /* 10FAC 800103AC 24E75380 */  addiu      $a3, $a3, %lo(skyboxState)
 /* 10FB0 800103B0 8CEE0000 */  lw         $t6, ($a3)
-/* 10FB4 800103B4 3C088008 */  lui        $t0, %hi(tempTime)
-/* 10FB8 800103B8 250859D8 */  addiu      $t0, $t0, %lo(tempTime)
+/* 10FB4 800103B4 3C088008 */  lui        $t0, %hi(gTempTime)
+/* 10FB8 800103B8 250859D8 */  addiu      $t0, $t0, %lo(gTempTime)
 /* 10FBC 800103BC 25CF0001 */  addiu      $t7, $t6, 1
 /* 10FC0 800103C0 29E10004 */  slti       $at, $t7, 4
 /* 10FC4 800103C4 14200002 */  bnez       $at, .L800103D0
@@ -1511,17 +1511,17 @@ glabel changeTimeOfDay
 /* 1100C 8001040C 15A0002B */  bnez       $t5, .L800104BC
 /* 11010 80010410 00000000 */   nop
 /* 11014 80010414 8DCEC638 */  lw         $t6, %lo(D_8008C638)($t6)
-/* 11018 80010418 3C028008 */  lui        $v0, %hi(currentTime)
-/* 1101C 8001041C 244259D0 */  addiu      $v0, $v0, %lo(currentTime)
+/* 11018 80010418 3C028008 */  lui        $v0, %hi(gCurrentTime)
+/* 1101C 8001041C 244259D0 */  addiu      $v0, $v0, %lo(gCurrentTime)
 /* 11020 80010420 15C00026 */  bnez       $t6, .L800104BC
 /* 11024 80010424 00000000 */   nop
 /* 11028 80010428 8C4F0000 */  lw         $t7, ($v0)
-/* 1102C 8001042C 3C048008 */  lui        $a0, %hi(dayLength)
-/* 11030 80010430 3C068008 */  lui        $a2, %hi(CurrentDay)
+/* 1102C 8001042C 3C048008 */  lui        $a0, %hi(gDayLength)
+/* 11030 80010430 3C068008 */  lui        $a2, %hi(gCurrentDay)
 /* 11034 80010434 25F80001 */  addiu      $t8, $t7, 1
 /* 11038 80010438 AC580000 */  sw         $t8, ($v0)
-/* 1103C 8001043C 8C8459D4 */  lw         $a0, %lo(dayLength)($a0)
-/* 11040 80010440 24C659E0 */  addiu      $a2, $a2, %lo(CurrentDay)
+/* 1103C 8001043C 8C8459D4 */  lw         $a0, %lo(gDayLength)($a0)
+/* 11040 80010440 24C659E0 */  addiu      $a2, $a2, %lo(gCurrentDay)
 /* 11044 80010444 0304082A */  slt        $at, $t8, $a0
 /* 11048 80010448 54200009 */  bnel       $at, $zero, .L80010470
 /* 1104C 8001044C 8C4A0000 */   lw        $t2, ($v0)
@@ -1547,10 +1547,10 @@ glabel changeTimeOfDay
 /* 11090 80010490 15A0000A */  bnez       $t5, .L800104BC
 /* 11094 80010494 00000000 */   nop
 /* 11098 80010498 8D0E0000 */  lw         $t6, ($t0)
-/* 1109C 8001049C 3C038008 */  lui        $v1, %hi(tempDayLength)
+/* 1109C 8001049C 3C038008 */  lui        $v1, %hi(tempgDayLength)
 /* 110A0 800104A0 25CF0001 */  addiu      $t7, $t6, 1
 /* 110A4 800104A4 AD0F0000 */  sw         $t7, ($t0)
-/* 110A8 800104A8 8C6359DC */  lw         $v1, %lo(tempDayLength)($v1)
+/* 110A8 800104A8 8C6359DC */  lw         $v1, %lo(tempgDayLength)($v1)
 /* 110AC 800104AC 01E3082A */  slt        $at, $t7, $v1
 /* 110B0 800104B0 14200002 */  bnez       $at, .L800104BC
 /* 110B4 800104B4 01E3C023 */   subu      $t8, $t7, $v1
@@ -1580,13 +1580,13 @@ glabel changeTimeOfDay
 /* 1110C 8001050C 00000000 */   nop
 
 glabel checkIfDayHasPassed_and_Inc
-/* 11110 80010510 3C058008 */  lui        $a1, %hi(currentTime)
-/* 11114 80010514 24A559D0 */  addiu      $a1, $a1, %lo(currentTime)
+/* 11110 80010510 3C058008 */  lui        $a1, %hi(gCurrentTime)
+/* 11114 80010514 24A559D0 */  addiu      $a1, $a1, %lo(gCurrentTime)
 /* 11118 80010518 ACA40000 */  sw         $a0, ($a1)
-/* 1111C 8001051C 3C038008 */  lui        $v1, %hi(dayLength)
-/* 11120 80010520 8C6359D4 */  lw         $v1, %lo(dayLength)($v1)
-/* 11124 80010524 3C068008 */  lui        $a2, %hi(CurrentDay)
-/* 11128 80010528 24C659E0 */  addiu      $a2, $a2, %lo(CurrentDay)
+/* 1111C 8001051C 3C038008 */  lui        $v1, %hi(gDayLength)
+/* 11120 80010520 8C6359D4 */  lw         $v1, %lo(gDayLength)($v1)
+/* 11124 80010524 3C068008 */  lui        $a2, %hi(gCurrentDay)
+/* 11128 80010528 24C659E0 */  addiu      $a2, $a2, %lo(gCurrentDay)
 /* 1112C 8001052C 0083082A */  slt        $at, $a0, $v1
 /* 11130 80010530 14200007 */  bnez       $at, .L80010550
 /* 11134 80010534 00837023 */   subu      $t6, $a0, $v1
@@ -1598,8 +1598,8 @@ glabel checkIfDayHasPassed_and_Inc
 /* 1114C 8001054C A4CF0000 */  sh         $t7, ($a2)
 .L80010550:
 /* 11150 80010550 8CB80000 */  lw         $t8, ($a1)
-/* 11154 80010554 3C018008 */  lui        $at, %hi(tempTime)
-/* 11158 80010558 AC3859D8 */  sw         $t8, %lo(tempTime)($at)
+/* 11154 80010554 3C018008 */  lui        $at, %hi(gTempTime)
+/* 11158 80010558 AC3859D8 */  sw         $t8, %lo(gTempTime)($at)
 /* 1115C 8001055C 03E00008 */  jr         $ra
 /* 11160 80010560 00000000 */   nop
 
@@ -2114,16 +2114,16 @@ glabel func_80010CAC
 /* 118B0 80010CB0 AFBF0024 */  sw         $ra, 0x24($sp)
 /* 118B4 80010CB4 3C0E8008 */  lui        $t6, %hi(D_80084F12)
 /* 118B8 80010CB8 95CE4F12 */  lhu        $t6, %lo(D_80084F12)($t6)
-/* 118BC 80010CBC 3C188008 */  lui        $t8, %hi(tempTime)
+/* 118BC 80010CBC 3C188008 */  lui        $t8, %hi(gTempTime)
 /* 118C0 80010CC0 31CF0001 */  andi       $t7, $t6, 1
 /* 118C4 80010CC4 11E00037 */  beqz       $t7, .L80010DA4
 /* 118C8 80010CC8 00000000 */   nop
-/* 118CC 80010CCC 8F1859D8 */  lw         $t8, %lo(tempTime)($t8)
+/* 118CC 80010CCC 8F1859D8 */  lw         $t8, %lo(gTempTime)($t8)
 /* 118D0 80010CD0 3C018007 */  lui        $at, %hi(D_800712B0)
 /* 118D4 80010CD4 D42212B0 */  ldc1       $f2, %lo(D_800712B0)($at)
 /* 118D8 80010CD8 44982000 */  mtc1       $t8, $f4
-/* 118DC 80010CDC 3C198008 */  lui        $t9, %hi(tempDayLength)
-/* 118E0 80010CE0 8F3959DC */  lw         $t9, %lo(tempDayLength)($t9)
+/* 118DC 80010CDC 3C198008 */  lui        $t9, %hi(tempgDayLength)
+/* 118E0 80010CE0 8F3959DC */  lw         $t9, %lo(tempgDayLength)($t9)
 /* 118E4 80010CE4 468021A0 */  cvt.s.w    $f6, $f4
 /* 118E8 80010CE8 3C014000 */  lui        $at, 0x4000
 /* 118EC 80010CEC 44818800 */  mtc1       $at, $f17

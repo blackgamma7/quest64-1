@@ -3153,10 +3153,10 @@ glabel func_8000EB30
 /* F74C 8000EB4C 240300FF */  addiu      $v1, $zero, 0xff
 /* F750 8000EB50 944E0006 */  lhu        $t6, 6($v0)
 /* F754 8000EB54 00402825 */  or         $a1, $v0, $zero
-/* F758 8000EB58 3C028008 */  lui        $v0, %hi(currentTime)
+/* F758 8000EB58 3C028008 */  lui        $v0, %hi(gCurrentTime)
 /* F75C 8000EB5C 106E0012 */  beq        $v1, $t6, .L8000EBA8
 /* F760 8000EB60 3C068005 */   lui       $a2, 0x8005
-/* F764 8000EB64 8C4259D0 */  lw         $v0, %lo(currentTime)($v0)
+/* F764 8000EB64 8C4259D0 */  lw         $v0, %lo(gCurrentTime)($v0)
 /* F768 8000EB68 8CAF0000 */  lw         $t7, ($a1)
 .L8000EB6C:
 /* F76C 8000EB6C 004F082A */  slt        $at, $v0, $t7

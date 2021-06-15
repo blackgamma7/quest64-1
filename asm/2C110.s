@@ -3245,8 +3245,8 @@ glabel loadSave
 /* 2F080 8002E480 24050020 */  addiu      $a1, $zero, 0x20
 /* 2F084 8002E484 A42B59E2 */  sh         $t3, 0x59e2($at)
 /* 2F088 8002E488 94CC003A */  lhu        $t4, 0x3a($a2)
-/* 2F08C 8002E48C 3C018008 */  lui        $at, %hi(CurrentDay)
-/* 2F090 8002E490 A42C59E0 */  sh         $t4, %lo(CurrentDay)($at)
+/* 2F08C 8002E48C 3C018008 */  lui        $at, %hi(gCurrentDay)
+/* 2F090 8002E490 A42C59E0 */  sh         $t4, %lo(gCurrentDay)($at)
 /* 2F094 8002E494 8CCD003C */  lw         $t5, 0x3c($a2)
 /* 2F098 8002E498 3C018008 */  lui        $at, %hi(nextMap)
 /* 2F09C 8002E49C AC2D4EE4 */  sw         $t5, %lo(nextMap)($at)

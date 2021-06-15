@@ -1164,8 +1164,8 @@ glabel Mode_NormalPlay
 /* 2968 80001D68 1040001D */  beqz       $v0, .L80001DE0
 /* 296C 80001D6C AC394EF0 */   sw        $t9, %lo(CurrentSubmap)($at)
 /* 2970 80001D70 8EA20010 */  lw         $v0, 0x10($s5)
-/* 2974 80001D74 3C038008 */  lui        $v1, %hi(currentTime)
-/* 2978 80001D78 246359D0 */  addiu      $v1, $v1, %lo(currentTime)
+/* 2974 80001D74 3C038008 */  lui        $v1, %hi(gCurrentTime)
+/* 2978 80001D78 246359D0 */  addiu      $v1, $v1, %lo(gCurrentTime)
 /* 297C 80001D7C 94480006 */  lhu        $t0, 6($v0)
 /* 2980 80001D80 A4480004 */  sh         $t0, 4($v0)
 /* 2984 80001D84 8EA20010 */  lw         $v0, 0x10($s5)
