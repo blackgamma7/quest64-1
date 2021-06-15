@@ -18,8 +18,8 @@ glabel initInventory
 /* 21DAC 800211AC 24420001 */   addiu     $v0, $v0, 1
 /* 21DB0 800211B0 3C028009 */  lui        $v0, %hi(invSlot2)
 /* 21DB4 800211B4 2442CF79 */  addiu      $v0, $v0, %lo(invSlot2)
-/* 21DB8 800211B8 3C018009 */  lui        $at, %hi(invSlot)
-/* 21DBC 800211BC A024CF78 */  sb         $a0, %lo(invSlot)($at)
+/* 21DB8 800211B8 3C018009 */  lui        $at, %hi(gInvSlot)
+/* 21DBC 800211BC A024CF78 */  sb         $a0, %lo(gInvSlot)($at)
 /* 21DC0 800211C0 A0440001 */  sb         $a0, 1($v0)
 /* 21DC4 800211C4 A0440000 */  sb         $a0, ($v0)
 /* 21DC8 800211C8 24420002 */  addiu      $v0, $v0, 2

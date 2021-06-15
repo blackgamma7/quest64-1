@@ -1,12 +1,12 @@
 glabel func_80021434
 /* 22034 80021434 AFA40000 */  sw         $a0, ($sp)
 /* 22038 80021438 3087FFFF */  andi       $a3, $a0, 0xffff
-/* 2203C 8002143C 3C0E8009 */  lui        $t6, %hi(invSlot)
-/* 22040 80021440 91CECF78 */  lbu        $t6, %lo(invSlot)($t6)
-/* 22044 80021444 3C028009 */  lui        $v0, %hi(invSlot)
+/* 2203C 8002143C 3C0E8009 */  lui        $t6, %hi(gInvSlot)
+/* 22040 80021440 91CECF78 */  lbu        $t6, %lo(gInvSlot)($t6)
+/* 22044 80021444 3C028009 */  lui        $v0, %hi(gInvSlot)
 /* 22048 80021448 240800FF */  addiu      $t0, $zero, 0xff
 /* 2204C 8002144C 00001825 */  or         $v1, $zero, $zero
-/* 22050 80021450 2442CF78 */  addiu      $v0, $v0, %lo(invSlot)
+/* 22050 80021450 2442CF78 */  addiu      $v0, $v0, %lo(gInvSlot)
 /* 22054 80021454 110E0015 */  beq        $t0, $t6, .L800214AC
 /* 22058 80021458 24050096 */   addiu     $a1, $zero, 0x96
 /* 2205C 8002145C 3C09803B */  lui        $t1, %hi(ItemData)

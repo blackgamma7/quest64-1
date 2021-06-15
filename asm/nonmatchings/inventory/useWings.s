@@ -5,8 +5,8 @@ glabel useWings
 /* 2309C 8002249C 3C03803B */  lui        $v1, 0x803b
 /* 230A0 800224A0 3C088009 */  lui        $t0, %hi(D_8008D010)
 /* 230A4 800224A4 3C0A8008 */  lui        $t2, %hi(temp_CurrMap)
-/* 230A8 800224A8 3C0B8008 */  lui        $t3, %hi(HUDState)
-/* 230AC 800224AC 256BB2E4 */  addiu      $t3, $t3, %lo(HUDState)
+/* 230A8 800224A8 3C0B8008 */  lui        $t3, %hi(gHUDState)
+/* 230AC 800224AC 256BB2E4 */  addiu      $t3, $t3, %lo(gHUDState)
 /* 230B0 800224B0 254A5368 */  addiu      $t2, $t2, %lo(temp_CurrMap)
 /* 230B4 800224B4 2508D010 */  addiu      $t0, $t0, %lo(D_8008D010)
 /* 230B8 800224B8 24639A68 */  addiu      $v1, $v1, -0x6598

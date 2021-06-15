@@ -1,6 +1,9 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/shadow/ResetShadowSomething.s")
+//pragma GLOBAL_ASM("asm/nonmatchings/shadow/ResetShadowSomething.s")
+void ResetShadowSomething(void) {
+    D_800862D0 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/shadow/drawSomeShadow.s")
 
