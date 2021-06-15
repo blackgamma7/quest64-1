@@ -37,10 +37,17 @@ segments:
       - [0x1D160, asm]
       - [0x1E4B0, asm]
       - [0x1EDF0, asm]
+<<<<<<< HEAD
       - [0x21D70, asm]
       - [0x234E0, asm]
       - [0x23740, asm]
       - [0x23BD0, asm]
+=======
+      - [0x21D70, asm, inventory]
+      - [0x234E0, asm, screen_dim]
+      - [0x23740, asm]
+      - [0x23BD0, asm, srand]
+>>>>>>> parent of 3d8ddf6 (matched some tiny funcs)
       - [0x24E60, asm]
       - [0x25290, asm]
       - [0x271F0, asm]
