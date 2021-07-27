@@ -1,6 +1,6 @@
-glabel drawSomeShadow
-/* 12460 80011860 3C048008 */  lui        $a0, %hi(D_800862D0)
-/* 12464 80011864 248462D0 */  addiu      $a0, $a0, %lo(D_800862D0)
+glabel setShadowTrans
+/* 12460 80011860 3C048008 */  lui        $a0, %hi(ShadowTally)
+/* 12464 80011864 248462D0 */  addiu      $a0, $a0, %lo(ShadowTally)
 /* 12468 80011868 AFA60008 */  sw         $a2, 8($sp)
 /* 1246C 8001186C AFA7000C */  sw         $a3, 0xc($sp)
 /* 12470 80011870 8C820000 */  lw         $v0, ($a0)

@@ -131,11 +131,11 @@ glabel func_80002918
 /* 35A4 800029A4 2463BC40 */  addiu      $v1, $v1, %lo(D_8007BC40)
 /* 35A8 800029A8 C4660004 */  lwc1       $f6, 4($v1)
 /* 35AC 800029AC 3C018008 */  lui        $at, %hi(BrianYPos)
-/* 35B0 800029B0 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 35B0 800029B0 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 35B4 800029B4 E426BAD0 */  swc1       $f6, %lo(BrianYPos)($at)
 /* 35B8 800029B8 C468000C */  lwc1       $f8, 0xc($v1)
 /* 35BC 800029BC 3C018008 */  lui        $at, %hi(BrianShadowXRot)
-/* 35C0 800029C0 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 35C0 800029C0 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 35C4 800029C4 E428BAF8 */  swc1       $f8, %lo(BrianShadowXRot)($at)
 /* 35C8 800029C8 C46A0010 */  lwc1       $f10, 0x10($v1)
 /* 35CC 800029CC 24060001 */  addiu      $a2, $zero, 1
@@ -321,8 +321,8 @@ glabel func_80002918
 /* 3878 80002C78 46083282 */  mul.s      $f10, $f6, $f8
 /* 387C 80002C7C C4500000 */  lwc1       $f16, ($v0)
 /* 3880 80002C80 240A0001 */  addiu      $t2, $zero, 1
-/* 3884 80002C84 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 3888 80002C88 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 3884 80002C84 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 3888 80002C88 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 388C 80002C8C 460A8481 */  sub.s      $f18, $f16, $f10
 /* 3890 80002C90 E432BACC */  swc1       $f18, -0x4534($at)
 /* 3894 80002C94 C4E40004 */  lwc1       $f4, 4($a3)
@@ -381,8 +381,8 @@ glabel func_80002918
 /* 3964 80002D64 24180001 */  addiu      $t8, $zero, 1
 /* 3968 80002D68 E428BBE0 */  swc1       $f8, %lo(D_8007BBE0)($at)
 /* 396C 80002D6C C4F00004 */  lwc1       $f16, 4($a3)
-/* 3970 80002D70 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 3974 80002D74 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 3970 80002D70 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 3974 80002D74 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 3978 80002D78 E430BBE4 */  swc1       $f16, -0x441c($at)
 /* 397C 80002D7C 3C018008 */  lui        $at, %hi(brianInteractingFlag)
 /* 3980 80002D80 0C0019C8 */  jal        loadBrianAnim
@@ -570,12 +570,12 @@ glabel unkContainsPtrImportant
 /* 3C24 80003024 1560000A */  bnez       $t3, .L80003050
 /* 3C28 80003028 3C088008 */   lui       $t0, %hi(brianInteractingFlag)
 /* 3C2C 8000302C 9508BB2C */  lhu        $t0, %lo(brianInteractingFlag)($t0)
-/* 3C30 80003030 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 3C30 80003030 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 3C34 80003034 310C0001 */  andi       $t4, $t0, 1
 /* 3C38 80003038 15800005 */  bnez       $t4, .L80003050
 /* 3C3C 8000303C 00000000 */   nop
 /* 3C40 80003040 0C0019DD */  jal        func_80006774
-/* 3C44 80003044 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 3C44 80003044 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 3C48 80003048 3C018008 */  lui        $at, %hi(UNK_StaffAttack)
 /* 3C4C 8000304C A422BABA */  sh         $v0, %lo(UNK_StaffAttack)($at)
 .L80003050:
@@ -587,27 +587,27 @@ glabel unkContainsPtrImportant
 /* 3C60 80003060 2484BAB8 */  addiu      $a0, $a0, %lo(brianAction)
 /* 3C64 80003064 310D0001 */  andi       $t5, $t0, 1
 /* 3C68 80003068 15A00030 */  bnez       $t5, .L8000312C
-/* 3C6C 8000306C 3C058008 */   lui       $a1, %hi(BrianPos)
+/* 3C6C 8000306C 3C058008 */   lui       $a1, %hi(BrianActor)
 /* 3C70 80003070 0C001684 */  jal        func_80005A10
-/* 3C74 80003074 24A5BACC */   addiu     $a1, $a1, %lo(BrianPos)
+/* 3C74 80003074 24A5BACC */   addiu     $a1, $a1, %lo(BrianActor)
 /* 3C78 80003078 3C018008 */  lui        $at, %hi(npcNum)
 /* 3C7C 8000307C AC22BA74 */  sw         $v0, %lo(npcNum)($at)
 /* 3C80 80003080 3C0E8008 */  lui        $t6, %hi(npcNum)
 /* 3C84 80003084 8DCEBA74 */  lw         $t6, %lo(npcNum)($t6)
-/* 3C88 80003088 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 3C88 80003088 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 3C8C 8000308C 15C00027 */  bnez       $t6, .L8000312C
 /* 3C90 80003090 00000000 */   nop
 /* 3C94 80003094 0C0048D6 */  jal        PickUpSpirit
-/* 3C98 80003098 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 3C98 80003098 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 3C9C 8000309C 3C018008 */  lui        $at, %hi(ptr_spiritPos)
 /* 3CA0 800030A0 AC22BA78 */  sw         $v0, %lo(ptr_spiritPos)($at)
 /* 3CA4 800030A4 3C0F8008 */  lui        $t7, %hi(ptr_spiritPos)
 /* 3CA8 800030A8 8DEFBA78 */  lw         $t7, %lo(ptr_spiritPos)($t7)
-/* 3CAC 800030AC 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 3CAC 800030AC 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 3CB0 800030B0 15E0001E */  bnez       $t7, .L8000312C
 /* 3CB4 800030B4 00000000 */   nop
 /* 3CB8 800030B8 0C00479E */  jal        func_80011E78
-/* 3CBC 800030BC 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 3CBC 800030BC 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 3CC0 800030C0 3C018008 */  lui        $at, %hi(ptrChestPos)
 /* 3CC4 800030C4 AC22BA7C */  sw         $v0, %lo(ptrChestPos)($at)
 /* 3CC8 800030C8 3C188008 */  lui        $t8, %hi(ptrChestPos)
@@ -666,8 +666,8 @@ glabel unkContainsPtrImportant
 /* 3D98 80003198 14400128 */  bnez       $v0, .L8000363C
 /* 3D9C 8000319C 3C0B8008 */   lui       $t3, %hi(UNK_StaffAttack)
 /* 3DA0 800031A0 956BBABA */  lhu        $t3, %lo(UNK_StaffAttack)($t3)
-/* 3DA4 800031A4 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 3DA8 800031A8 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 3DA4 800031A4 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 3DA8 800031A8 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 3DAC 800031AC 11600007 */  beqz       $t3, .L800031CC
 /* 3DB0 800031B0 3C048008 */   lui       $a0, 0x8008
 /* 3DB4 800031B4 3C048008 */  lui        $a0, %hi(brianAction)
@@ -680,10 +680,10 @@ glabel unkContainsPtrImportant
 /* 3DCC 800031CC 0C001CF3 */  jal        calculateBattleAgilXP
 /* 3DD0 800031D0 2484BAB8 */   addiu     $a0, $a0, -0x4548
 /* 3DD4 800031D4 3C018008 */  lui        $at, %hi(UNK_StaffAttack)
-/* 3DD8 800031D8 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 3DD8 800031D8 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 3DDC 800031DC A420BABA */  sh         $zero, %lo(UNK_StaffAttack)($at)
 /* 3DE0 800031E0 0C0074D6 */  jal        func_8001D358
-/* 3DE4 800031E4 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 3DE4 800031E4 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 3DE8 800031E8 10000114 */  b          .L8000363C
 /* 3DEC 800031EC 00000000 */   nop
 .L800031F0:
@@ -709,12 +709,12 @@ glabel unkContainsPtrImportant
 /* 3E3C 8000323C E428BAE4 */  swc1       $f8, %lo(BrianXSpeed)($at)
 /* 3E40 80003240 E42ABAE0 */  swc1       $f10, -0x4520($at)
 /* 3E44 80003244 3C018008 */  lui        $at, 0x8008
-/* 3E48 80003248 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 3E48 80003248 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 3E4C 8000324C 240E0001 */  addiu      $t6, $zero, 1
 /* 3E50 80003250 240F0001 */  addiu      $t7, $zero, 1
 /* 3E54 80003254 AFAF0014 */  sw         $t7, 0x14($sp)
 /* 3E58 80003258 AFAE0010 */  sw         $t6, 0x10($sp)
-/* 3E5C 8000325C 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 3E5C 8000325C 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 3E60 80003260 24060001 */  addiu      $a2, $zero, 1
 /* 3E64 80003264 E430BAD8 */  swc1       $f16, -0x4528($at)
 /* 3E68 80003268 0C00762C */  jal        updateAnim
@@ -814,8 +814,8 @@ glabel unkContainsPtrImportant
 /* 3FD0 800033D0 3C018008 */  lui        $at, 0x8008
 /* 3FD4 800033D4 3C048008 */  lui        $a0, %hi(brianAction)
 /* 3FD8 800033D8 46105480 */  add.s      $f18, $f10, $f16
-/* 3FDC 800033DC 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 3FE0 800033E0 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 3FDC 800033DC 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 3FE0 800033E0 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 3FE4 800033E4 2484BAB8 */  addiu      $a0, $a0, %lo(brianAction)
 /* 3FE8 800033E8 E432BACC */  swc1       $f18, -0x4534($at)
 /* 3FEC 800033EC 8C4E0000 */  lw         $t6, ($v0)
@@ -928,8 +928,8 @@ glabel unkContainsPtrImportant
 /* 4188 80003588 2484BAB8 */   addiu     $a0, $a0, -0x4548
 /* 418C 8000358C 1040002B */  beqz       $v0, .L8000363C
 /* 4190 80003590 3C048008 */   lui       $a0, %hi(brianAction)
-/* 4194 80003594 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 4198 80003598 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 4194 80003594 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 4198 80003598 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 419C 8000359C 2484BAB8 */  addiu      $a0, $a0, %lo(brianAction)
 /* 41A0 800035A0 0C001CAA */  jal        func_800072A8
 /* 41A4 800035A4 8FA60024 */   lw        $a2, 0x24($sp)
@@ -943,8 +943,8 @@ glabel unkContainsPtrImportant
 /* 41C0 800035C0 2484BAB8 */   addiu     $a0, $a0, %lo(brianAction)
 /* 41C4 800035C4 1040001D */  beqz       $v0, .L8000363C
 /* 41C8 800035C8 3C048008 */   lui       $a0, %hi(brianAction)
-/* 41CC 800035CC 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 41D0 800035D0 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 41CC 800035CC 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 41D0 800035D0 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 41D4 800035D4 2484BAB8 */  addiu      $a0, $a0, %lo(brianAction)
 /* 41D8 800035D8 0C001CAA */  jal        func_800072A8
 /* 41DC 800035DC 8FA60024 */   lw        $a2, 0x24($sp)
@@ -1007,9 +1007,9 @@ glabel unkContainsPtrImportant
 /* 42B8 800036B8 3C018008 */  lui        $at, %hi(itemToReceive)
 /* 42BC 800036BC AC2DBA70 */  sw         $t5, %lo(itemToReceive)($at)
 .L800036C0:
-/* 42C0 800036C0 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 42C0 800036C0 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 42C4 800036C4 0C0080B9 */  jal        unk_UsesBrianOREnemyPos
-/* 42C8 800036C8 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 42C8 800036C8 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 42CC 800036CC 3C018008 */  lui        $at, %hi(brianStatusEffect)
 /* 42D0 800036D0 8FAF0024 */  lw         $t7, 0x24($sp)
 /* 42D4 800036D4 A420BB38 */  sh         $zero, %lo(brianStatusEffect)($at)
@@ -1049,9 +1049,9 @@ glabel unkContainsPtrImportant
 /* 435C 8000375C 00000000 */   nop
 .L80003760:
 /* 4360 80003760 11A00005 */  beqz       $t5, .L80003778
-/* 4364 80003764 3C048008 */   lui       $a0, %hi(BrianPos)
+/* 4364 80003764 3C048008 */   lui       $a0, %hi(BrianActor)
 /* 4368 80003768 0C0080B9 */  jal        unk_UsesBrianOREnemyPos
-/* 436C 8000376C 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 436C 8000376C 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 4370 80003770 3C018008 */  lui        $at, %hi(brianStatusEffect)
 /* 4374 80003774 A420BB38 */  sh         $zero, %lo(brianStatusEffect)($at)
 .L80003778:
@@ -1152,21 +1152,21 @@ glabel func_80003870
 .L800038E0:
 /* 44E0 800038E0 8529BB1C */  lh         $t1, -0x44e4($t1)
 /* 44E4 800038E4 3C0B8005 */  lui        $t3, %hi(ptr_PlayerAnimData)
-/* 44E8 800038E8 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 44E8 800038E8 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 44EC 800038EC 00095080 */  sll        $t2, $t1, 2
 /* 44F0 800038F0 016A5821 */  addu       $t3, $t3, $t2
 /* 44F4 800038F4 8D6B3D00 */  lw         $t3, %lo(ptr_PlayerAnimData)($t3)
-/* 44F8 800038F8 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 44F8 800038F8 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 44FC 800038FC 0C0019C8 */  jal        loadBrianAnim
 /* 4500 80003900 AFAB0028 */   sw        $t3, 0x28($sp)
 /* 4504 80003904 3C0C8008 */  lui        $t4, %hi(BrianCurrAnim)
 /* 4508 80003908 858CBB1E */  lh         $t4, %lo(BrianCurrAnim)($t4)
 /* 450C 8000390C 8FAE0028 */  lw         $t6, 0x28($sp)
-/* 4510 80003910 3C058008 */  lui        $a1, %hi(BrianPos)
+/* 4510 80003910 3C058008 */  lui        $a1, %hi(BrianActor)
 /* 4514 80003914 000C6880 */  sll        $t5, $t4, 2
 /* 4518 80003918 01AC6823 */  subu       $t5, $t5, $t4
 /* 451C 8000391C 000D6880 */  sll        $t5, $t5, 2
-/* 4520 80003920 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 4520 80003920 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 4524 80003924 8FA40034 */  lw         $a0, 0x34($sp)
 /* 4528 80003928 8FA70038 */  lw         $a3, 0x38($sp)
 /* 452C 8000392C 0C0076CE */  jal        func_8001DB38
@@ -1178,14 +1178,14 @@ glabel func_80003870
 /* 4544 80003944 000FC080 */  sll        $t8, $t7, 2
 /* 4548 80003948 030FC023 */  subu       $t8, $t8, $t7
 /* 454C 8000394C 0018C080 */  sll        $t8, $t8, 2
-/* 4550 80003950 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 4554 80003954 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 4550 80003950 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 4554 80003954 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 4558 80003958 9484BB24 */  lhu        $a0, -0x44dc($a0)
 /* 455C 8000395C 0C00782B */  jal        animateBrian
 /* 4560 80003960 03193021 */   addu      $a2, $t8, $t9
-/* 4564 80003964 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 4564 80003964 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 4568 80003968 0C0019C8 */  jal        loadBrianAnim
-/* 456C 8000396C 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 456C 8000396C 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 4570 80003970 3C038009 */  lui        $v1, %hi(D_8008C5B0)
 /* 4574 80003974 3C088008 */  lui        $t0, %hi(D_8007BC40)
 /* 4578 80003978 2463C5B0 */  addiu      $v1, $v1, %lo(D_8008C5B0)
@@ -1223,7 +1223,7 @@ glabel func_80003870
 /* 45F8 800039F8 C44C0000 */  lwc1       $f12, ($v0)
 /* 45FC 800039FC E7AA0010 */  swc1       $f10, 0x10($sp)
 /* 4600 80003A00 E7B00014 */  swc1       $f16, 0x14($sp)
-/* 4604 80003A04 0C004618 */  jal        drawSomeShadow
+/* 4604 80003A04 0C004618 */  jal        setShadowTrans
 /* 4608 80003A08 E7A60018 */   swc1      $f6, 0x18($sp)
 /* 460C 80003A0C 8FBF0024 */  lw         $ra, 0x24($sp)
 /* 4610 80003A10 27BD0038 */  addiu      $sp, $sp, 0x38
@@ -1269,10 +1269,10 @@ glabel UNK_Battle_Init
 /* 46A4 80003AA4 44815000 */  mtc1       $at, $f10
 /* 46A8 80003AA8 46249200 */  add.d      $f8, $f18, $f4
 /* 46AC 80003AAC C4500024 */  lwc1       $f16, 0x24($v0)
-/* 46B0 80003AB0 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 46B0 80003AB0 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 46B4 80003AB4 3C078008 */  lui        $a3, 0x8008
 /* 46B8 80003AB8 462041A0 */  cvt.s.d    $f6, $f8
-/* 46BC 80003ABC 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 46BC 80003ABC 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 46C0 80003AC0 24050012 */  addiu      $a1, $zero, 0x12
 /* 46C4 80003AC4 24060001 */  addiu      $a2, $zero, 1
 /* 46C8 80003AC8 E446000C */  swc1       $f6, 0xc($v0)
@@ -3986,8 +3986,8 @@ glabel doorSomething
 /* 6E48 80006248 10000039 */  b          .L80006330
 /* 6E4C 8000624C AC39B2EC */   sw        $t9, %lo(transitionFadeTimer)($at)
 .L80006250:
-/* 6E50 80006250 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 6E54 80006254 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 6E50 80006250 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 6E54 80006254 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 6E58 80006258 0C0018D0 */  jal        func_80006340
 /* 6E5C 8000625C 2484BAB8 */   addiu     $a0, $a0, -0x4548
 /* 6E60 80006260 3C038008 */  lui        $v1, %hi(temp_CurrMap)
@@ -4789,8 +4789,8 @@ glabel func_80006BEC
 /* 79F4 80006DF4 320FFFFF */  andi       $t7, $s0, 0xffff
 /* 79F8 80006DF8 01E08025 */  or         $s0, $t7, $zero
 .L80006DFC:
-/* 79FC 80006DFC 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 7A00 80006E00 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 79FC 80006DFC 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 7A00 80006E00 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 7A04 80006E04 8C820064 */  lw         $v0, 0x64($a0)
 /* 7A08 80006E08 3C098008 */  lui        $t1, 0x8008
 /* 7A0C 80006E0C 24050200 */  addiu      $a1, $zero, 0x200
@@ -4825,8 +4825,8 @@ glabel func_80006BEC
 .L80006E78:
 /* 7A78 80006E78 0C007F3E */  jal        func_8001FCF8
 /* 7A7C 80006E7C 2407001E */   addiu     $a3, $zero, 0x1e
-/* 7A80 80006E80 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 7A84 80006E84 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 7A80 80006E80 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 7A84 80006E84 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 .L80006E88:
 /* 7A88 80006E88 3C0F8008 */  lui        $t7, %hi(ptr_BrianData)
 /* 7A8C 80006E8C 8DEFBAC8 */  lw         $t7, %lo(ptr_BrianData)($t7)
@@ -4847,8 +4847,8 @@ glabel func_80006BEC
 /* 7AC4 80006EC4 3C018008 */  lui        $at, %hi(brianAction)
 /* 7AC8 80006EC8 A42BBAB8 */  sh         $t3, %lo(brianAction)($at)
 /* 7ACC 80006ECC 858D0062 */  lh         $t5, 0x62($t4)
-/* 7AD0 80006ED0 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 7AD4 80006ED4 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 7AD0 80006ED0 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 7AD4 80006ED4 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 7AD8 80006ED8 A42DBABC */  sh         $t5, -0x4544($at)
 /* 7ADC 80006EDC 948E0060 */  lhu        $t6, 0x60($a0)
 /* 7AE0 80006EE0 24050008 */  addiu      $a1, $zero, 8
@@ -4930,9 +4930,9 @@ glabel func_80006F6C
 /* 7BF8 80006FF8 24050007 */  addiu      $a1, $zero, 7
 /* 7BFC 80006FFC 0C00762C */  jal        updateAnim
 /* 7C00 80007000 24060001 */   addiu     $a2, $zero, 1
-/* 7C04 80007004 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 7C04 80007004 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 7C08 80007008 0C00822E */  jal        func_800208B8
-/* 7C0C 8000700C 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 7C0C 8000700C 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 7C10 80007010 00002025 */  or         $a0, $zero, $zero
 /* 7C14 80007014 24050017 */  addiu      $a1, $zero, 0x17
 /* 7C18 80007018 0C009A35 */  jal        func_800268D4

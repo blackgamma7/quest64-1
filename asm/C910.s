@@ -2416,7 +2416,7 @@ glabel func_8000DDB0
 /* EC90 8000E090 E7B00010 */  swc1       $f16, 0x10($sp)
 /* EC94 8000E094 C4720008 */  lwc1       $f18, 8($v1)
 /* EC98 8000E098 E7A40018 */  swc1       $f4, 0x18($sp)
-/* EC9C 8000E09C 0C004618 */  jal        drawSomeShadow
+/* EC9C 8000E09C 0C004618 */  jal        setShadowTrans
 /* ECA0 8000E0A0 E7B20014 */   swc1      $f18, 0x14($sp)
 /* ECA4 8000E0A4 3C0E8008 */  lui        $t6, %hi(D_80084F34)
 /* ECA8 8000E0A8 8DCE4F34 */  lw         $t6, %lo(D_80084F34)($t6)

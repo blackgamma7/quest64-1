@@ -1751,8 +1751,8 @@ glabel func_8001613C
 /* 16D70 80016170 50C00091 */  beql       $a2, $zero, .L800163B8
 /* 16D74 80016174 AFA00040 */   sw        $zero, 0x40($sp)
 /* 16D78 80016178 94CE005E */  lhu        $t6, 0x5e($a2)
-/* 16D7C 8001617C 3C188008 */  lui        $t8, %hi(BrianPos)
-/* 16D80 80016180 2718BACC */  addiu      $t8, $t8, %lo(BrianPos)
+/* 16D7C 8001617C 3C188008 */  lui        $t8, %hi(BrianActor)
+/* 16D80 80016180 2718BACC */  addiu      $t8, $t8, %lo(BrianActor)
 /* 16D84 80016184 31CF0001 */  andi       $t7, $t6, 1
 /* 16D88 80016188 15E0003A */  bnez       $t7, .L80016274
 /* 16D8C 8001618C 3C138008 */   lui       $s3, 0x8008
@@ -1766,8 +1766,8 @@ glabel func_8001613C
 /* 16DAC 800161AC AFA00040 */   sw        $zero, 0x40($sp)
 .L800161B0:
 /* 16DB0 800161B0 4481A800 */  mtc1       $at, $f21
-/* 16DB4 800161B4 3C018008 */  lui        $at, %hi(BrianPos)
-/* 16DB8 800161B8 C424BACC */  lwc1       $f4, %lo(BrianPos)($at)
+/* 16DB4 800161B4 3C018008 */  lui        $at, %hi(BrianActor)
+/* 16DB8 800161B8 C424BACC */  lwc1       $f4, %lo(BrianActor)($at)
 /* 16DBC 800161BC 3C198008 */  lui        $t9, %hi(brianDataPtr)
 /* 16DC0 800161C0 8F39BB30 */  lw         $t9, %lo(brianDataPtr)($t9)
 /* 16DC4 800161C4 3C018008 */  lui        $at, %hi(BrianZPos)
@@ -1930,8 +1930,8 @@ glabel func_800163E8
 /* 17008 80016408 AFB1001C */  sw         $s1, 0x1c($sp)
 /* 1700C 8001640C AFB00018 */  sw         $s0, 0x18($sp)
 /* 17010 80016410 8C820028 */  lw         $v0, 0x28($a0)
-/* 17014 80016414 3C058008 */  lui        $a1, %hi(BrianPos)
-/* 17018 80016418 24A5BACC */  addiu      $a1, $a1, %lo(BrianPos)
+/* 17014 80016414 3C058008 */  lui        $a1, %hi(BrianActor)
+/* 17018 80016418 24A5BACC */  addiu      $a1, $a1, %lo(BrianActor)
 /* 1701C 8001641C 944E005E */  lhu        $t6, 0x5e($v0)
 /* 17020 80016420 00A09825 */  or         $s3, $a1, $zero
 /* 17024 80016424 31CF0001 */  andi       $t7, $t6, 1
@@ -2611,8 +2611,8 @@ glabel func_80016D98
 /* 179CC 80016DCC F7B60018 */  sdc1       $f22, 0x18($sp)
 /* 179D0 80016DD0 F7B40010 */  sdc1       $f20, 0x10($sp)
 /* 179D4 80016DD4 8EB30024 */  lw         $s3, 0x24($s5)
-/* 179D8 80016DD8 3C188008 */  lui        $t8, %hi(BrianPos)
-/* 179DC 80016DDC 2718BACC */  addiu      $t8, $t8, %lo(BrianPos)
+/* 179D8 80016DD8 3C188008 */  lui        $t8, %hi(BrianActor)
+/* 179DC 80016DDC 2718BACC */  addiu      $t8, $t8, %lo(BrianActor)
 /* 179E0 80016DE0 966E005E */  lhu        $t6, 0x5e($s3)
 /* 179E4 80016DE4 31CF0001 */  andi       $t7, $t6, 1
 /* 179E8 80016DE8 51E00004 */  beql       $t7, $zero, .L80016DFC
@@ -2733,8 +2733,8 @@ glabel func_80016D98
 
 glabel func_80016F88
 /* 17B88 80016F88 8C8E0024 */  lw         $t6, 0x24($a0)
-/* 17B8C 80016F8C 3C198008 */  lui        $t9, %hi(BrianPos)
-/* 17B90 80016F90 2739BACC */  addiu      $t9, $t9, %lo(BrianPos)
+/* 17B8C 80016F8C 3C198008 */  lui        $t9, %hi(BrianActor)
+/* 17B90 80016F90 2739BACC */  addiu      $t9, $t9, %lo(BrianActor)
 /* 17B94 80016F94 95CF005E */  lhu        $t7, 0x5e($t6)
 /* 17B98 80016F98 3C028008 */  lui        $v0, 0x8008
 /* 17B9C 80016F9C 3C088008 */  lui        $t0, 0x8008

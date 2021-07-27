@@ -217,9 +217,9 @@ glabel HUDSometing
 /* 1F100 8001E500 AC2CC64C */  sw         $t4, %lo(D_8008C64C)($at)
 /* 1F104 8001E504 15A00008 */  bnez       $t5, .L8001E528
 /* 1F108 8001E508 01A01025 */   or        $v0, $t5, $zero
-/* 1F10C 8001E50C 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 1F10C 8001E50C 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 1F110 8001E510 0C0079FF */  jal        func_8001E7FC
-/* 1F114 8001E514 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 1F114 8001E514 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 1F118 8001E518 3C028008 */  lui        $v0, %hi(gHUDState)
 /* 1F11C 8001E51C 8C42B2E4 */  lw         $v0, %lo(gHUDState)($v0)
 /* 1F120 8001E520 304E0C00 */  andi       $t6, $v0, 0xc00
@@ -348,9 +348,9 @@ glabel HUDSometing
 /* 1F2F0 8001E6F0 0C007EE5 */  jal        func_8001FB94
 /* 1F2F4 8001E6F4 00000000 */   nop
 .L8001E6F8:
-/* 1F2F8 8001E6F8 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 1F2F8 8001E6F8 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 1F2FC 8001E6FC 0C007FBB */  jal        loadBattle_UNCONFIRMED
-/* 1F300 8001E700 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 1F300 8001E700 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 1F304 8001E704 3C028008 */  lui        $v0, %hi(NumberOfEnemies)
 /* 1F308 8001E708 8C42C990 */  lw         $v0, %lo(NumberOfEnemies)($v0)
 /* 1F30C 8001E70C 3C038008 */  lui        $v1, %hi(EnemyData)

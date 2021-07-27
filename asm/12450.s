@@ -7,15 +7,15 @@
 
 .section .text, "ax"
 
-glabel ResetShadowSomething
-/* 12450 80011850 3C018008 */  lui        $at, %hi(D_800862D0)
-/* 12454 80011854 AC2062D0 */  sw         $zero, %lo(D_800862D0)($at)
+glabel ResetShadowTally
+/* 12450 80011850 3C018008 */  lui        $at, %hi(ShadowTally)
+/* 12454 80011854 AC2062D0 */  sw         $zero, %lo(ShadowTally)($at)
 /* 12458 80011858 03E00008 */  jr         $ra
 /* 1245C 8001185C 00000000 */   nop
 
-glabel drawSomeShadow
-/* 12460 80011860 3C048008 */  lui        $a0, %hi(D_800862D0)
-/* 12464 80011864 248462D0 */  addiu      $a0, $a0, %lo(D_800862D0)
+glabel setShadowTrans
+/* 12460 80011860 3C048008 */  lui        $a0, %hi(ShadowTally)
+/* 12464 80011864 248462D0 */  addiu      $a0, $a0, %lo(ShadowTally)
 /* 12468 80011868 AFA60008 */  sw         $a2, 8($sp)
 /* 1246C 8001186C AFA7000C */  sw         $a3, 0xc($sp)
 /* 12470 80011870 8C820000 */  lw         $v0, ($a0)
@@ -58,8 +58,8 @@ glabel func_800118D4
 /* 124F8 800118F8 AFB1001C */  sw         $s1, 0x1c($sp)
 /* 124FC 800118FC AFB00018 */  sw         $s0, 0x18($sp)
 /* 12500 80011900 AFA400A8 */  sw         $a0, 0xa8($sp)
-/* 12504 80011904 3C148008 */  lui        $s4, %hi(D_800862D0)
-/* 12508 80011908 8E9462D0 */  lw         $s4, %lo(D_800862D0)($s4)
+/* 12504 80011904 3C148008 */  lui        $s4, %hi(ShadowTally)
+/* 12508 80011908 8E9462D0 */  lw         $s4, %lo(ShadowTally)($s4)
 /* 1250C 8001190C 3C108008 */  lui        $s0, %hi(someShadowX)
 /* 12510 80011910 26105BD0 */  addiu      $s0, $s0, %lo(someShadowX)
 /* 12514 80011914 12800037 */  beqz       $s4, .L800119F4

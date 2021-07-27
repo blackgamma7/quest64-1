@@ -1706,7 +1706,7 @@ glabel drawBattleFence_and_something
 /* 1AA80 80019E80 3C014000 */  lui        $at, 0x4000
 /* 1AA84 80019E84 4481E000 */  mtc1       $at, $f28
 /* 1AA88 80019E88 E7BE0014 */  swc1       $f30, 0x14($sp)
-/* 1AA8C 80019E8C 0C004618 */  jal        drawSomeShadow
+/* 1AA8C 80019E8C 0C004618 */  jal        setShadowTrans
 /* 1AA90 80019E90 E7BC0018 */   swc1      $f28, 0x18($sp)
 /* 1AA94 80019E94 3C0140A0 */  lui        $at, 0x40a0
 /* 1AA98 80019E98 44818000 */  mtc1       $at, $f16

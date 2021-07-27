@@ -206,7 +206,7 @@ glabel func_80008CF4
 /* 9A8C 80008E8C C6060024 */  lwc1       $f6, 0x24($s0)
 /* 9A90 80008E90 C6040028 */  lwc1       $f4, 0x28($s0)
 /* 9A94 80008E94 46062202 */  mul.s      $f8, $f4, $f6
-/* 9A98 80008E98 0C004618 */  jal        drawSomeShadow
+/* 9A98 80008E98 0C004618 */  jal        setShadowTrans
 /* 9A9C 80008E9C E7A80018 */   swc1      $f8, 0x18($sp)
 /* 9AA0 80008EA0 AE900000 */  sw         $s0, ($s4)
 .L80008EA4:
@@ -2048,8 +2048,8 @@ glabel func_8000A854
 /* B54C 8000A94C 45000011 */  bc1f       .L8000A994
 /* B550 8000A950 00000000 */   nop
 /* B554 8000A954 4600C083 */  div.s      $f2, $f24, $f0
-/* B558 8000A958 3C018008 */  lui        $at, %hi(BrianPos)
-/* B55C 8000A95C C426BACC */  lwc1       $f6, %lo(BrianPos)($at)
+/* B558 8000A958 3C018008 */  lui        $at, %hi(BrianActor)
+/* B55C 8000A95C C426BACC */  lwc1       $f6, %lo(BrianActor)($at)
 /* B560 8000A960 C68A0000 */  lwc1       $f10, ($s4)
 /* B564 8000A964 3C018008 */  lui        $at, 0x8008
 /* B568 8000A968 24130001 */  addiu      $s3, $zero, 1
@@ -2771,8 +2771,8 @@ glabel func_8000B300
 /* BFC0 8000B3C0 8FA30040 */  lw         $v1, 0x40($sp)
 /* BFC4 8000B3C4 33190002 */  andi       $t9, $t8, 2
 /* BFC8 8000B3C8 13200007 */  beqz       $t9, .L8000B3E8
-/* BFCC 8000B3CC 3C018008 */   lui       $at, %hi(BrianPos)
-/* BFD0 8000B3D0 C422BACC */  lwc1       $f2, %lo(BrianPos)($at)
+/* BFCC 8000B3CC 3C018008 */   lui       $at, %hi(BrianActor)
+/* BFD0 8000B3D0 C422BACC */  lwc1       $f2, %lo(BrianActor)($at)
 /* BFD4 8000B3D4 3C018008 */  lui        $at, %hi(BrianYPos)
 /* BFD8 8000B3D8 C42CBAD0 */  lwc1       $f12, %lo(BrianYPos)($at)
 /* BFDC 8000B3DC 3C018008 */  lui        $at, %hi(BrianZPos)

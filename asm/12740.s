@@ -216,7 +216,7 @@ glabel func_80011D28
 /* 12A30 80011E30 E7A40010 */  swc1       $f4, 0x10($sp)
 /* 12A34 80011E34 C6060034 */  lwc1       $f6, 0x34($s0)
 /* 12A38 80011E38 E7B40018 */  swc1       $f20, 0x18($sp)
-/* 12A3C 80011E3C 0C004618 */  jal        drawSomeShadow
+/* 12A3C 80011E3C 0C004618 */  jal        setShadowTrans
 /* 12A40 80011E40 E7A60014 */   swc1      $f6, 0x14($sp)
 /* 12A44 80011E44 2631FFFF */  addiu      $s1, $s1, -1
 /* 12A48 80011E48 1620FFCD */  bnez       $s1, .L80011D80
@@ -1023,8 +1023,8 @@ glabel func_80012780
 /* 135D8 800129D8 46062300 */   add.s     $f12, $f4, $f6
 /* 135DC 800129DC 3C058008 */  lui        $a1, %hi(D_80086B90)
 /* 135E0 800129E0 24A56B90 */  addiu      $a1, $a1, %lo(D_80086B90)
-/* 135E4 800129E4 3C018008 */  lui        $at, %hi(BrianPos)
-/* 135E8 800129E8 C428BACC */  lwc1       $f8, %lo(BrianPos)($at)
+/* 135E4 800129E4 3C018008 */  lui        $at, %hi(BrianActor)
+/* 135E8 800129E8 C428BACC */  lwc1       $f8, %lo(BrianActor)($at)
 /* 135EC 800129EC C4AA0000 */  lwc1       $f10, ($a1)
 /* 135F0 800129F0 3C018008 */  lui        $at, %hi(D_80086DCC)
 /* 135F4 800129F4 44800000 */  mtc1       $zero, $f0
@@ -1057,8 +1057,8 @@ glabel func_80012780
 /* 13658 80012A58 3C018008 */  lui        $at, %hi(D_80086DEC)
 /* 1365C 80012A5C E4206DEC */  swc1       $f0, %lo(D_80086DEC)($at)
 /* 13660 80012A60 E4206DE8 */  swc1       $f0, 0x6de8($at)
-/* 13664 80012A64 3C018008 */  lui        $at, %hi(BrianPos)
-/* 13668 80012A68 C432BACC */  lwc1       $f18, %lo(BrianPos)($at)
+/* 13664 80012A64 3C018008 */  lui        $at, %hi(BrianActor)
+/* 13668 80012A68 C432BACC */  lwc1       $f18, %lo(BrianActor)($at)
 /* 1366C 80012A6C 3C018008 */  lui        $at, %hi(CameraXPos)
 /* 13670 80012A70 3C038008 */  lui        $v1, 0x8008
 /* 13674 80012A74 E4326DD8 */  swc1       $f18, %lo(CameraXPos)($at)
@@ -1106,11 +1106,11 @@ glabel func_80012780
 /* 1371C 80012B1C 3C018008 */  lui        $at, %hi(D_80086BBC)
 /* 13720 80012B20 A4206BBC */  sh         $zero, %lo(D_80086BBC)($at)
 /* 13724 80012B24 C444002C */  lwc1       $f4, 0x2c($v0)
-/* 13728 80012B28 3C018008 */  lui        $at, %hi(FogAmount)
+/* 13728 80012B28 3C018008 */  lui        $at, %hi(fogAmmount)
 /* 1372C 80012B2C E4640000 */  swc1       $f4, ($v1)
 /* 13730 80012B30 C4460030 */  lwc1       $f6, 0x30($v0)
 /* 13734 80012B34 958CB2E8 */  lhu        $t4, -0x4d18($t4)
-/* 13738 80012B38 E4266ECC */  swc1       $f6, %lo(FogAmount)($at)
+/* 13738 80012B38 E4266ECC */  swc1       $f6, %lo(fogAmmount)($at)
 /* 1373C 80012B3C C4480034 */  lwc1       $f8, 0x34($v0)
 /* 13740 80012B40 3C018008 */  lui        $at, %hi(D_80086ED0)
 /* 13744 80012B44 E4286ED0 */  swc1       $f8, %lo(D_80086ED0)($at)
@@ -1232,8 +1232,8 @@ glabel func_80012BE0
 /* 13900 80012D00 0C004FD7 */  jal        cameraZoomSomething
 /* 13904 80012D04 00000000 */   nop
 .L80012D08:
-/* 13908 80012D08 3C018008 */  lui        $at, %hi(FogAmount)
-/* 1390C 80012D0C C4246ECC */  lwc1       $f4, %lo(FogAmount)($at)
+/* 13908 80012D08 3C018008 */  lui        $at, %hi(fogAmmount)
+/* 1390C 80012D0C C4246ECC */  lwc1       $f4, %lo(fogAmmount)($at)
 /* 13910 80012D10 3C018008 */  lui        $at, %hi(D_80086ED0)
 /* 13914 80012D14 C4266ED0 */  lwc1       $f6, %lo(D_80086ED0)($at)
 /* 13918 80012D18 3C013F80 */  lui        $at, 0x3f80
@@ -2577,8 +2577,8 @@ glabel cameraZoomSomething
 /* 14CA4 800140A4 C470002C */  lwc1       $f16, 0x2c($v1)
 /* 14CA8 800140A8 E4306EC8 */  swc1       $f16, %lo(D_80086EC8)($at)
 /* 14CAC 800140AC C4720030 */  lwc1       $f18, 0x30($v1)
-/* 14CB0 800140B0 3C018008 */  lui        $at, %hi(FogAmount)
-/* 14CB4 800140B4 E4326ECC */  swc1       $f18, %lo(FogAmount)($at)
+/* 14CB0 800140B0 3C018008 */  lui        $at, %hi(fogAmmount)
+/* 14CB4 800140B4 E4326ECC */  swc1       $f18, %lo(fogAmmount)($at)
 /* 14CB8 800140B8 C4640034 */  lwc1       $f4, 0x34($v1)
 /* 14CBC 800140BC 3C018008 */  lui        $at, %hi(D_80086ED0)
 /* 14CC0 800140C0 E4246ED0 */  swc1       $f4, %lo(D_80086ED0)($at)

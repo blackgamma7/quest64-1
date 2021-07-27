@@ -145,7 +145,7 @@ glabel func_8000B618
 /* C31C 8000B71C 8CC6D1D4 */  lw         $a2, %lo(bossZPos)($a2)
 /* C320 8000B720 E7A40010 */  swc1       $f4, 0x10($sp)
 /* C324 8000B724 E7A60014 */  swc1       $f6, 0x14($sp)
-/* C328 8000B728 0C004618 */  jal        drawSomeShadow
+/* C328 8000B728 0C004618 */  jal        setShadowTrans
 /* C32C 8000B72C E7B00018 */   swc1      $f16, 0x18($sp)
 .L8000B730:
 /* C330 8000B730 8FBF0024 */  lw         $ra, 0x24($sp)

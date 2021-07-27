@@ -886,12 +886,12 @@ glabel Mode_NormalPlay
 /* 2558 80001958 306C0400 */  andi       $t4, $v1, 0x400
 /* 255C 8000195C 1180000C */  beqz       $t4, .L80001990
 /* 2560 80001960 24140002 */   addiu     $s4, $zero, 2
-/* 2564 80001964 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 2564 80001964 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 2568 80001968 240D0001 */  addiu      $t5, $zero, 1
 /* 256C 8000196C 240E0001 */  addiu      $t6, $zero, 1
 /* 2570 80001970 AFAE0014 */  sw         $t6, 0x14($sp)
 /* 2574 80001974 AFAD0010 */  sw         $t5, 0x10($sp)
-/* 2578 80001978 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 2578 80001978 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 257C 8000197C 00002825 */  or         $a1, $zero, $zero
 /* 2580 80001980 24060001 */  addiu      $a2, $zero, 1
 /* 2584 80001984 0C00762C */  jal        updateAnim
@@ -1007,7 +1007,7 @@ glabel Mode_NormalPlay
 /* 2714 80001B14 3C018008 */  lui        $at, %hi(DLToLoad)
 /* 2718 80001B18 AC20B2F8 */  sw         $zero, %lo(DLToLoad)($at)
 /* 271C 80001B1C 3C018008 */  lui        $at, %hi(D_80087200)
-/* 2720 80001B20 0C004614 */  jal        ResetShadowSomething
+/* 2720 80001B20 0C004614 */  jal        ResetShadowTally
 /* 2724 80001B24 AC207200 */   sw        $zero, %lo(D_80087200)($at)
 /* 2728 80001B28 3C098008 */  lui        $t1, %hi(mapFlagAllowBattles)
 /* 272C 80001B2C 95294F10 */  lhu        $t1, %lo(mapFlagAllowBattles)($t1)

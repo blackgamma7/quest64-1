@@ -11,8 +11,8 @@ glabel func_800118D4
 /* 124F8 800118F8 AFB1001C */  sw         $s1, 0x1c($sp)
 /* 124FC 800118FC AFB00018 */  sw         $s0, 0x18($sp)
 /* 12500 80011900 AFA400A8 */  sw         $a0, 0xa8($sp)
-/* 12504 80011904 3C148008 */  lui        $s4, %hi(D_800862D0)
-/* 12508 80011908 8E9462D0 */  lw         $s4, %lo(D_800862D0)($s4)
+/* 12504 80011904 3C148008 */  lui        $s4, %hi(ShadowTally)
+/* 12508 80011908 8E9462D0 */  lw         $s4, %lo(ShadowTally)($s4)
 /* 1250C 8001190C 3C108008 */  lui        $s0, %hi(someShadowX)
 /* 12510 80011910 26105BD0 */  addiu      $s0, $s0, %lo(someShadowX)
 /* 12514 80011914 12800037 */  beqz       $s4, .L800119F4

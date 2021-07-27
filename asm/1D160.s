@@ -667,11 +667,11 @@ glabel battleCameraSomething
 /* 1DB2C 8001CF2C E450003C */  swc1       $f16, 0x3c($v0)
 /* 1DB30 8001CF30 E4440040 */  swc1       $f4, 0x40($v0)
 /* 1DB34 8001CF34 9529C592 */  lhu        $t1, %lo(BattleState)($t1)
-/* 1DB38 8001CF38 3C0F8008 */  lui        $t7, %hi(BrianPos)
+/* 1DB38 8001CF38 3C0F8008 */  lui        $t7, %hi(BrianActor)
 /* 1DB3C 8001CF3C 3C0B8009 */  lui        $t3, %hi(UNK_CurrentBoss)
 /* 1DB40 8001CF40 312A0100 */  andi       $t2, $t1, 0x100
 /* 1DB44 8001CF44 1140000E */  beqz       $t2, .L8001CF80
-/* 1DB48 8001CF48 25EFBACC */   addiu     $t7, $t7, %lo(BrianPos)
+/* 1DB48 8001CF48 25EFBACC */   addiu     $t7, $t7, %lo(BrianActor)
 /* 1DB4C 8001CF4C 8D6BC570 */  lw         $t3, %lo(UNK_CurrentBoss)($t3)
 /* 1DB50 8001CF50 24010008 */  addiu      $at, $zero, 8
 /* 1DB54 8001CF54 1561000A */  bne        $t3, $at, .L8001CF80
@@ -752,8 +752,8 @@ glabel func_8001CFE8
 /* 1DC64 8001D064 10000003 */  b          .L8001D074
 /* 1DC68 8001D068 01AE4021 */   addu      $t0, $t5, $t6
 .L8001D06C:
-/* 1DC6C 8001D06C 3C088008 */  lui        $t0, %hi(BrianPos)
-/* 1DC70 8001D070 2508BACC */  addiu      $t0, $t0, %lo(BrianPos)
+/* 1DC6C 8001D06C 3C088008 */  lui        $t0, %hi(BrianActor)
+/* 1DC70 8001D070 2508BACC */  addiu      $t0, $t0, %lo(BrianActor)
 .L8001D074:
 /* 1DC74 8001D074 950F0060 */  lhu        $t7, 0x60($t0)
 /* 1DC78 8001D078 31F80001 */  andi       $t8, $t7, 1
@@ -921,8 +921,8 @@ glabel func_8001CFE8
 /* 1DED4 8001D2D4 10000003 */  b          .L8001D2E4
 /* 1DED8 8001D2D8 01AE4021 */   addu      $t0, $t5, $t6
 .L8001D2DC:
-/* 1DEDC 8001D2DC 3C088008 */  lui        $t0, %hi(BrianPos)
-/* 1DEE0 8001D2E0 2508BACC */  addiu      $t0, $t0, %lo(BrianPos)
+/* 1DEDC 8001D2DC 3C088008 */  lui        $t0, %hi(BrianActor)
+/* 1DEE0 8001D2E0 2508BACC */  addiu      $t0, $t0, %lo(BrianActor)
 .L8001D2E4:
 /* 1DEE4 8001D2E4 8D0F0068 */  lw         $t7, 0x68($t0)
 /* 1DEE8 8001D2E8 8D180064 */  lw         $t8, 0x64($t0)

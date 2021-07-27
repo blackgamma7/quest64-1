@@ -1194,8 +1194,8 @@ glabel func_8002413C
 /* 24D70 80024170 24846E88 */  addiu      $a0, $a0, 0x6e88
 /* 24D74 80024174 0C00D51C */  jal        guMtxXFMF
 /* 24D78 80024178 8FA70048 */   lw        $a3, 0x48($sp)
-/* 24D7C 8002417C 3C018008 */  lui        $at, %hi(FogAmount)
-/* 24D80 80024180 C4266ECC */  lwc1       $f6, %lo(FogAmount)($at)
+/* 24D7C 8002417C 3C018008 */  lui        $at, %hi(fogAmmount)
+/* 24D80 80024180 C4266ECC */  lwc1       $f6, %lo(fogAmmount)($at)
 /* 24D84 80024184 C7A40030 */  lwc1       $f4, 0x30($sp)
 /* 24D88 80024188 00001825 */  or         $v1, $zero, $zero
 /* 24D8C 8002418C 46003207 */  neg.s      $f8, $f6
