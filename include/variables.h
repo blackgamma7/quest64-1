@@ -24,9 +24,9 @@ struct WingStruct wingArray[6];
 //player/enemy stats
 typedef struct playerStats{
     u16 unk0x0; //ID?
-    u16 unk0x2;
-    s16 HP[2]; //curr,Max
-    s16 MP[2]; //curr,Max
+    u16 unk0x2; //modelID?
+    s16 HP[2]; //Max,curr
+    s16 MP[2]; //""  ""
     s16 AGL;
     s16 DEF;
     s32 SpiritEXP; //enemies use as EXP yeild
@@ -46,6 +46,7 @@ typedef struct playerStats{
 };
 extern struct playerStats BrianStartingData;
 extern struct playerStats brianData;
+extern struct playerStats bossStats[8];
 //chest
 extern u8 collectedChestsBitfield[32];
 
@@ -78,7 +79,7 @@ typedef struct CameraStruct{
     float unk0x74;
     float unk0x78;
     float unk0x7c;
-    u32 unk0x80;
+    ActorStruct* Target;
     float unk0x84;
 };
 extern struct CameraStruct gCamera;

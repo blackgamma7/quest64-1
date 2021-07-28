@@ -36,7 +36,7 @@ glabel LoadAndSpawnBoss
 /* C178 8000B578 55F80020 */  bnel       $t7, $t8, .L8000B5FC
 /* C17C 8000B57C 26100001 */   addiu     $s0, $s0, 1
 /* C180 8000B580 02002025 */  or         $a0, $s0, $zero
-/* C184 8000B584 0C002E76 */  jal        checkForValidBossID
+/* C184 8000B584 0C002E76 */  jal        getBossSpawnFlag
 /* C188 8000B588 AFA30028 */   sw        $v1, 0x28($sp)
 /* C18C 8000B58C 1440001D */  bnez       $v0, .L8000B604
 /* C190 8000B590 8FA30028 */   lw        $v1, 0x28($sp)
@@ -59,7 +59,7 @@ glabel LoadAndSpawnBoss
 /* C1D4 8000B5D4 02002025 */  or         $a0, $s0, $zero
 /* C1D8 8000B5D8 8C65000C */  lw         $a1, 0xc($v1)
 /* C1DC 8000B5DC 8C660010 */  lw         $a2, 0x10($v1)
-/* C1E0 8000B5E0 0C002DF7 */  jal        func_8000B7DC
+/* C1E0 8000B5E0 0C002DF7 */  jal        load_bossStats
 /* C1E4 8000B5E4 8C670014 */   lw        $a3, 0x14($v1)
 /* C1E8 8000B5E8 260B0001 */  addiu      $t3, $s0, 1
 /* C1EC 8000B5EC 3C018008 */  lui        $at, %hi(CurrBossSpawned)
@@ -178,11 +178,11 @@ glabel returnBossIDIfBrianInRange
 /* C394 8000B794 46128300 */   add.s     $f12, $f16, $f18
 /* C398 8000B798 3C028008 */  lui        $v0, %hi(CurrBossSpawned)
 /* C39C 8000B79C 8C42D1A0 */  lw         $v0, %lo(CurrBossSpawned)($v0)
-/* C3A0 8000B7A0 3C01803B */  lui        $at, %hi(D_803A9B8C)
+/* C3A0 8000B7A0 3C01803B */  lui        $at, %hi(BossData+0xBC)
 /* C3A4 8000B7A4 8FA3001C */  lw         $v1, 0x1c($sp)
 /* C3A8 8000B7A8 00027880 */  sll        $t7, $v0, 2
 /* C3AC 8000B7AC 002F0821 */  addu       $at, $at, $t7
-/* C3B0 8000B7B0 C4249B8C */  lwc1       $f4, %lo(D_803A9B8C)($at)
+/* C3B0 8000B7B0 C4249B8C */  lwc1       $f4, %lo(BossData+0xBC)($at)
 /* C3B4 8000B7B4 4604003C */  c.lt.s     $f0, $f4
 /* C3B8 8000B7B8 00000000 */  nop
 /* C3BC 8000B7BC 45020003 */  bc1fl      .L8000B7CC
@@ -196,7 +196,7 @@ glabel returnBossIDIfBrianInRange
 /* C3D4 8000B7D4 03E00008 */  jr         $ra
 /* C3D8 8000B7D8 00000000 */   nop
 
-glabel func_8000B7DC
+glabel load_bossStats
 /* C3DC 8000B7DC 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* C3E0 8000B7E0 AFB00020 */  sw         $s0, 0x20($sp)
 /* C3E4 8000B7E4 8FB00040 */  lw         $s0, 0x40($sp)
@@ -208,8 +208,8 @@ glabel func_8000B7DC
 /* C3FC 8000B7FC AFA60038 */  sw         $a2, 0x38($sp)
 /* C400 8000B800 AFA7003C */  sw         $a3, 0x3c($sp)
 /* C404 8000B804 8FAE0030 */  lw         $t6, 0x30($sp)
-/* C408 8000B808 3C18803B */  lui        $t8, %hi(D_803A9F20)
-/* C40C 8000B80C 27189F20 */  addiu      $t8, $t8, %lo(D_803A9F20)
+/* C408 8000B808 3C18803B */  lui        $t8, %hi(bossStats)
+/* C40C 8000B80C 27189F20 */  addiu      $t8, $t8, %lo(bossStats)
 /* C410 8000B810 000E78C0 */  sll        $t7, $t6, 3
 /* C414 8000B814 01EE7823 */  subu       $t7, $t7, $t6
 /* C418 8000B818 000F78C0 */  sll        $t7, $t7, 3
@@ -284,8 +284,8 @@ glabel func_8000B7DC
 /* C528 8000B928 3C028008 */  lui        $v0, %hi(D_8007D110)
 /* C52C 8000B92C 2442D110 */  addiu      $v0, $v0, %lo(D_8007D110)
 /* C530 8000B930 C4520000 */  lwc1       $f18, ($v0)
-/* C534 8000B934 3C0A803B */  lui        $t2, %hi(D_803AA0A8)
-/* C538 8000B938 254AA0A8 */  addiu      $t2, $t2, %lo(D_803AA0A8)
+/* C534 8000B934 3C0A803B */  lui        $t2, %hi(bossStats+0x188)
+/* C538 8000B938 254AA0A8 */  addiu      $t2, $t2, %lo(bossStats+0x188)
 /* C53C 8000B93C E6320000 */  swc1       $f18, ($s1)
 /* C540 8000B940 C4440004 */  lwc1       $f4, 4($v0)
 /* C544 8000B944 E6240004 */  swc1       $f4, 4($s1)
@@ -305,11 +305,11 @@ glabel func_8000B7DC
 /* C57C 8000B97C E6240004 */  swc1       $f4, 4($s1)
 .L8000B980:
 /* C580 8000B980 C7A6003C */  lwc1       $f6, 0x3c($sp)
-/* C584 8000B984 3C0E803B */  lui        $t6, %hi(D_803AA0A8)
+/* C584 8000B984 3C0E803B */  lui        $t6, %hi(bossStats+0x188)
 /* C588 8000B988 240D0001 */  addiu      $t5, $zero, 1
 /* C58C 8000B98C E6260010 */  swc1       $f6, 0x10($s1)
 /* C590 8000B990 C448000C */  lwc1       $f8, 0xc($v0)
-/* C594 8000B994 25CEA0A8 */  addiu      $t6, $t6, %lo(D_803AA0A8)
+/* C594 8000B994 25CEA0A8 */  addiu      $t6, $t6, %lo(bossStats+0x188)
 /* C598 8000B998 35B80004 */  ori        $t8, $t5, 4
 /* C59C 8000B99C E628002C */  swc1       $f8, 0x2c($s1)
 /* C5A0 8000B9A0 C44A0010 */  lwc1       $f10, 0x10($v0)
@@ -328,7 +328,7 @@ glabel func_8000B7DC
 /* C5D0 8000B9D0 03E00008 */  jr         $ra
 /* C5D4 8000B9D4 27BD0030 */   addiu     $sp, $sp, 0x30
 
-glabel checkForValidBossID
+glabel getBossSpawnFlag
 /* C5D8 8000B9D8 308E0007 */  andi       $t6, $a0, 7
 /* C5DC 8000B9DC 3C0F8005 */  lui        $t7, %hi(binTbl)
 /* C5E0 8000B9E0 0004C0C2 */  srl        $t8, $a0, 3
@@ -438,7 +438,7 @@ glabel playBossIntro
 /* C760 8000BB60 03E00008 */  jr         $ra
 /* C764 8000BB64 00000000 */   nop
 
-glabel UNK_BossBattleSomething
+glabel BossDeath
 /* C768 8000BB68 27BDFFE8 */  addiu      $sp, $sp, -0x18
 /* C76C 8000BB6C AFBF0014 */  sw         $ra, 0x14($sp)
 /* C770 8000BB70 00802825 */  or         $a1, $a0, $zero

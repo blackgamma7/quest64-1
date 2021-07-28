@@ -292,7 +292,7 @@ glabel UNK_BossBattleInit
 /* 1D590 8001C990 8CC6C5A0 */  lw         $a2, %lo(D_8008C5A0)($a2)
 /* 1D594 8001C994 8CA5C59C */  lw         $a1, %lo(D_8008C59C)($a1)
 /* 1D598 8001C998 AFAA0010 */  sw         $t2, 0x10($sp)
-/* 1D59C 8001C99C 0C002DF7 */  jal        func_8000B7DC
+/* 1D59C 8001C99C 0C002DF7 */  jal        load_bossStats
 /* 1D5A0 8001C9A0 2444FFFF */   addiu     $a0, $v0, -1
 /* 1D5A4 8001C9A4 0C002CAE */  jal        VOID_Reset7d0c4
 /* 1D5A8 8001C9A8 00000000 */   nop
@@ -781,7 +781,7 @@ glabel func_8001CFE8
 /* 1DCCC 8001D0CC 01C02025 */   or        $a0, $t6, $zero
 /* 1DCD0 8001D0D0 3C048009 */  lui        $a0, %hi(UNK_CurrentBoss)
 /* 1DCD4 8001D0D4 8C84C570 */  lw         $a0, %lo(UNK_CurrentBoss)($a0)
-/* 1DCD8 8001D0D8 0C002EDA */  jal        UNK_BossBattleSomething
+/* 1DCD8 8001D0D8 0C002EDA */  jal        BossDeath
 /* 1DCDC 8001D0DC 2484FFFF */   addiu     $a0, $a0, -1
 /* 1DCE0 8001D0E0 3C0F8009 */  lui        $t7, %hi(D_8008C568)
 /* 1DCE4 8001D0E4 8DEFC568 */  lw         $t7, %lo(D_8008C568)($t7)
