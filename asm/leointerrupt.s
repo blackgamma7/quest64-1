@@ -83,11 +83,11 @@ glabel __osLeoInterrupt
 .L800472C0:
 /* 47EC0 800472C0 8FB90030 */  lw         $t9, 0x30($sp)
 /* 47EC4 800472C4 3C010100 */  lui        $at, 0x100
-/* 47EC8 800472C8 3C0BA500 */  lui        $t3, %hi(D_A5000510)
+/* 47EC8 800472C8 3C0BA500 */  lui        $t3, %hi(ASIC_BM_STATUS)
 /* 47ECC 800472CC 8F290010 */  lw         $t1, 0x10($t9)
 /* 47ED0 800472D0 00001025 */  or         $v0, $zero, $zero
 /* 47ED4 800472D4 01215025 */  or         $t2, $t1, $at
-/* 47ED8 800472D8 AD6A0510 */  sw         $t2, %lo(D_A5000510)($t3)
+/* 47ED8 800472D8 AD6A0510 */  sw         $t2, %lo(ASIC_BM_STATUS)($t3)
 /* 47EDC 800472DC 8FAC002C */  lw         $t4, 0x2c($sp)
 /* 47EE0 800472E0 10000158 */  b          .L80047844
 /* 47EE4 800472E4 AD800000 */   sw        $zero, ($t4)
@@ -245,8 +245,8 @@ glabel __osLeoInterrupt
 /* 4811C 8004751C 01AE5821 */  addu       $t3, $t5, $t6
 /* 48120 80047520 AD4B0004 */  sw         $t3, 4($t2)
 .L80047524:
-/* 48124 80047524 3C18A500 */  lui        $t8, %hi(D_A5000510)
-/* 48128 80047528 8F090510 */  lw         $t1, %lo(D_A5000510)($t8)
+/* 48124 80047524 3C18A500 */  lui        $t8, %hi(ASIC_BM_STATUS)
+/* 48128 80047528 8F090510 */  lw         $t1, %lo(ASIC_BM_STATUS)($t8)
 /* 4812C 8004752C 3C010020 */  lui        $at, 0x20
 /* 48130 80047530 AFA90034 */  sw         $t1, 0x34($sp)
 /* 48134 80047534 8FAC0034 */  lw         $t4, 0x34($sp)
@@ -492,11 +492,11 @@ glabel __osLeoResume
 .L800478A4:
 /* 484A4 800478A4 8FAE001C */  lw         $t6, 0x1c($sp)
 /* 484A8 800478A8 3C011000 */  lui        $at, 0x1000
-/* 484AC 800478AC 3C19A500 */  lui        $t9, %hi(D_A5000510)
+/* 484AC 800478AC 3C19A500 */  lui        $t9, %hi(ASIC_BM_STATUS)
 /* 484B0 800478B0 8DCF0010 */  lw         $t7, 0x10($t6)
 /* 484B4 800478B4 3C08A460 */  lui        $t0, %hi(PI_STATUS_REG)
 /* 484B8 800478B8 01E1C025 */  or         $t8, $t7, $at
-/* 484BC 800478BC AF380510 */  sw         $t8, %lo(D_A5000510)($t9)
+/* 484BC 800478BC AF380510 */  sw         $t8, %lo(ASIC_BM_STATUS)($t9)
 /* 484C0 800478C0 8D090010 */  lw         $t1, %lo(PI_STATUS_REG)($t0)
 /* 484C4 800478C4 AFA90018 */  sw         $t1, 0x18($sp)
 /* 484C8 800478C8 8FAA0018 */  lw         $t2, 0x18($sp)
@@ -513,10 +513,10 @@ glabel __osLeoResume
 /* 484F0 800478F0 00000000 */   nop
 .L800478F4:
 /* 484F4 800478F4 8FB8001C */  lw         $t8, 0x1c($sp)
-/* 484F8 800478F8 3C08A500 */  lui        $t0, %hi(D_A5000510)
+/* 484F8 800478F8 3C08A500 */  lui        $t0, %hi(ASIC_BM_STATUS)
 /* 484FC 800478FC 8F190010 */  lw         $t9, 0x10($t8)
 /* 48500 80047900 0C011E4F */  jal        _osLeoAbnormalResume
-/* 48504 80047904 AD190510 */   sw        $t9, %lo(D_A5000510)($t0)
+/* 48504 80047904 AD190510 */   sw        $t9, %lo(ASIC_BM_STATUS)($t0)
 /* 48508 80047908 24090002 */  addiu      $t1, $zero, 2
 /* 4850C 8004790C 3C0AA460 */  lui        $t2, %hi(PI_STATUS_REG)
 /* 48510 80047910 AD490010 */  sw         $t1, %lo(PI_STATUS_REG)($t2)

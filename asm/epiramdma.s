@@ -44,8 +44,8 @@ glabel osEPiRawStartDma
 /* 3E66C 8003DA6C 91780005 */  lbu        $t8, 5($t3)
 /* 3E670 8003DA70 11F80003 */  beq        $t7, $t8, .L8003DA80
 /* 3E674 8003DA74 00000000 */   nop
-/* 3E678 8003DA78 3C19A460 */  lui        $t9, %hi(D_A4600014)
-/* 3E67C 8003DA7C AF380014 */  sw         $t8, %lo(D_A4600014)($t9)
+/* 3E678 8003DA78 3C19A460 */  lui        $t9, %hi(PI_BSD_DOM1_LAT)
+/* 3E67C 8003DA7C AF380014 */  sw         $t8, %lo(PI_BSD_DOM1_LAT)($t9)
 .L8003DA80:
 /* 3E680 8003DA80 8FA80024 */  lw         $t0, 0x24($sp)
 /* 3E684 8003DA84 8FAA0030 */  lw         $t2, 0x30($sp)

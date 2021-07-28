@@ -8,8 +8,8 @@
 .section .text, "ax"
 
 glabel osCreateViManager
-/* 35440 80034840 3C0E8007 */  lui        $t6, %hi(__osViDevMgr_active)
-/* 35444 80034844 8DCE0170 */  lw         $t6, %lo(__osViDevMgr_active)($t6)
+/* 35440 80034840 3C0E8007 */  lui        $t6, %hi(__osViDevMgr)
+/* 35444 80034844 8DCE0170 */  lw         $t6, %lo(__osViDevMgr)($t6)
 /* 35448 80034848 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* 3544C 8003484C AFBF001C */  sw         $ra, 0x1c($sp)
 /* 35450 80034850 15C00059 */  bnez       $t6, .L800349B8
@@ -22,25 +22,25 @@ glabel osCreateViManager
 /* 3546C 8003486C 24845190 */  addiu      $a0, $a0, %lo(viEventQueue)
 /* 35470 80034870 0C00CFC4 */  jal        osCreateMesgQueue
 /* 35474 80034874 24060005 */   addiu     $a2, $zero, 5
-/* 35478 80034878 3C018009 */  lui        $at, %hi(viRetraceMsg_hdr_type)
+/* 35478 80034878 3C018009 */  lui        $at, %hi(viRetraceMsg)
 /* 3547C 8003487C 240F000D */  addiu      $t7, $zero, 0xd
-/* 35480 80034880 A42F51C0 */  sh         $t7, %lo(viRetraceMsg_hdr_type)($at)
+/* 35480 80034880 A42F51C0 */  sh         $t7, %lo(viRetraceMsg)($at)
 /* 35484 80034884 A02051C2 */  sb         $zero, 0x51c2($at)
 /* 35488 80034888 AC2051C4 */  sw         $zero, 0x51c4($at)
-/* 3548C 8003488C 3C018009 */  lui        $at, %hi(viCounterMsg_hdr_type)
+/* 3548C 8003488C 3C018009 */  lui        $at, %hi(viCounterMsg)
 /* 35490 80034890 2418000E */  addiu      $t8, $zero, 0xe
 /* 35494 80034894 3C058009 */  lui        $a1, 0x8009
-/* 35498 80034898 3C068009 */  lui        $a2, %hi(viRetraceMsg_hdr_type)
-/* 3549C 8003489C A43851D8 */  sh         $t8, %lo(viCounterMsg_hdr_type)($at)
+/* 35498 80034898 3C068009 */  lui        $a2, %hi(viRetraceMsg)
+/* 3549C 8003489C A43851D8 */  sh         $t8, %lo(viCounterMsg)($at)
 /* 354A0 800348A0 A02051DA */  sb         $zero, 0x51da($at)
 /* 354A4 800348A4 AC2051DC */  sw         $zero, 0x51dc($at)
-/* 354A8 800348A8 24C651C0 */  addiu      $a2, $a2, %lo(viRetraceMsg_hdr_type)
+/* 354A8 800348A8 24C651C0 */  addiu      $a2, $a2, %lo(viRetraceMsg)
 /* 354AC 800348AC 24A55190 */  addiu      $a1, $a1, 0x5190
 /* 354B0 800348B0 0C00CFEC */  jal        osSetEventMesg
 /* 354B4 800348B4 24040007 */   addiu     $a0, $zero, 7
 /* 354B8 800348B8 3C058009 */  lui        $a1, %hi(viEventQueue)
-/* 354BC 800348BC 3C068009 */  lui        $a2, %hi(viCounterMsg_hdr_type)
-/* 354C0 800348C0 24C651D8 */  addiu      $a2, $a2, %lo(viCounterMsg_hdr_type)
+/* 354BC 800348BC 3C068009 */  lui        $a2, %hi(viCounterMsg)
+/* 354C0 800348C0 24C651D8 */  addiu      $a2, $a2, %lo(viCounterMsg)
 /* 354C4 800348C4 24A55190 */  addiu      $a1, $a1, %lo(viEventQueue)
 /* 354C8 800348C8 0C00CFEC */  jal        osSetEventMesg
 /* 354CC 800348CC 24040003 */   addiu     $a0, $zero, 3
@@ -77,12 +77,12 @@ glabel osCreateViManager
 /* 35544 80034944 25AD4190 */  addiu      $t5, $t5, %lo(D_80094190)
 /* 35548 80034948 25AE1000 */  addiu      $t6, $t5, 0x1000
 /* 3554C 8003494C 3C068003 */  lui        $a2, 0x8003
-/* 35550 80034950 3C078007 */  lui        $a3, %hi(__osViDevMgr_active)
+/* 35550 80034950 3C078007 */  lui        $a3, %hi(__osViDevMgr)
 /* 35554 80034954 AFA2002C */  sw         $v0, 0x2c($sp)
 /* 35558 80034958 AC200180 */  sw         $zero, 0x180($at)
 /* 3555C 8003495C AC200184 */  sw         $zero, 0x184($at)
 /* 35560 80034960 AC200188 */  sw         $zero, 0x188($at)
-/* 35564 80034964 24E70170 */  addiu      $a3, $a3, %lo(__osViDevMgr_active)
+/* 35564 80034964 24E70170 */  addiu      $a3, $a3, %lo(__osViDevMgr)
 /* 35568 80034968 24C649C8 */  addiu      $a2, $a2, 0x49c8
 /* 3556C 8003496C AFAE0010 */  sw         $t6, 0x10($sp)
 /* 35570 80034970 01602025 */  or         $a0, $t3, $zero
@@ -183,8 +183,8 @@ glabel viMgrMain
 /* 356CC 80034ACC AFA20024 */  sw         $v0, 0x24($sp)
 /* 356D0 80034AD0 8FAA0024 */  lw         $t2, 0x24($sp)
 /* 356D4 80034AD4 240C0000 */  addiu      $t4, $zero, 0
-/* 356D8 80034AD8 3C018009 */  lui        $at, %hi(D_80095620)
-/* 356DC 80034ADC AC2C5620 */  sw         $t4, %lo(D_80095620)($at)
+/* 356D8 80034AD8 3C018009 */  lui        $at, %hi(__osCurrentTime_80095620)
+/* 356DC 80034ADC AC2C5620 */  sw         $t4, %lo(__osCurrentTime_80095620)($at)
 /* 356E0 80034AE0 3C018009 */  lui        $at, %hi(__osCurrentTime)
 /* 356E4 80034AE4 01406825 */  or         $t5, $t2, $zero
 /* 356E8 80034AE8 AC2D5624 */  sw         $t5, %lo(__osCurrentTime)($at)
@@ -203,15 +203,15 @@ glabel viMgrMain
 /* 35718 80034B18 8D6B5624 */  lw         $t3, %lo(__osCurrentTime)($t3)
 /* 3571C 80034B1C 01CFC023 */  subu       $t8, $t6, $t7
 /* 35720 80034B20 03004825 */  or         $t1, $t8, $zero
-/* 35724 80034B24 3C0A8009 */  lui        $t2, %hi(D_80095620)
+/* 35724 80034B24 3C0A8009 */  lui        $t2, %hi(__osCurrentTime_80095620)
 /* 35728 80034B28 012B6821 */  addu       $t5, $t1, $t3
-/* 3572C 80034B2C 8D4A5620 */  lw         $t2, %lo(D_80095620)($t2)
+/* 3572C 80034B2C 8D4A5620 */  lw         $t2, %lo(__osCurrentTime_80095620)($t2)
 /* 35730 80034B30 24080000 */  addiu      $t0, $zero, 0
 /* 35734 80034B34 01AB082B */  sltu       $at, $t5, $t3
 /* 35738 80034B38 00286021 */  addu       $t4, $at, $t0
-/* 3573C 80034B3C 3C018009 */  lui        $at, %hi(D_80095620)
+/* 3573C 80034B3C 3C018009 */  lui        $at, %hi(__osCurrentTime_80095620)
 /* 35740 80034B40 018A6021 */  addu       $t4, $t4, $t2
-/* 35744 80034B44 AC2C5620 */  sw         $t4, %lo(D_80095620)($at)
+/* 35744 80034B44 AC2C5620 */  sw         $t4, %lo(__osCurrentTime_80095620)($at)
 /* 35748 80034B48 3C018009 */  lui        $at, %hi(__osCurrentTime)
 /* 3574C 80034B4C AFB80024 */  sw         $t8, 0x24($sp)
 /* 35750 80034B50 1000FFAF */  b          .L80034A10

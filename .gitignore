@@ -4,6 +4,7 @@ build/
 expected/
 junk/
 __pycache__/
+include/ghidradump.h
 
 # files
 *.ld

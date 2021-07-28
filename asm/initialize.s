@@ -129,14 +129,14 @@ glabel osInitialize
 /* 34614 80033A14 8CA5F404 */  lw         $a1, %lo(osClockRateLo)($a1)
 /* 34618 80033A18 8C84F400 */  lw         $a0, %lo(osClockRate)($a0)
 /* 3461C 80033A1C 24060000 */  addiu      $a2, $zero, 0
-/* 34620 80033A20 0C00E70E */  jal        func_80039C38
+/* 34620 80033A20 0C00E70E */  jal        u64_multi
 /* 34624 80033A24 24070003 */   addiu     $a3, $zero, 3
 /* 34628 80033A28 AFA20020 */  sw         $v0, 0x20($sp)
 /* 3462C 80033A2C AFA30024 */  sw         $v1, 0x24($sp)
 /* 34630 80033A30 8FA50024 */  lw         $a1, 0x24($sp)
 /* 34634 80033A34 8FA40020 */  lw         $a0, 0x20($sp)
 /* 34638 80033A38 24060000 */  addiu      $a2, $zero, 0
-/* 3463C 80033A3C 0C00E6CE */  jal        func_80039B38
+/* 3463C 80033A3C 0C00E6CE */  jal        u64_div
 /* 34640 80033A40 24070004 */   addiu     $a3, $zero, 4
 /* 34644 80033A44 3C098000 */  lui        $t1, %hi(osResetType)
 /* 34648 80033A48 8D29030C */  lw         $t1, %lo(osResetType)($t1)

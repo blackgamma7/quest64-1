@@ -32,7 +32,7 @@ glabel osContInit
 /* 3B430 8003A830 8CE7F404 */  lw         $a3, %lo(osClockRateLo)($a3)
 /* 3B434 8003A834 8CC6F400 */  lw         $a2, %lo(osClockRate)($a2)
 /* 3B438 8003A838 34A5A120 */  ori        $a1, $a1, 0xa120
-/* 3B43C 8003A83C 0C00E70E */  jal        func_80039C38
+/* 3B43C 8003A83C 0C00E70E */  jal        u64_multi
 /* 3B440 8003A840 24040000 */   addiu     $a0, $zero, 0
 /* 3B444 8003A844 AFA20030 */  sw         $v0, 0x30($sp)
 /* 3B448 8003A848 AFA30034 */  sw         $v1, 0x34($sp)
@@ -40,7 +40,7 @@ glabel osContInit
 /* 3B450 8003A850 34E74240 */  ori        $a3, $a3, 0x4240
 /* 3B454 8003A854 8FA50034 */  lw         $a1, 0x34($sp)
 /* 3B458 8003A858 8FA40030 */  lw         $a0, 0x30($sp)
-/* 3B45C 8003A85C 0C00E6CE */  jal        func_80039B38
+/* 3B45C 8003A85C 0C00E6CE */  jal        u64_div
 /* 3B460 8003A860 24060000 */   addiu     $a2, $zero, 0
 /* 3B464 8003A864 8FB80070 */  lw         $t8, 0x70($sp)
 /* 3B468 8003A868 8FB90074 */  lw         $t9, 0x74($sp)
@@ -62,7 +62,7 @@ glabel osContInit
 /* 3B4A4 8003A8A4 8CE7F404 */  lw         $a3, %lo(osClockRateLo)($a3)
 /* 3B4A8 8003A8A8 8CC6F400 */  lw         $a2, %lo(osClockRate)($a2)
 /* 3B4AC 8003A8AC 34A5A120 */  ori        $a1, $a1, 0xa120
-/* 3B4B0 8003A8B0 0C00E70E */  jal        func_80039C38
+/* 3B4B0 8003A8B0 0C00E70E */  jal        u64_multi
 /* 3B4B4 8003A8B4 24040000 */   addiu     $a0, $zero, 0
 /* 3B4B8 8003A8B8 AFA20028 */  sw         $v0, 0x28($sp)
 /* 3B4BC 8003A8BC AFA3002C */  sw         $v1, 0x2c($sp)
@@ -70,7 +70,7 @@ glabel osContInit
 /* 3B4C4 8003A8C4 34E74240 */  ori        $a3, $a3, 0x4240
 /* 3B4C8 8003A8C8 8FA5002C */  lw         $a1, 0x2c($sp)
 /* 3B4CC 8003A8CC 8FA40028 */  lw         $a0, 0x28($sp)
-/* 3B4D0 8003A8D0 0C00E6CE */  jal        func_80039B38
+/* 3B4D0 8003A8D0 0C00E6CE */  jal        u64_div
 /* 3B4D4 8003A8D4 24060000 */   addiu     $a2, $zero, 0
 /* 3B4D8 8003A8D8 AFA20030 */  sw         $v0, 0x30($sp)
 /* 3B4DC 8003A8DC AFA30034 */  sw         $v1, 0x34($sp)

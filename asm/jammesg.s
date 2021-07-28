@@ -109,8 +109,8 @@ glabel osPiGetCmdQueue
 /* 40920 8003FD20 03E00008 */  jr         $ra
 /* 40924 8003FD24 00001025 */   or        $v0, $zero, $zero
 .L8003FD28:
-/* 40928 8003FD28 3C028007 */  lui        $v0, %hi(__osPiDevMgr_cmdQueue)
-/* 4092C 8003FD2C 8C42F428 */  lw         $v0, %lo(__osPiDevMgr_cmdQueue)($v0)
+/* 40928 8003FD28 3C028007 */  lui        $v0, %hi(__osPiDevMgr+0x8)
+/* 4092C 8003FD2C 8C42F428 */  lw         $v0, %lo(__osPiDevMgr+0x8)($v0)
 /* 40930 8003FD30 03E00008 */  jr         $ra
 /* 40934 8003FD34 00000000 */   nop
 /* 40938 8003FD38 00000000 */  nop

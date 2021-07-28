@@ -7,7 +7,7 @@
 
 .section .text, "ax"
 
-glabel func_80039AD0
+glabel ull_rshift
 /* 3A6D0 80039AD0 AFA40000 */  sw         $a0, ($sp)
 /* 3A6D4 80039AD4 AFA50004 */  sw         $a1, 4($sp)
 /* 3A6D8 80039AD8 AFA60008 */  sw         $a2, 8($sp)
@@ -38,7 +38,7 @@ glabel func_80039AFC
 /* 3A730 80039B30 03E00008 */  jr         $ra
 /* 3A734 80039B34 0002103F */   dsra32    $v0, $v0, 0
 
-glabel func_80039B38
+glabel u64_div
 /* 3A738 80039B38 AFA40000 */  sw         $a0, ($sp)
 /* 3A73C 80039B3C AFA50004 */  sw         $a1, 4($sp)
 /* 3A740 80039B40 AFA60008 */  sw         $a2, 8($sp)
@@ -114,7 +114,7 @@ glabel func_80039BDC
 /* 3A830 80039C30 03E00008 */  jr         $ra
 /* 3A834 80039C34 0002103F */   dsra32    $v0, $v0, 0
 
-glabel func_80039C38
+glabel u64_multi
 /* 3A838 80039C38 AFA40000 */  sw         $a0, ($sp)
 /* 3A83C 80039C3C AFA50004 */  sw         $a1, 4($sp)
 /* 3A840 80039C40 AFA60008 */  sw         $a2, 8($sp)
@@ -128,7 +128,7 @@ glabel func_80039C38
 /* 3A860 80039C60 03E00008 */  jr         $ra
 /* 3A864 80039C64 0002103F */   dsra32    $v0, $v0, 0
 
-glabel func_80039C68
+glabel u64_div_modulo
 /* 3A868 80039C68 87AF0012 */  lh         $t7, 0x12($sp)
 /* 3A86C 80039C6C AFA60008 */  sw         $a2, 8($sp)
 /* 3A870 80039C70 AFA7000C */  sw         $a3, 0xc($sp)

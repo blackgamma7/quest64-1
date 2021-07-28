@@ -450,7 +450,7 @@ glabel _loadOutputBuffer
 /* 49D70 80049170 03E00008 */  jr         $ra
 /* 49D74 80049174 00601025 */   or        $v0, $v1, $zero
 
-glabel alFxParamHdl
+glabel func_80049178
 /* 49D78 80049178 24A3FFFE */  addiu      $v1, $a1, -2
 /* 49D7C 8004917C 27BDFFE8 */  addiu      $sp, $sp, -0x18
 /* 49D80 80049180 306E0007 */  andi       $t6, $v1, 7
@@ -580,8 +580,8 @@ glabel alFxParamHdl
 /* 49F54 80049354 00000000 */  nop
 /* 49F58 80049358 46309480 */  add.d      $f18, $f18, $f16
 .L8004935C:
-/* 49F5C 8004935C 3C018007 */  lui        $at, %hi(CONVERT)
-/* 49F60 80049360 D42A23B0 */  ldc1       $f10, %lo(CONVERT)($at)
+/* 49F5C 8004935C 3C018007 */  lui        $at, %hi(D_800723B0)
+/* 49F60 80049360 D42A23B0 */  ldc1       $f10, %lo(D_800723B0)($at)
 /* 49F64 80049364 46003221 */  cvt.d.s    $f8, $f6
 /* 49F68 80049368 462A4403 */  div.d      $f16, $f8, $f10
 /* 49F6C 8004936C 46309102 */  mul.d      $f4, $f18, $f16

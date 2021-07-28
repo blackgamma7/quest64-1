@@ -7,7 +7,7 @@
 
 .section .text, "ax"
 
-glabel alCSeqGetLoc
+glabel func_80038590
 /* 39190 80038590 8C8E0004 */  lw         $t6, 4($a0)
 /* 39194 80038594 00803025 */  or         $a2, $a0, $zero
 /* 39198 80038598 00804025 */  or         $t0, $a0, $zero
@@ -50,7 +50,7 @@ glabel alCSeqGetLoc
 /* 39228 80038628 03E00008 */  jr         $ra
 /* 3922C 8003862C 00000000 */   nop
 
-glabel alCSeqSetLoc
+glabel func_80038630
 /* 39230 80038630 8CAE0000 */  lw         $t6, ($a1)
 /* 39234 80038634 00801825 */  or         $v1, $a0, $zero
 /* 39238 80038638 00803825 */  or         $a3, $a0, $zero
@@ -555,11 +555,11 @@ glabel alCSeqNewMarker
 /* 39964 80038D64 03E00008 */  jr         $ra
 /* 39968 80038D68 27BD0150 */   addiu     $sp, $sp, 0x150
 
-glabel alCSeqGetTicks
+glabel func_80038D6C
 /* 3996C 80038D6C 03E00008 */  jr         $ra
 /* 39970 80038D70 8C82000C */   lw        $v0, 0xc($a0)
 
-glabel alCSeqSecToTicks
+glabel func_80038D74
 /* 39974 80038D74 8C8E0000 */  lw         $t6, ($a0)
 /* 39978 80038D78 44856000 */  mtc1       $a1, $f12
 /* 3997C 80038D7C 3C018007 */  lui        $at, %hi(D_80071E50)
@@ -628,7 +628,7 @@ glabel alCSeqSecToTicks
 /* 39A68 80038E68 03E00008 */  jr         $ra
 /* 39A6C 80038E6C 00000000 */   nop
 
-glabel alCSeqTicksToSec
+glabel func_80038E70
 /* 39A70 80038E70 44852000 */  mtc1       $a1, $f4
 /* 39A74 80038E74 44864000 */  mtc1       $a2, $f8
 /* 39A78 80038E78 3C014F80 */  lui        $at, 0x4f80

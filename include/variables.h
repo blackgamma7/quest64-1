@@ -14,7 +14,12 @@ extern u32 ShadowTally;
 //inventoty
 extern u8 LastInvSlot;
 extern s8 InventorySlots[150];
-
+typedef struct WingStruct{
+    u16 Map;
+    u16 Submap;
+    vec3 coords;
+};
+struct WingStruct wingArray[6];
 
 //player/enemy stats
 typedef struct playerStats{
@@ -24,10 +29,10 @@ typedef struct playerStats{
     s16 MP[2]; //curr,Max
     s16 AGL;
     s16 DEF;
-    s32 ElementTally;
+    s32 SpiritEXP; //enemies use as EXP yeild
     u32 unk0x14;
-    vec3 position;
-    u8 Elements[4];
+    vec3 hitbox; //maybe wrong
+    u8 Spirits[4];
     s16 HPEXP;
     s16 MPEXP;
     s16 AGLEXP;
@@ -39,10 +44,9 @@ typedef struct playerStats{
     u8 ElemLV;
     //u8 pad[3]
 };
-extern struct PlayerStats BrianStartingData;
-extern struct PlayerStats brianData;
+extern struct playerStats BrianStartingData;
+extern struct playerStats brianData;
 //chest
-
 extern u8 collectedChestsBitfield[32];
 
 //camera
@@ -75,5 +79,94 @@ typedef struct CameraStruct{
     float unk0x78;
     float unk0x7c;
     u32 unk0x80;
+    float unk0x84;
 };
 extern struct CameraStruct gCamera;
+//actors
+
+typedef struct ActorStruct{
+    vec3 position;
+    vec3 rotation;
+    vec3 velocity;
+    vec2 scale;
+    vec3 shadowRot;
+    vec3 unk0x38;
+    vec3 unk0x44;
+    u16 ModelID;
+    u16 unk0x52;
+    u16 unk0x54;
+    u16 unk0x56;
+    u16 unk0x58;
+    u16 unk0x5a;
+    u16 unk0x5c;
+    u16 unk0x5e;
+    u16 Flags;
+    u16 EventFlag; //chests use as ID
+    struct playerStats* player_pointer;
+    void* ptr0x68;
+};
+struct ActorStruct BrianActor;
+struct ActorStruct bossActor;
+typedef struct NPCStruct{
+    u16 unk0x0;
+    u16 unk0x2;
+    vec3 unk0x4;
+    float unk0x10;
+    struct ActorStruct actor;
+    void* ptr0x80;
+};
+extern NPCStruct npcData[16];
+
+
+//controller
+extern u8 controller_no;
+extern u8 JoystickX, JoystickY;
+extern u16 buttonPressed, pressedButton, ButtonCompliment;
+extern OSMesgQueue cont_mesgq;
+extern OSPfs pfs_dat[4];
+extern OSContPad ControllerInput[4];
+extern u8 save_slot_states[20][2];
+
+//OS discrpancies (item from OS files with some differences)
+/*
+struct AlSndPlayer {
+    struct ALPlayer node;
+    struct ALEventQueue evtq;
+    struct ALEvent nextEvent;
+    struct ALSynth * drvr;
+    s32 target;
+    void* unk0x3c; //another pointer?
+    void * sndState;
+    s32 maxSounds;
+    ALMicroTime frameTime;
+    ALMicroTime nextDelta;
+    ALMicroTime curTime;
+};*/
+
+struct Scheduler_q64 { /* Modified(old?) OSSched for Quest64 */
+    u16 unk0x0;
+    u16 unk0x2;
+    struct OSMesgQueue MQA;
+    OSMesg MBuffA[8];
+    struct OSMesgQueue MQB;
+    OSMesg MBuffB[8];
+    struct OSMesgQueue MQC;
+    OSMesg MBuffC[8];
+    struct OSMesgQueue MQD;
+    OSMesg MBuffD[8];
+    struct OSMesgQueue MQE;
+    OSMesg MBuffE[8];
+    struct OSMesgQueue MQF;
+    OSMesg MBuffF[8];
+    u32 unk0x154;
+    struct OSThread ThreadA;
+    struct OSThread ThreadB;
+    struct OSThread ThreadC;
+    struct OSScTask * TaskA;
+    struct OSScTask * TaskB;
+    struct OSScTask * TaskC;
+    struct OSScTask * TaskD;
+    struct OSScTask * TaskE;
+};
+
+extern Scheduler_q64 Sched;

@@ -8,8 +8,8 @@
 .section .text, "ax"
 
 glabel guPositionF
-/* 35B70 80034F70 3C018007 */  lui        $at, %hi(dtor)
-/* 35B74 80034F74 C4201B30 */  lwc1       $f0, %lo(dtor)($at)
+/* 35B70 80034F70 3C018007 */  lui        $at, %hi(D_80071B30)
+/* 35B74 80034F74 C4201B30 */  lwc1       $f0, %lo(D_80071B30)($at)
 /* 35B78 80034F78 44856000 */  mtc1       $a1, $f12
 /* 35B7C 80034F7C 44867000 */  mtc1       $a2, $f14
 /* 35B80 80034F80 44878000 */  mtc1       $a3, $f16

@@ -8,12 +8,12 @@
 .section .text, "ax"
 
 glabel func_8003CA60
-/* 3D660 8003CA60 3C1A8004 */  lui        $k0, %hi(func_8003CA70)
-/* 3D664 8003CA64 275ACA70 */  addiu      $k0, $k0, %lo(func_8003CA70)
+/* 3D660 8003CA60 3C1A8004 */  lui        $k0, %hi(Exception_handler)
+/* 3D664 8003CA64 275ACA70 */  addiu      $k0, $k0, %lo(Exception_handler)
 /* 3D668 8003CA68 03400008 */  jr         $k0
 /* 3D66C 8003CA6C 00000000 */   nop
 
-glabel func_8003CA70
+glabel Exception_handler
 /* 3D670 8003CA70 3C1A8009 */  lui        $k0, %hi(__osThreadSave)
 /* 3D674 8003CA74 275A56A0 */  addiu      $k0, $k0, %lo(__osThreadSave)
 /* 3D678 8003CA78 FF410020 */  sd         $at, 0x20($k0)
@@ -89,8 +89,8 @@ glabel func_8003CA70
 /* 3D790 8003CB90 AF4B0118 */  sw         $t3, 0x118($k0)
 /* 3D794 8003CB94 0369D825 */  or         $k1, $k1, $t1
 .L8003CB98:
-/* 3D798 8003CB98 3C09A430 */  lui        $t1, %hi(D_A430000C)
-/* 3D79C 8003CB9C 8D29000C */  lw         $t1, %lo(D_A430000C)($t1)
+/* 3D798 8003CB98 3C09A430 */  lui        $t1, %hi(MI_INTR_MASK_REG)
+/* 3D79C 8003CB9C 8D29000C */  lw         $t1, %lo(MI_INTR_MASK_REG)($t1)
 /* 3D7A0 8003CBA0 1120000B */  beqz       $t1, .L8003CBD0
 /* 3D7A4 8003CBA4 00000000 */   nop
 /* 3D7A8 8003CBA8 3C088007 */  lui        $t0, %hi(__OSGlobalIntMask)
@@ -200,8 +200,8 @@ glabel func_8003CA70
 /* 3D934 8003CD34 3C088007 */  lui        $t0, %hi(__OSGlobalIntMask)
 /* 3D938 8003CD38 2508F410 */  addiu      $t0, $t0, %lo(__OSGlobalIntMask)
 /* 3D93C 8003CD3C 8D080000 */  lw         $t0, ($t0)
-/* 3D940 8003CD40 3C11A430 */  lui        $s1, %hi(D_A4300008)
-/* 3D944 8003CD44 8E310008 */  lw         $s1, %lo(D_A4300008)($s1)
+/* 3D940 8003CD40 3C11A430 */  lui        $s1, %hi(MI_INTR)
+/* 3D944 8003CD44 8E310008 */  lw         $s1, %lo(MI_INTR)($s1)
 /* 3D948 8003CD48 00084402 */  srl        $t0, $t0, 0x10
 /* 3D94C 8003CD4C 02288824 */  and        $s1, $s1, $t0
 /* 3D950 8003CD50 32290001 */  andi       $t1, $s1, 1
@@ -477,8 +477,8 @@ glabel __osEnqueueAndYield
 /* 3DD34 8003D134 0369D825 */  or         $k1, $k1, $t1
 /* 3DD38 8003D138 ACBB0118 */  sw         $k1, 0x118($a1)
 .L8003D13C:
-/* 3DD3C 8003D13C 3C1BA430 */  lui        $k1, %hi(D_A430000C)
-/* 3DD40 8003D140 8F7B000C */  lw         $k1, %lo(D_A430000C)($k1)
+/* 3DD3C 8003D13C 3C1BA430 */  lui        $k1, %hi(MI_INTR_MASK_REG)
+/* 3DD40 8003D140 8F7B000C */  lw         $k1, %lo(MI_INTR_MASK_REG)($k1)
 /* 3DD44 8003D144 1360000B */  beqz       $k1, .L8003D174
 /* 3DD48 8003D148 00000000 */   nop
 /* 3DD4C 8003D14C 3C1A8007 */  lui        $k0, %hi(__OSGlobalIntMask)
@@ -618,8 +618,8 @@ glabel __osDispatchThread
 /* 3DF34 8003D334 275A1AB0 */  addiu      $k0, $k0, %lo(__osRcpImTable)
 /* 3DF38 8003D338 037AD821 */  addu       $k1, $k1, $k0
 /* 3DF3C 8003D33C 977B0000 */  lhu        $k1, ($k1)
-/* 3DF40 8003D340 3C1AA430 */  lui        $k0, %hi(D_A430000C)
-/* 3DF44 8003D344 275A000C */  addiu      $k0, $k0, %lo(D_A430000C)
+/* 3DF40 8003D340 3C1AA430 */  lui        $k0, %hi(MI_INTR_MASK_REG)
+/* 3DF44 8003D344 275A000C */  addiu      $k0, $k0, %lo(MI_INTR_MASK_REG)
 /* 3DF48 8003D348 AF5B0000 */  sw         $k1, ($k0)
 /* 3DF4C 8003D34C 00000000 */  nop
 /* 3DF50 8003D350 00000000 */  nop
