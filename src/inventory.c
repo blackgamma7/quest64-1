@@ -16,7 +16,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/inventory.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseKeyItem.s")
 s32 UseKeyItem(s32 arg0, void* arg1) {
     return 0;
 }
@@ -26,7 +25,8 @@ s32 UseKeyItem(s32 arg0, void* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/UNK_SpellItem.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002233C.s")
+void func_8002233C(s32 arg0, s32 arg1) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002234C.s")
 

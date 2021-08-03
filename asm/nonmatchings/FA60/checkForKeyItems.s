@@ -1,12 +1,12 @@
 glabel checkForKeyItems
 /* 10BE8 8000FFE8 94820014 */  lhu        $v0, 0x14($a0)
-/* 10BEC 8000FFEC 3C068009 */  lui        $a2, %hi(invSlot)
-/* 10BF0 8000FFF0 24C6CF78 */  addiu      $a2, $a2, %lo(invSlot)
+/* 10BEC 8000FFEC 3C068009 */  lui        $a2, %hi(gInvSlot)
+/* 10BF0 8000FFF0 24C6CF78 */  addiu      $a2, $a2, %lo(gInvSlot)
 /* 10BF4 8000FFF4 304E0030 */  andi       $t6, $v0, 0x30
 /* 10BF8 8000FFF8 11C0001E */  beqz       $t6, .L80010074
 /* 10BFC 8000FFFC 24030001 */   addiu     $v1, $zero, 1
-/* 10C00 80010000 3C038009 */  lui        $v1, %hi(inventoryOverflow)
-/* 10C04 80010004 2463D00E */  addiu      $v1, $v1, %lo(inventoryOverflow)
+/* 10C00 80010000 3C038009 */  lui        $v1, %hi(gInventoryOverflow)
+/* 10C04 80010004 2463D00E */  addiu      $v1, $v1, %lo(gInventoryOverflow)
 /* 10C08 80010008 94850016 */  lhu        $a1, 0x16($a0)
 /* 10C0C 8001000C 90CF0000 */  lbu        $t7, ($a2)
 .L80010010:
@@ -19,8 +19,8 @@ glabel checkForKeyItems
 .L80010028:
 /* 10C28 80010028 1300000A */  beqz       $t8, .L80010054
 /* 10C2C 8001002C 3C088009 */   lui       $t0, 0x8009
-/* 10C30 80010030 3C198009 */  lui        $t9, %hi(inventoryOverflow)
-/* 10C34 80010034 2739D00E */  addiu      $t9, $t9, %lo(inventoryOverflow)
+/* 10C30 80010030 3C198009 */  lui        $t9, %hi(gInventoryOverflow)
+/* 10C34 80010034 2739D00E */  addiu      $t9, $t9, %lo(gInventoryOverflow)
 /* 10C38 80010038 00D9082B */  sltu       $at, $a2, $t9
 /* 10C3C 8001003C 10200003 */  beqz       $at, .L8001004C
 /* 10C40 80010040 00000000 */   nop

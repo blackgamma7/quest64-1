@@ -75,11 +75,11 @@ glabel changeTimeOfDay
 /* 10FE4 800103E4 11200024 */  beqz       $t1, .L80010478
 /* 10FE8 800103E8 00000000 */   nop
 /* 10FEC 800103EC 954AC592 */  lhu        $t2, %lo(BattleState)($t2)
-/* 10FF0 800103F0 3C0C8008 */  lui        $t4, %hi(HUDState)
+/* 10FF0 800103F0 3C0C8008 */  lui        $t4, %hi(gHUDState)
 /* 10FF4 800103F4 314B0001 */  andi       $t3, $t2, 1
 /* 10FF8 800103F8 15600030 */  bnez       $t3, .L800104BC
 /* 10FFC 800103FC 00000000 */   nop
-/* 11000 80010400 8D8CB2E4 */  lw         $t4, %lo(HUDState)($t4)
+/* 11000 80010400 8D8CB2E4 */  lw         $t4, %lo(gHUDState)($t4)
 /* 11004 80010404 3C0E8009 */  lui        $t6, %hi(D_8008C638)
 /* 11008 80010408 318D0003 */  andi       $t5, $t4, 3
 /* 1100C 8001040C 15A0002B */  bnez       $t5, .L800104BC
