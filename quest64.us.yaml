@@ -29,7 +29,7 @@ segments:
       - [0x97B0, asm,monsters]
       - [0xC120, asm,monsterBoss]
       - [0xC910, asm,map]
-      - [0xFA60, asm]
+      - [0xFA60, c]
       - [0x12450, c, shadow ]
       - [0x12740, c,treasure]
       - [0x12DF0, c,spirit]

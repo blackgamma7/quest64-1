@@ -23,8 +23,7 @@ struct ItemStruct{
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/inventory.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseKeyItem.s")
-s32 UseKeyItem( void* arg0, void* arg1) {return 0;}
+s32 UseKeyItem(s32 arg0, void* arg1) {return 0;}
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/useHealingItem.s")
 /* Syntax errors?
 s32 useHealingItem(ActorStruct* A,ItemStruct* I){
@@ -40,7 +39,8 @@ s32 useHealingItem(ActorStruct* A,ItemStruct* I){
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/UNK_SpellItem.s")
 
-void func_8002233C(void* x, void* y){}
+void func_8002233C(s32 arg0, s32 arg1) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/item_heal.s")
 

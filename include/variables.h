@@ -4,6 +4,8 @@ typedef float vec2[2]; //for 2d vectors
 typedef float vec3[3]; //for 3d vectors
 typedef float MtxF[4][4]; //4x4 float matricies
 
+extern s8 gBossSpawnData;
+
 //shadow
 struct ShadowTransform{
     vec3 pos;
@@ -178,3 +180,16 @@ struct Scheduler_q64 { // Modified(old?) OSSched for Quest64
 };
 
 extern struct Scheduler_q64 Sched;
+//inventory
+extern u8 gLastInvSlot;
+
+
+//unsorted
+extern u32 D_8008F288;
+
+extern u32 D_8008F620;
+extern s16 D_8008F68C;
+
+extern u32 D_80085A14;
+
+//boss stuff
