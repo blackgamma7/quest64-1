@@ -86,3 +86,4 @@
 #define MAP_WORLD_OF_MAMMON 	0x22
 #define MAP_NEPTY 		0x23
 
+extern u8 binTbl[8]; //for bitwise setters and getters.

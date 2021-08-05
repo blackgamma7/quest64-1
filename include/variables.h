@@ -1,28 +1,30 @@
+#include <ultra64.h>
+
 typedef float vec2[2]; //for 2d vectors
 typedef float vec3[3]; //for 3d vectors
 typedef float MtxF[4][4]; //4x4 float matricies
 
 //shadow
-typedef struct ShadowTransform{
+struct ShadowTransform{
     vec3 pos;
     vec3 rot;
     float scale;
 };
-extern ShadowTransform shadowTransArray[64];
+extern struct ShadowTransform shadowTransArray[64];
 extern u32 ShadowTally;
 
 //inventoty
 extern u8 LastInvSlot;
 extern s8 InventorySlots[150];
-typedef struct WingStruct{
+struct WingStruct{
     u16 Map;
     u16 Submap;
     vec3 coords;
 };
-struct WingStruct wingArray[6];
+extern struct WingStruct wingArray[6];
 
 //player/enemy stats
-typedef struct playerStats{
+struct PlayerStats{
     u16 unk0x0; //ID?
     u16 unk0x2; //modelID?
     s16 HP[2]; //Max,curr
@@ -44,14 +46,14 @@ typedef struct playerStats{
     u8 ElemLV;
     //u8 pad[3]
 };
-extern struct playerStats BrianStartingData;
-extern struct playerStats brianData;
-extern struct playerStats bossStats[8];
+extern struct PlayerStats BrianStartingData;
+extern struct PlayerStats brianData;
+extern struct PlayerStats bossStats[8];
 //chest
 extern u8 collectedChestsBitfield[32];
 
 //camera
-typedef struct CameraStruct{
+struct CameraStruct{
     u32 FuncIndex;
     u32 unk0x4;
     u16 BehindSomething;
@@ -79,13 +81,13 @@ typedef struct CameraStruct{
     float unk0x74;
     float unk0x78;
     float unk0x7c;
-    ActorStruct* Target;
+    struct ActorStruct* target;
     float unk0x84;
 };
 extern struct CameraStruct gCamera;
 //actors
 
-typedef struct ActorStruct{
+struct ActorStruct{
     vec3 position;
     vec3 rotation;
     vec3 velocity;
@@ -103,12 +105,12 @@ typedef struct ActorStruct{
     u16 unk0x5e;
     u16 Flags;
     u16 EventFlag; //chests use as ID
-    struct playerStats* player_pointer;
+    struct PlayerStats* player_pointer;
     void* ptr0x68;
 };
-struct ActorStruct BrianActor;
-struct ActorStruct bossActor;
-typedef struct NPCStruct{
+extern struct ActorStruct BrianActor;
+extern struct ActorStruct bossActor;
+struct NPCStruct{
     u16 unk0x0;
     u16 unk0x2;
     vec3 unk0x4;
@@ -116,7 +118,7 @@ typedef struct NPCStruct{
     struct ActorStruct actor;
     void* ptr0x80;
 };
-extern NPCStruct npcData[16];
+extern struct NPCStruct npcData[16];
 
 
 //controller
@@ -144,30 +146,35 @@ struct AlSndPlayer {
     ALMicroTime curTime;
 };*/
 
-struct Scheduler_q64 { /* Modified(old?) OSSched for Quest64 */
+struct Scheduler_q64 { // Modified(old?) OSSched for Quest64
     u16 unk0x0;
     u16 unk0x2;
-    struct OSMesgQueue MQA;
+    OSMesgQueue MQA;
     OSMesg MBuffA[8];
-    struct OSMesgQueue MQB;
+    OSMesgQueue MQB;
     OSMesg MBuffB[8];
-    struct OSMesgQueue MQC;
+    OSMesgQueue MQC;
     OSMesg MBuffC[8];
-    struct OSMesgQueue MQD;
+    OSMesgQueue MQD;
     OSMesg MBuffD[8];
-    struct OSMesgQueue MQE;
+    OSMesgQueue MQE;
     OSMesg MBuffE[8];
-    struct OSMesgQueue MQF;
+    OSMesgQueue MQF;
     OSMesg MBuffF[8];
     u32 unk0x154;
-    struct OSThread ThreadA;
-    struct OSThread ThreadB;
-    struct OSThread ThreadC;
-    struct OSScTask * TaskA;
-    struct OSScTask * TaskB;
-    struct OSScTask * TaskC;
-    struct OSScTask * TaskD;
-    struct OSScTask * TaskE;
+    OSThread ThreadA;
+    OSThread ThreadB;
+    OSThread ThreadC;/*
+    OSScTask* TaskA;
+    OSScTask* TaskB;
+    OSScTask* TaskC;
+    OSScTask* TaskD;
+    OSScTask* TaskE;*/
+    void* TaskA;
+    void* TaskB;
+    void* TaskC;
+    void* TaskD;
+    void* TaskE;
 };
 
-extern Scheduler_q64 Sched;
+extern struct Scheduler_q64 Sched;
