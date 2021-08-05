@@ -21,13 +21,13 @@ segments:
     subsegments:
       - [0x1000, asm]
       - [0x1050, c, init]
-      - [0x1130, asm,scheduler] #uses modified struct, see /include
+      - [0x1130, c,scheduler] #uses modified struct, see /include
       - [0x1850, asm,mainGame]
       - [0x1AD0, asm,gameModes]
       - [0x33D0, asm,player]
       - [0x8650, asm,NPC]
       - [0x97B0, asm,monsters]
-      - [0xC120, asm,monsterBoss]
+      - [0xC120, c,monsterBoss]
       - [0xC910, asm,map]
       - [0xFA60, c]
       - [0x12450, c, shadow ]
@@ -46,7 +46,7 @@ segments:
       - [0x23BD0, asm, math]
       - [0x24E60, asm,LoadData]
       - [0x24f30, asm]
-      - [0x25290, asm,Sound]
+      - [0x25290, c,Sound]
       - [0x271F0, asm,BGM]
       - [0x27640, asm,pauseMenu]
       - [0x2C110, asm,SaveData]
