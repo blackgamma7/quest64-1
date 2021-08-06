@@ -116,14 +116,8 @@ Discarded input sections
  .pdr           0x0000000000000000        0x0 build/asm/1E4B0.s.o
  .gnu.attributes
                 0x0000000000000000       0x10 build/asm/1E4B0.s.o
- .data          0x0000000000000000        0x0 build/asm/1EDF0.s.o
- .bss           0x0000000000000000        0x0 build/asm/1EDF0.s.o
- .reginfo       0x0000000000000000       0x18 build/asm/1EDF0.s.o
- .MIPS.abiflags
-                0x0000000000000000       0x18 build/asm/1EDF0.s.o
- .pdr           0x0000000000000000        0x0 build/asm/1EDF0.s.o
- .gnu.attributes
-                0x0000000000000000       0x10 build/asm/1EDF0.s.o
+ .options       0x0000000000000000       0x20 build/src/1EDF0.c.o
+ .reginfo       0x0000000000000000       0x18 build/src/1EDF0.c.o
  .options       0x0000000000000000       0x20 build/src/inventory.c.o
  .reginfo       0x0000000000000000       0x18 build/src/inventory.c.o
  .data          0x0000000000000000        0x0 build/asm/screen_dim.s.o
@@ -1541,7 +1535,7 @@ LOAD build/asm/191F0.s.o
 LOAD build/asm/1BCD0.s.o
 LOAD build/asm/1D160.s.o
 LOAD build/asm/1E4B0.s.o
-LOAD build/asm/1EDF0.s.o
+LOAD build/src/1EDF0.c.o
 LOAD build/src/inventory.c.o
 LOAD build/asm/screen_dim.s.o
 LOAD build/asm/23740.s.o
@@ -1718,10 +1712,17 @@ LOAD build/asm/filter.s.o
 LOAD build/asm/reverb.s.o
 LOAD build/asm/seq.s.o
 LOAD build/asm/synsetpriority.s.o
-LOAD build/assets/4AAF0.bin.o
-LOAD build/assets/4AD20.bin.o
+LOAD build/assets/ucode_boot.bin.o
+LOAD build/assets/ucode.bin.o
+LOAD build/assets/4BFF0.bin.o
+LOAD build/assets/ucode_data.bin.o
+LOAD build/assets/737D0.bin.o
 LOAD build/assets/73A90.bin.o
 LOAD build/assets/D4B3C0.bin.o
+LOAD build/assets/Instrument_ctl.bin.o
+LOAD build/assets/Instrument_tbl.bin.o
+LOAD build/assets/SE_ctl.bin.o
+LOAD build/assets/SE_tbl.bin.o
 LOAD build/assets/trailer.bin.o
                 0x0000000001000000                __romPos = 0x0
                 0x0000000001000000                . = __romPos
@@ -1729,9 +1730,15 @@ LOAD build/assets/trailer.bin.o
                 0x0000000000000000                header_VRAM = ADDR (.header)
 
 .header         0x0000000000000000       0x40
+                0x0000000000000000                header_TEXT_START = .
+                0x0000000000000000                header_TEXT_END = .
+                0x0000000000000000                header_DATA_START = .
                 0x0000000000000000                header_s = .
  build/asm/header.s.o(.data)
  .data          0x0000000000000000       0x40 build/asm/header.s.o
+                0x0000000000000040                header_DATA_END = .
+                0x0000000000000040                header_BSS_START = .
+                0x0000000000000040                header_BSS_END = .
                 0x0000000000000040                header_ROM_END = 0x40
                 0x0000000001000000                __romPos = 0x40
                 0x0000000001000000                __romPos = 0x40
@@ -1740,11 +1747,17 @@ LOAD build/assets/trailer.bin.o
                 0x0000000000000040                boot_VRAM = ADDR (.boot)
 
 .boot           0x0000000000000040      0xfc0
+                0x0000000000000040                boot_TEXT_START = .
+                0x0000000000000040                boot_TEXT_END = .
+                0x0000000000000040                boot_DATA_START = .
                 0x0000000000000040                boot_bin = .
  build/assets/boot.bin.o(.data)
  .data          0x0000000000000040      0xfc0 build/assets/boot.bin.o
                 0x0000000000000040                _binary_assets_boot_bin_start
                 0x0000000000001000                _binary_assets_boot_bin_end
+                0x0000000000001000                boot_DATA_END = .
+                0x0000000000001000                boot_BSS_START = .
+                0x0000000000001000                boot_BSS_END = .
                 0x0000000000001000                boot_ROM_END = 0x1000
                 0x0000000001000000                __romPos = 0x1000
                 0x0000000001000000                __romPos = 0x1000
@@ -1753,16 +1766,14 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080000400                main_VRAM = ADDR (.main)
 
 .main           0x0000000080000400    0x49af0 load address 0x0000000000001000
-                0x0000000080000400                _1000_s = .
+                0x0000000080000400                main_TEXT_START = .
  build/asm/1000.s.o(.text)
  .text          0x0000000080000400       0x50 build/asm/1000.s.o
                 0x0000000080000400                romMain
-                0x0000000080000450                init_c = .
  build/src/init.c.o(.text)
  .text          0x0000000080000450       0xe0 build/src/init.c.o
                 0x0000000080000450                func_80000450
                 0x00000000800004b0                func_800004B0
-                0x0000000080000530                _1130_c = .
  build/src/1130.c.o(.text)
  .text          0x0000000080000530      0x720 build/src/1130.c.o
                 0x0000000080000530                func_80000530
@@ -1776,7 +1787,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080000900                func_80000900
                 0x0000000080000a80                func_80000A80
                 0x0000000080000bb4                func_80000BB4
-                0x0000000080000c50                _1850_s = .
  build/asm/1850.s.o(.text)
  .text          0x0000000080000c50     0x1b80 build/asm/1850.s.o
                 0x0000000080000c50                gameMain
@@ -1789,7 +1799,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008000227c                Mode_TitleScreen
                 0x0000000080002428                Mode_OPCredits_and_Story
                 0x00000000800025e8                Mode_EndCredits
-                0x00000000800027d0                _33D0_s = .
  build/asm/33D0.s.o(.text)
  .text          0x00000000800027d0     0x5280 build/asm/33D0.s.o
                 0x00000000800027d0                SetDataForNewGame
@@ -1837,7 +1846,6 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800072a8                func_800072A8
                 0x00000000800073cc                calculateBattleAgilXP
                 0x00000000800074a0                func_800074A0
-                0x0000000080007a50                _8650_s = .
  build/asm/8650.s.o(.text)
  .text          0x0000000080007a50     0x1160 build/asm/8650.s.o
                 0x0000000080007a50                LoadNPCs_and_CutsceneData
@@ -1850,7 +1858,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080008948                func_80008948
                 0x0000000080008a00                printNPCText
                 0x0000000080008ad8                func_80008AD8
-                0x0000000080008bb0                _97B0_s = .
  build/asm/97B0.s.o(.text)
  .text          0x0000000080008bb0     0x2970 build/asm/97B0.s.o
                 0x0000000080008bb0                func_80008BB0
@@ -1882,7 +1889,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008000b2b8                VOID_Reset7d0c4
                 0x000000008000b2c8                func_8000B2C8
                 0x000000008000b300                func_8000B300
-                0x000000008000b520                C120_c = .
  build/src/C120.c.o(.text)
  .text          0x000000008000b520      0x7f0 build/src/C120.c.o
                 0x000000008000b520                initSomeBossAddress
@@ -1894,7 +1900,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008000ba0c                func_8000BA0C
                 0x000000008000ba4c                playBossIntro
                 0x000000008000bb68                UNK_BossBattleSomething
-                0x000000008000bd10                C910_s = .
  build/asm/C910.s.o(.text)
  .text          0x000000008000bd10     0x3150 build/asm/C910.s.o
                 0x000000008000bd10                VOID_UNK_MoreMapTransitionStuff
@@ -1918,7 +1923,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008000e774                func_8000E774
                 0x000000008000eb30                func_8000EB30
                 0x000000008000edd8                func_8000EDD8
-                0x000000008000ee60                FA60_c = .
  build/src/FA60.c.o(.text)
  .text          0x000000008000ee60     0x29f0 build/src/FA60.c.o
                 0x000000008000ee60                func_8000EE60
@@ -1948,13 +1952,11 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800111d8                func_800111D8
                 0x00000000800111f8                func_800111F8
                 0x0000000080011768                func_80011768
-                0x0000000080011850                shadow_c = .
  build/src/shadow.c.o(.text)
  .text          0x0000000080011850      0x2f0 build/src/shadow.c.o
                 0x0000000080011850                ResetShadowSomething
                 0x0000000080011860                drawSomeShadow
                 0x00000000800118d4                func_800118D4
-                0x0000000080011b40                _12740_s = .
  build/asm/12740.s.o(.text)
  .text          0x0000000080011b40     0x2d00 build/asm/12740.s.o
                 0x0000000080011b40                initChestData
@@ -1989,7 +1991,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080014434                func_80014434
                 0x000000008001459c                func_8001459C
                 0x0000000080014720                func_80014720
-                0x0000000080014840                _15440_s = .
  build/asm/15440.s.o(.text)
  .text          0x0000000080014840     0x3db0 build/asm/15440.s.o
                 0x0000000080014840                func_80014840
@@ -2052,7 +2053,6 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800183c4                func_800183C4
                 0x0000000080018484                func_80018484
                 0x0000000080018524                func_80018524
-                0x00000000800185f0                _191F0_s = .
  build/asm/191F0.s.o(.text)
  .text          0x00000000800185f0     0x2ae0 build/asm/191F0.s.o
                 0x00000000800185f0                func_800185F0
@@ -2085,14 +2085,12 @@ LOAD build/assets/trailer.bin.o
                 0x000000008001a398                func_8001A398
                 0x000000008001a620                func_8001A620
                 0x000000008001a834                func_8001A834
-                0x000000008001b0d0                _1BCD0_s = .
  build/asm/1BCD0.s.o(.text)
  .text          0x000000008001b0d0     0x1490 build/asm/1BCD0.s.o
                 0x000000008001b0d0                func_8001B0D0
                 0x000000008001b108                particlePosSomething
                 0x000000008001b19c                func_8001B19C
                 0x000000008001b448                func_8001B448
-                0x000000008001c560                _1D160_s = .
  build/asm/1D160.s.o(.text)
  .text          0x000000008001c560     0x1350 build/asm/1D160.s.o
                 0x000000008001c560                func_8001C560
@@ -2107,7 +2105,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008001d820                func_8001D820
                 0x000000008001d828                calculateDroppedItem
                 0x000000008001d89c                func_8001D89C
-                0x000000008001d8b0                _1E4B0_s = .
  build/asm/1E4B0.s.o(.text)
  .text          0x000000008001d8b0      0x940 build/asm/1E4B0.s.o
                 0x000000008001d8b0                updateAnim
@@ -2116,9 +2113,8 @@ LOAD build/assets/trailer.bin.o
                 0x000000008001dc78                func_8001DC78
                 0x000000008001e0ac                animateBrian
                 0x000000008001e138                func_8001E138
-                0x000000008001e1f0                _1EDF0_s = .
- build/asm/1EDF0.s.o(.text)
- .text          0x000000008001e1f0     0x2f80 build/asm/1EDF0.s.o
+ build/src/1EDF0.c.o(.text)
+ .text          0x000000008001e1f0     0x2f80 build/src/1EDF0.c.o
                 0x000000008001e1f0                func_8001E1F0
                 0x000000008001e25c                HUDSometing
                 0x000000008001e7fc                func_8001E7FC
@@ -2150,7 +2146,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080020e2c                func_80020E2C
                 0x0000000080020f8c                func_80020F8C
                 0x00000000800210fc                func_800210FC
-                0x0000000080021170                inventory_c = .
  build/src/inventory.c.o(.text)
  .text          0x0000000080021170     0x1770 build/src/inventory.c.o
                 0x0000000080021170                initInventory
@@ -2170,18 +2165,15 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080022490                useWings
                 0x000000008002260c                func_8002260C
                 0x000000008002263c                drawItemMenu
-                0x00000000800228e0                screen_dim_s = .
  build/asm/screen_dim.s.o(.text)
  .text          0x00000000800228e0      0x260 build/asm/screen_dim.s.o
                 0x00000000800228e0                initScreenDimStateAndTimer
                 0x00000000800228f8                unk_dimsScreenWhenOpeningMenu
                 0x0000000080022b08                dimScreen
-                0x0000000080022b40                _23740_s = .
  build/asm/23740.s.o(.text)
  .text          0x0000000080022b40      0x490 build/asm/23740.s.o
                 0x0000000080022b40                UNK_AnimateNPC
                 0x0000000080022f60                func_80022F60
-                0x0000000080022fd0                srand_s = .
  build/asm/srand.s.o(.text)
  .text          0x0000000080022fd0     0x1290 build/asm/srand.s.o
                 0x0000000080022fd0                srand
@@ -2203,12 +2195,10 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080023df4                func_80023DF4
                 0x0000000080023e80                func_80023E80
                 0x000000008002413c                func_8002413C
-                0x0000000080024260                _24E60_s = .
  build/asm/24E60.s.o(.text)
  .text          0x0000000080024260      0x430 build/asm/24E60.s.o
                 0x0000000080024260                loadData
                 0x0000000080024330                func_80024330
-                0x0000000080024690                _25290_c = .
  build/src/25290.c.o(.text)
  .text          0x0000000080024690     0x1f60 build/src/25290.c.o
                 0x0000000080024690                func_80024690
@@ -2243,7 +2233,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080026488                func_80026488
                 0x000000008002650c                func_8002650C
                 0x0000000080026554                func_80026554
-                0x00000000800265f0                _271F0_s = .
  build/asm/271F0.s.o(.text)
  .text          0x00000000800265f0      0x450 build/asm/271F0.s.o
                 0x00000000800265f0                initBGM
@@ -2254,7 +2243,6 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800268d4                func_800268D4
                 0x000000008002699c                func_8002699C
                 0x0000000080026a04                setBGMVolume
-                0x0000000080026a40                _27640_c = .
  build/src/27640.c.o(.text)
  .text          0x0000000080026a40     0x4ad0 build/src/27640.c.o
                 0x0000000080026a40                func_80026A40
@@ -2270,7 +2258,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008002ab64                func_8002AB64
                 0x000000008002af70                func_8002AF70
                 0x000000008002b364                func_8002B364
-                0x000000008002b510                _2C110_s = .
  build/asm/2C110.s.o(.text)
  .text          0x000000008002b510     0x30d0 build/asm/2C110.s.o
                 0x000000008002b510                showPauseOrInnMenu
@@ -2289,7 +2276,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008002dfd0                drawSaveLoadMenu
                 0x000000008002e234                createSaveFile
                 0x000000008002e404                loadSave
-                0x000000008002e5e0                _2F1E0_s = .
  build/asm/2F1E0.s.o(.text)
  .text          0x000000008002e5e0     0x2830 build/asm/2F1E0.s.o
                 0x000000008002e5e0                func_8002E5E0
@@ -2307,13 +2293,11 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080030bf0                func_80030BF0
                 0x0000000080030d70                func_80030D70
                 0x0000000080030d80                func_80030D80
-                0x0000000080030e10                _31A10_s = .
  build/asm/31A10.s.o(.text)
  .text          0x0000000080030e10      0x4f0 build/asm/31A10.s.o
                 0x0000000080030e10                func_80030E10
                 0x0000000080030e58                loadTextRes
                 0x0000000080030ea0                func_80030EA0
-                0x0000000080031300                _31F00_s = .
  build/asm/31F00.s.o(.text)
  .text          0x0000000080031300      0x940 build/asm/31F00.s.o
                 0x0000000080031300                func_80031300
@@ -2327,13 +2311,11 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080031acc                func_80031ACC
                 0x0000000080031bb0                func_80031BB0
                 0x0000000080031c0c                func_80031C0C
-                0x0000000080031c40                _32840_s = .
  build/asm/32840.s.o(.text)
  .text          0x0000000080031c40       0xb0 build/asm/32840.s.o
                 0x0000000080031c40                loadTitleScreenData
                 0x0000000080031c78                loadCredits_and_StoryData
                 0x0000000080031cb0                loadCreditsData
-                0x0000000080031cf0                _328F0_s = .
  build/asm/328F0.s.o(.text)
  .text          0x0000000080031cf0     0x1b60 build/asm/328F0.s.o
                 0x0000000080031cf0                func_80031CF0
@@ -2351,180 +2333,139 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800325fc                func_800325FC
                 0x000000008003265c                func_8003265C
                 0x0000000080032704                func_80032704
-                0x0000000080033850                initialize_s = .
  build/asm/initialize.s.o(.text)
  .text          0x0000000080033850      0x290 build/asm/initialize.s.o
                 0x0000000080033850                osInitialize
-                0x0000000080033ae0                createthread_s = .
  build/asm/createthread.s.o(.text)
  .text          0x0000000080033ae0      0x150 build/asm/createthread.s.o
                 0x0000000080033ae0                osCreateThread
-                0x0000000080033c30                startthread_s = .
  build/asm/startthread.s.o(.text)
  .text          0x0000000080033c30      0x150 build/asm/startthread.s.o
                 0x0000000080033c30                osStartThread
-                0x0000000080033d80                pimgr_s = .
  build/asm/pimgr.s.o(.text)
  .text          0x0000000080033d80      0x190 build/asm/pimgr.s.o
                 0x0000000080033d80                osCreatePiManager
-                0x0000000080033f10                createmesgqueue_s = .
  build/asm/createmesgqueue.s.o(.text)
  .text          0x0000000080033f10       0x30 build/asm/createmesgqueue.s.o
                 0x0000000080033f10                osCreateMesgQueue
-                0x0000000080033f40                visetevent_s = .
  build/asm/visetevent.s.o(.text)
  .text          0x0000000080033f40       0x70 build/asm/visetevent.s.o
                 0x0000000080033f40                osViSetEvent
-                0x0000000080033fb0                seteventmesg_s = .
  build/asm/seteventmesg.s.o(.text)
  .text          0x0000000080033fb0       0x70 build/asm/seteventmesg.s.o
                 0x0000000080033fb0                osSetEventMesg
-                0x0000000080034020                recvmesg_s = .
  build/asm/recvmesg.s.o(.text)
  .text          0x0000000080034020      0x140 build/asm/recvmesg.s.o
                 0x0000000080034020                osRecvMesg
-                0x0000000080034160                setintmask_s = .
  build/asm/setintmask.s.o(.text)
  .text          0x0000000080034160       0xa0 build/asm/setintmask.s.o
                 0x0000000080034160                osSetIntMask
-                0x0000000080034200                sendmesg_s = .
  build/asm/sendmesg.s.o(.text)
  .text          0x0000000080034200      0x150 build/asm/sendmesg.s.o
                 0x0000000080034200                osSendMesg
-                0x0000000080034350                writebackdcacheall_s = .
  build/asm/writebackdcacheall.s.o(.text)
  .text          0x0000000080034350       0x30 build/asm/writebackdcacheall.s.o
                 0x0000000080034350                osWritebackDCacheAll
-                0x0000000080034380                sptaskyield_s = .
  build/asm/sptaskyield.s.o(.text)
  .text          0x0000000080034380       0x20 build/asm/sptaskyield.s.o
                 0x0000000080034380                osSpTaskYield
-                0x00000000800343a0                sptaskyielded_s = .
  build/asm/sptaskyielded.s.o(.text)
  .text          0x00000000800343a0       0x80 build/asm/sptaskyielded.s.o
                 0x00000000800343a0                osSpTaskYielded
-                0x0000000080034420                sptask_s = .
  build/asm/sptask.s.o(.text)
  .text          0x0000000080034420      0x2c0 build/asm/sptask.s.o
                 0x0000000080034420                _VirtualToPhysicalTask
                 0x000000008003452c                osSpTaskLoad
                 0x0000000080034694                osSpTaskStartGo
-                0x00000000800346e0                virepeatline_s = .
  build/asm/virepeatline.s.o(.text)
  .text          0x00000000800346e0       0x70 build/asm/virepeatline.s.o
                 0x00000000800346e0                osViRepeatLine
-                0x0000000080034750                viswapbuf_s = .
  build/asm/viswapbuf.s.o(.text)
  .text          0x0000000080034750       0x50 build/asm/viswapbuf.s.o
                 0x0000000080034750                osViSwapBuffer
-                0x00000000800347a0                vigetcurrframebuf_s = .
  build/asm/vigetcurrframebuf.s.o(.text)
  .text          0x00000000800347a0       0xa0 build/asm/vigetcurrframebuf.s.o
                 0x00000000800347a0                osViGetCurrentFramebuffer
-                0x0000000080034840                vimgr_s = .
  build/asm/vimgr.s.o(.text)
  .text          0x0000000080034840      0x360 build/asm/vimgr.s.o
                 0x0000000080034840                osCreateViManager
                 0x00000000800349c8                viMgrMain
-                0x0000000080034ba0                visetmode_s = .
  build/asm/visetmode.s.o(.text)
  .text          0x0000000080034ba0       0x70 build/asm/visetmode.s.o
                 0x0000000080034ba0                osViSetMode
-                0x0000000080034c10                visetspecial_s = .
  build/asm/visetspecial.s.o(.text)
  .text          0x0000000080034c10      0x1c0 build/asm/visetspecial.s.o
                 0x0000000080034c10                osViSetSpecialFeatures
-                0x0000000080034dd0                virtualtophysical_s = .
  build/asm/virtualtophysical.s.o(.text)
  .text          0x0000000080034dd0       0x80 build/asm/virtualtophysical.s.o
                 0x0000000080034dd0                osVirtualToPhysical
-                0x0000000080034e50                writebackdcache_s = .
  build/asm/writebackdcache.s.o(.text)
  .text          0x0000000080034e50       0x80 build/asm/writebackdcache.s.o
                 0x0000000080034e50                osWritebackDCache
-                0x0000000080034ed0                gettime_s = .
  build/asm/gettime.s.o(.text)
  .text          0x0000000080034ed0       0x90 build/asm/gettime.s.o
                 0x0000000080034ed0                osGetTime
-                0x0000000080034f60                sqrtf_s = .
  build/asm/sqrtf.s.o(.text)
  .text          0x0000000080034f60       0x10 build/asm/sqrtf.s.o
                 0x0000000080034f60                _nsqrtf
-                0x0000000080034f70                position_s = .
  build/asm/position.s.o(.text)
  .text          0x0000000080034f70      0x220 build/asm/position.s.o
                 0x0000000080034f70                guPositionF
                 0x0000000080035120                guPosition
-                0x0000000080035190                sins_s = .
  build/asm/sins.s.o(.text)
  .text          0x0000000080035190       0x70 build/asm/sins.s.o
                 0x0000000080035190                sins
-                0x0000000080035200                mtxutil_s = .
  build/asm/mtxutil.s.o(.text)
  .text          0x0000000080035200      0x270 build/asm/mtxutil.s.o
                 0x0000000080035200                guMtxF2L
                 0x0000000080035300                guMtxIdentF
                 0x0000000080035388                guMtxIdent
                 0x00000000800353b8                guMtxL2F
-                0x0000000080035470                mtxcatf_s = .
  build/asm/mtxcatf.s.o(.text)
  .text          0x0000000080035470      0x210 build/asm/mtxcatf.s.o
                 0x0000000080035470                guMtxXFMF
                 0x0000000080035510                guMtxCatF
-                0x0000000080035680                sinf_s = .
  build/asm/sinf.s.o(.text)
  .text          0x0000000080035680      0x1c0 build/asm/sinf.s.o
                 0x0000000080035680                sinf
-                0x0000000080035840                ortho_s = .
  build/asm/ortho.s.o(.text)
  .text          0x0000000080035840      0x1c0 build/asm/ortho.s.o
                 0x0000000080035840                guOrthoF
                 0x0000000080035994                guOrtho
-                0x0000000080035a00                perspective_s = .
  build/asm/perspective.s.o(.text)
  .text          0x0000000080035a00      0x290 build/asm/perspective.s.o
                 0x0000000080035a00                guPerspectiveF
                 0x0000000080035c30                guPerspective
-                0x0000000080035c90                lookatref_s = .
  build/asm/lookatref.s.o(.text)
  .text          0x0000000080035c90      0x4c0 build/asm/lookatref.s.o
                 0x0000000080035c90                guLookAtReflectF
                 0x00000000800360d0                guLookAtReflect
-                0x0000000080036150                translate_s = .
  build/asm/translate.s.o(.text)
  .text          0x0000000080036150       0xa0 build/asm/translate.s.o
                 0x0000000080036150                guTranslateF
                 0x0000000080036198                guTranslate
-                0x00000000800361f0                cosf_s = .
  build/asm/cosf.s.o(.text)
  .text          0x00000000800361f0      0x170 build/asm/cosf.s.o
                 0x00000000800361f0                cosf
-                0x0000000080036360                sprintf_s = .
  build/asm/sprintf.s.o(.text)
  .text          0x0000000080036360       0x80 build/asm/sprintf.s.o
                 0x0000000080036360                proutSprintf
                 0x0000000080036384                sprintf
-                0x00000000800363e0                invalicache_s = .
  build/asm/invalicache.s.o(.text)
  .text          0x00000000800363e0       0x80 build/asm/invalicache.s.o
                 0x00000000800363e0                osInvalICache
-                0x0000000080036460                invaldcache_s = .
  build/asm/invaldcache.s.o(.text)
  .text          0x0000000080036460       0xb0 build/asm/invaldcache.s.o
                 0x0000000080036460                osInvalDCache
-                0x0000000080036510                pidma_s = .
  build/asm/pidma.s.o(.text)
  .text          0x0000000080036510      0x110 build/asm/pidma.s.o
                 0x0000000080036510                osPiStartDma
-                0x0000000080036620                heapinit_s = .
  build/asm/heapinit.s.o(.text)
  .text          0x0000000080036620       0x40 build/asm/heapinit.s.o
                 0x0000000080036620                alHeapInit
-                0x0000000080036660                heapalloc_s = .
  build/asm/heapalloc.s.o(.text)
  .text          0x0000000080036660       0x60 build/asm/heapalloc.s.o
                 0x0000000080036660                alHeapDBAlloc
-                0x00000000800366c0                aisetfreq_s = .
  build/asm/aisetfreq.s.o(.text)
  .text          0x00000000800366c0      0x220 build/asm/aisetfreq.s.o
                 0x00000000800366c0                osAiSetFrequency
@@ -2532,11 +2473,9 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080036850                alLink
                 0x0000000080036874                alClose
                 0x00000000800368ac                alInit
-                0x00000000800368e0                seqpsetvol_s = .
  build/asm/seqpsetvol.s.o(.text)
  .text          0x00000000800368e0       0x40 build/asm/seqpsetvol.s.o
                 0x00000000800368e0                alSeqpSetVol
-                0x0000000080036920                synthesizer_s = .
  build/asm/synthesizer.s.o(.text)
  .text          0x0000000080036920      0x6e0 build/asm/synthesizer.s.o
                 0x0000000080036920                func_80036920
@@ -2548,19 +2487,15 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080036a60                func_80036A60
                 0x0000000080036a68                alAudioFrame
                 0x0000000080036d00                alSynNew
-                0x0000000080037000                aigetlen_s = .
  build/asm/aigetlen.s.o(.text)
  .text          0x0000000080037000       0x10 build/asm/aigetlen.s.o
                 0x0000000080037000                osAiGetLength
-                0x0000000080037010                aisetnextbuf_s = .
  build/asm/aisetnextbuf.s.o(.text)
  .text          0x0000000080037010       0xb0 build/asm/aisetnextbuf.s.o
                 0x0000000080037010                osAiSetNextBuffer
-                0x00000000800370c0                n_alseqpgetvol_s = .
  build/asm/n_alseqpgetvol.s.o(.text)
  .text          0x00000000800370c0       0x10 build/asm/n_alseqpgetvol.s.o
                 0x00000000800370c0                n_alSeqpGetVol
-                0x00000000800370d0                csplayer_s = .
  build/asm/csplayer.s.o(.text)
  .text          0x00000000800370d0     0x1230 build/asm/csplayer.s.o
                 0x00000000800370d0                __CSPPostNextSeqEvent
@@ -2571,7 +2506,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080037b74                func_80037B74
                 0x0000000080037b7c                func_80037B7C
                 0x0000000080038190                alCSPNew
-                0x0000000080038300                bnkf_s = .
  build/asm/bnkf.s.o(.text)
  .text          0x0000000080038300      0x250 build/asm/bnkf.s.o
                 0x0000000080038300                func_80038300
@@ -2580,11 +2514,9 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800383fc                func_800383FC
                 0x0000000080038404                alBnkfNew
                 0x0000000080038508                alSeqFileNew
-                0x0000000080038550                seqpsetbank_s = .
  build/asm/seqpsetbank.s.o(.text)
  .text          0x0000000080038550       0x40 build/asm/seqpsetbank.s.o
                 0x0000000080038550                alSeqpSetBank
-                0x0000000080038590                cseq_s = .
  build/asm/cseq.s.o(.text)
  .text          0x0000000080038590      0xac0 build/asm/cseq.s.o
                 0x0000000080038590                alCSeqGetLoc
@@ -2599,23 +2531,18 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080038d74                alCSeqSecToTicks
                 0x0000000080038e70                alCSeqTicksToSec
                 0x0000000080038edc                __alCSeqNextDelta
-                0x0000000080039050                cspsetseq_s = .
  build/asm/cspsetseq.s.o(.text)
  .text          0x0000000080039050       0x40 build/asm/cspsetseq.s.o
                 0x0000000080039050                alCSPSetSeq
-                0x0000000080039090                seqpplay_s = .
  build/asm/seqpplay.s.o(.text)
  .text          0x0000000080039090       0x30 build/asm/seqpplay.s.o
                 0x0000000080039090                alSeqpPlay
-                0x00000000800390c0                seqpstop_s = .
  build/asm/seqpstop.s.o(.text)
  .text          0x00000000800390c0       0x30 build/asm/seqpstop.s.o
                 0x00000000800390c0                alSeqpStop
-                0x00000000800390f0                seqpgetstate_s = .
  build/asm/seqpgetstate.s.o(.text)
  .text          0x00000000800390f0       0x10 build/asm/seqpgetstate.s.o
                 0x00000000800390f0                alSeqpGetState
-                0x0000000080039100                sndplayer_s = .
  build/asm/sndplayer.s.o(.text)
  .text          0x0000000080039100      0x710 build/asm/sndplayer.s.o
                 0x0000000080039100                _removeEvents
@@ -2623,39 +2550,30 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080039184                func_80039184
                 0x000000008003918c                _handleEvent
                 0x00000000800396d4                alSndpNew
-                0x0000000080039810                sndpallocate_s = .
  build/asm/sndpallocate.s.o(.text)
  .text          0x0000000080039810       0xa0 build/asm/sndpallocate.s.o
                 0x0000000080039810                alSndpAllocate
-                0x00000000800398b0                sndpsetsound_s = .
  build/asm/sndpsetsound.s.o(.text)
  .text          0x00000000800398b0       0x20 build/asm/sndpsetsound.s.o
                 0x00000000800398b0                alSndpSetSound
-                0x00000000800398d0                sndpgetstate_s = .
  build/asm/sndpgetstate.s.o(.text)
  .text          0x00000000800398d0       0x20 build/asm/sndpgetstate.s.o
                 0x00000000800398d0                alSndpGetState
-                0x00000000800398f0                sndplay_s = .
  build/asm/sndplay.s.o(.text)
  .text          0x00000000800398f0       0x70 build/asm/sndplay.s.o
                 0x00000000800398f0                alSndpPlay
-                0x0000000080039960                sndpstop_s = .
  build/asm/sndpstop.s.o(.text)
  .text          0x0000000080039960       0x50 build/asm/sndpstop.s.o
                 0x0000000080039960                alSndpStop
-                0x00000000800399b0                sndpsetpitch_s = .
  build/asm/sndpsetpitch.s.o(.text)
  .text          0x00000000800399b0       0x60 build/asm/sndpsetpitch.s.o
                 0x00000000800399b0                alSndpSetPitch
-                0x0000000080039a10                sndpsetvol_s = .
  build/asm/sndpsetvol.s.o(.text)
  .text          0x0000000080039a10       0x60 build/asm/sndpsetvol.s.o
                 0x0000000080039a10                alSndpSetVol
-                0x0000000080039a70                sndpsetpan_s = .
  build/asm/sndpsetpan.s.o(.text)
  .text          0x0000000080039a70       0x60 build/asm/sndpsetpan.s.o
                 0x0000000080039a70                alSndpSetPan
-                0x0000000080039ad0                ll_s = .
  build/asm/ll.s.o(.text)
  .text          0x0000000080039ad0      0x2c0 build/asm/ll.s.o
                 0x0000000080039ad0                func_80039AD0
@@ -2668,97 +2586,77 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080039c68                func_80039C68
                 0x0000000080039cc8                func_80039CC8
                 0x0000000080039d64                func_80039D64
-                0x0000000080039d90                pfsinitpak_s = .
  build/asm/pfsinitpak.s.o(.text)
  .text          0x0000000080039d90      0x270 build/asm/pfsinitpak.s.o
                 0x0000000080039d90                osPfsInitPak
-                0x000000008003a000                motor_s = .
  build/asm/motor.s.o(.text)
  .text          0x000000008003a000      0x7a0 build/asm/motor.s.o
                 0x000000008003a000                osMotorStop
                 0x000000008003a1a0                osMotorStart
                 0x000000008003a340                _MakeMotorData
                 0x000000008003a4bc                osMotorInit
-                0x000000008003a7a0                deletedfuncs_s = .
  build/asm/deletedfuncs.s.o(.text)
  .text          0x000000008003a7a0       0x40 build/asm/deletedfuncs.s.o
                 0x000000008003a7a0                VOID_EMPTY_FUNC2
                 0x000000008003a7bc                emptyDEBUGprintPfsErrorData
-                0x000000008003a7e0                controller_s = .
  build/asm/controller.s.o(.text)
  .text          0x000000008003a7e0      0x3c0 build/asm/controller.s.o
                 0x000000008003a7e0                osContInit
                 0x000000008003a9d8                __osContGetInitData
                 0x000000008003aaa8                __osPackRequestData
-                0x000000008003aba0                contsetch_s = .
  build/asm/contsetch.s.o(.text)
  .text          0x000000008003aba0       0x70 build/asm/contsetch.s.o
                 0x000000008003aba0                osContSetCh
-                0x000000008003ac10                contreaddata_s = .
  build/asm/contreaddata.s.o(.text)
  .text          0x000000008003ac10      0x220 build/asm/contreaddata.s.o
                 0x000000008003ac10                osContStartReadData
                 0x000000008003ac9c                osContGetReadData
                 0x000000008003ad44                __osPackReadData
-                0x000000008003ae30                pfsfilestate_s = .
  build/asm/pfsfilestate.s.o(.text)
  .text          0x000000008003ae30      0x2f0 build/asm/pfsfilestate.s.o
                 0x000000008003ae30                osPfsFileState
-                0x000000008003b120                pfsfreeblocks_s = .
  build/asm/pfsfreeblocks.s.o(.text)
  .text          0x000000008003b120      0x150 build/asm/pfsfreeblocks.s.o
                 0x000000008003b120                osPfsFreeBlocks
-                0x000000008003b270                pfsallocatefile_s = .
  build/asm/pfsallocatefile.s.o(.text)
  .text          0x000000008003b270      0x7b0 build/asm/pfsallocatefile.s.o
                 0x000000008003b270                osPfsAllocateFile
                 0x000000008003b6f4                __osPfsDeclearPage
                 0x000000008003b958                __osClearPage
-                0x000000008003ba20                pfsdeletefile_s = .
  build/asm/pfsdeletefile.s.o(.text)
  .text          0x000000008003ba20      0x610 build/asm/pfsdeletefile.s.o
                 0x000000008003ba20                osPfsDeleteFile
                 0x000000008003bd00                __osPfsReleasePages
                 0x000000008003bf38                __osBlockSum
-                0x000000008003c030                pfsreadwritefile_s = .
  build/asm/pfsreadwritefile.s.o(.text)
  .text          0x000000008003c030      0x500 build/asm/pfsreadwritefile.s.o
                 0x000000008003c030                __osPfsGetNextPage
                 0x000000008003c12c                osPfsReadWriteFile
-                0x000000008003c530                __osGetId_s = .
  build/asm/__osGetId.s.o(.text)
  .text          0x000000008003c530      0x260 build/asm/__osGetId.s.o
                 0x000000008003c530                func_8003C530
-                0x000000008003c790                pfsnumfiles_s = .
  build/asm/pfsnumfiles.s.o(.text)
  .text          0x000000008003c790      0x150 build/asm/pfsnumfiles.s.o
                 0x000000008003c790                osPfsNumFiles
-                0x000000008003c8e0                contquery_s = .
  build/asm/contquery.s.o(.text)
  .text          0x000000008003c8e0       0xb0 build/asm/contquery.s.o
                 0x000000008003c8e0                osContStartQuery
                 0x000000008003c964                osContGetQuery
-                0x000000008003c990                setsr_s = .
  build/asm/setsr.s.o(.text)
  .text          0x000000008003c990       0x10 build/asm/setsr.s.o
                 0x000000008003c990                __osSetSR
-                0x000000008003c9a0                getsr_s = .
  build/asm/getsr.s.o(.text)
  .text          0x000000008003c9a0       0x10 build/asm/getsr.s.o
                 0x000000008003c9a0                __osGetSR
-                0x000000008003c9b0                setfpccsr_s = .
  build/asm/setfpccsr.s.o(.text)
  .text          0x000000008003c9b0       0x10 build/asm/setfpccsr.s.o
                 0x000000008003c9b0                __osSetFpcCsr
-                0x000000008003c9c0                sprawread_s = .
  build/asm/sprawread.s.o(.text)
  .text          0x000000008003c9c0       0x50 build/asm/sprawread.s.o
                 0x000000008003c9c0                __osSpRawReadIo
-                0x000000008003ca10                sprawwrite_s = .
  build/asm/sprawwrite.s.o(.text)
  .text          0x000000008003ca10       0x50 build/asm/sprawwrite.s.o
                 0x000000008003ca10                __osSpRawWriteIo
-                0x000000008003ca60                exceptasm_s = .
  build/asm/exceptasm.s.o(.text)
  .text          0x000000008003ca60      0x910 build/asm/exceptasm.s.o
                 0x000000008003ca60                func_8003CA60
@@ -2768,133 +2666,103 @@ LOAD build/assets/trailer.bin.o
                 0x000000008003d18c                __osEnqueueThread
                 0x000000008003d1d4                __osPopThread
                 0x000000008003d1e4                __osDispatchThread
-                0x000000008003d370                maptlbrdb_s = .
  build/asm/maptlbrdb.s.o(.text)
  .text          0x000000008003d370       0x60 build/asm/maptlbrdb.s.o
                 0x000000008003d370                osMapTLBRdb
-                0x000000008003d3d0                pirawread_s = .
  build/asm/pirawread.s.o(.text)
  .text          0x000000008003d3d0       0x60 build/asm/pirawread.s.o
                 0x000000008003d3d0                osPiRawReadIo
-                0x000000008003d430                bzero_s = .
  build/asm/bzero.s.o(.text)
  .text          0x000000008003d430       0xa0 build/asm/bzero.s.o
                 0x000000008003d430                bzero
-                0x000000008003d4d0                interrupt_s = .
  build/asm/interrupt.s.o(.text)
  .text          0x000000008003d4d0       0x40 build/asm/interrupt.s.o
                 0x000000008003d4d0                __osDisableInt
                 0x000000008003d4f0                __osRestoreInt
-                0x000000008003d510                thread_s = .
  build/asm/thread.s.o(.text)
  .text          0x000000008003d510       0x40 build/asm/thread.s.o
                 0x000000008003d510                __osDequeueThread
-                0x000000008003d550                cartrominit_s = .
  build/asm/cartrominit.s.o(.text)
  .text          0x000000008003d550      0x100 build/asm/cartrominit.s.o
                 0x000000008003d550                osCartRomInit
-                0x000000008003d650                leodiskinit_s = .
  build/asm/leodiskinit.s.o(.text)
  .text          0x000000008003d650      0x100 build/asm/leodiskinit.s.o
                 0x000000008003d650                osLeoDiskInit
-                0x000000008003d750                siacsDuplicate_s = .
  build/asm/siacsDuplicate.s.o(.text)
  .text          0x000000008003d750       0xc0 build/asm/siacsDuplicate.s.o
                 0x000000008003d750                func_8003D750
                 0x000000008003d7a0                __osSiGetAccess_8003d7a0
                 0x000000008003d7e4                __osSiRelAccess_8003d7e4
-                0x000000008003d810                getthreadpri_s = .
  build/asm/getthreadpri.s.o(.text)
  .text          0x000000008003d810       0x20 build/asm/getthreadpri.s.o
                 0x000000008003d810                osGetThreadPri
-                0x000000008003d830                setthreadpri_s = .
  build/asm/setthreadpri.s.o(.text)
  .text          0x000000008003d830       0xe0 build/asm/setthreadpri.s.o
                 0x000000008003d830                osSetThreadPri
-                0x000000008003d910                pirawdma_s = .
  build/asm/pirawdma.s.o(.text)
  .text          0x000000008003d910       0xe0 build/asm/pirawdma.s.o
                 0x000000008003d910                osPiRawStartDma
-                0x000000008003d9f0                epiramdma_s = .
  build/asm/epiramdma.s.o(.text)
  .text          0x000000008003d9f0      0x230 build/asm/epiramdma.s.o
                 0x000000008003d9f0                osEPiRawStartDma
-                0x000000008003dc20                devmgr_s = .
  build/asm/devmgr.s.o(.text)
  .text          0x000000008003dc20      0x490 build/asm/devmgr.s.o
                 0x000000008003dc20                __osDevMgrMain
-                0x000000008003e0b0                vi_s = .
  build/asm/vi.s.o(.text)
  .text          0x000000008003e0b0      0x140 build/asm/vi.s.o
                 0x000000008003e0b0                __osViInit
-                0x000000008003e1f0                spsetstat_s = .
  build/asm/spsetstat.s.o(.text)
  .text          0x000000008003e1f0       0x10 build/asm/spsetstat.s.o
                 0x000000008003e1f0                __osSpSetStatus
-                0x000000008003e200                spgetstat_s = .
  build/asm/spgetstat.s.o(.text)
  .text          0x000000008003e200       0x10 build/asm/spgetstat.s.o
                 0x000000008003e200                __osSpGetStatus
-                0x000000008003e210                bcopy_s = .
  build/asm/bcopy.s.o(.text)
  .text          0x000000008003e210      0x310 build/asm/bcopy.s.o
                 0x000000008003e210                bcopy
-                0x000000008003e520                spsetpc_s = .
  build/asm/spsetpc.s.o(.text)
  .text          0x000000008003e520       0x40 build/asm/spsetpc.s.o
                 0x000000008003e520                __osSpSetPc
-                0x000000008003e560                sprawdma_s = .
  build/asm/sprawdma.s.o(.text)
  .text          0x000000008003e560       0x90 build/asm/sprawdma.s.o
                 0x000000008003e560                __osSpRawStartDma
-                0x000000008003e5f0                sp_s = .
  build/asm/sp.s.o(.text)
  .text          0x000000008003e5f0       0x30 build/asm/sp.s.o
                 0x000000008003e5f0                __osSpDeviceBusy
-                0x000000008003e620                timerintr_s = .
  build/asm/timerintr.s.o(.text)
  .text          0x000000008003e620      0x400 build/asm/timerintr.s.o
                 0x000000008003e620                __osTimerServicesInit
                 0x000000008003e6ac                __osTimerInterrupt
                 0x000000008003e824                __osSetTimerIntr
                 0x000000008003e898                __osInsertTimer
-                0x000000008003ea20                vigetcurrcontext_s = .
  build/asm/vigetcurrcontext.s.o(.text)
  .text          0x000000008003ea20       0x10 build/asm/vigetcurrcontext.s.o
                 0x000000008003ea20                __osViGetCurrentContext
-                0x000000008003ea30                viswapcontext_s = .
  build/asm/viswapcontext.s.o(.text)
  .text          0x000000008003ea30      0x360 build/asm/viswapcontext.s.o
                 0x000000008003ea30                __osViSwapContext
-                0x000000008003ed90                getcount_s = .
  build/asm/getcount.s.o(.text)
  .text          0x000000008003ed90       0x10 build/asm/getcount.s.o
                 0x000000008003ed90                osGetCount
-                0x000000008003eda0                probetlb_s = .
  build/asm/probetlb.s.o(.text)
  .text          0x000000008003eda0       0xc0 build/asm/probetlb.s.o
                 0x000000008003eda0                __osProbeTLB
-                0x000000008003ee60                xprintf_s = .
  build/asm/xprintf.s.o(.text)
  .text          0x000000008003ee60      0xcc0 build/asm/xprintf.s.o
                 0x000000008003ee60                _Putfld
                 0x000000008003f4d0                _Printf
-                0x000000008003fb20                string_s = .
  build/asm/string.s.o(.text)
  .text          0x000000008003fb20       0xa0 build/asm/string.s.o
                 0x000000008003fb20                memcpy
                 0x000000008003fb4c                strlen
                 0x000000008003fb74                strchr
-                0x000000008003fbc0                jammesg_s = .
  build/asm/jammesg.s.o(.text)
  .text          0x000000008003fbc0      0x180 build/asm/jammesg.s.o
                 0x000000008003fbc0                osJamMesg
                 0x000000008003fd10                osPiGetCmdQueue
-                0x000000008003fd40                syndelete_s = .
  build/asm/syndelete.s.o(.text)
  .text          0x000000008003fd40       0x10 build/asm/syndelete.s.o
                 0x000000008003fd40                alSynDelete
-                0x000000008003fd50                event_s = .
  build/asm/event.s.o(.text)
  .text          0x000000008003fd50      0x340 build/asm/event.s.o
                 0x000000008003fd50                alEvtqFlushType
@@ -2902,7 +2770,6 @@ LOAD build/assets/trailer.bin.o
                 0x000000008003fe6c                alEvtqPostEvent
                 0x000000008003ff90                alEvtqNextEvent
                 0x000000008004001c                alEvtqNew
-                0x0000000080040090                drvrNew_s = .
  build/asm/drvrNew.s.o(.text)
  .text          0x0000000080040090      0x7a0 build/asm/drvrNew.s.o
                 0x0000000080040090                alSaveNew
@@ -2913,28 +2780,23 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800402ac                alEnvmixerNew
                 0x0000000080040350                init_lpfilter
                 0x00000000800403f0                alFxNew
-                0x0000000080040830                synallocfx_s = .
  build/asm/synallocfx.s.o(.text)
  .text          0x0000000080040830       0xa0 build/asm/synallocfx.s.o
                 0x0000000080040830                alSynAllocFX
-                0x00000000800408d0                mainbus_s = .
  build/asm/mainbus.s.o(.text)
  .text          0x00000000800408d0      0x150 build/asm/mainbus.s.o
                 0x00000000800408d0                alMainBusParam
                 0x0000000080040900                alMainBusPull
-                0x0000000080040a20                load_s = .
  build/asm/load.s.o(.text)
  .text          0x0000000080040a20      0xb50 build/asm/load.s.o
                 0x0000000080040a20                alLoadParam
                 0x0000000080040bf4                alRaw16Pull
                 0x0000000080040fa0                _decodeChunk
                 0x00000000800410cc                alAdpcmPull
-                0x0000000080041570                resample_s = .
  build/asm/resample.s.o(.text)
  .text          0x0000000080041570      0x300 build/asm/resample.s.o
                 0x0000000080041570                alResampleParam
                 0x000000008004165c                alResamplePull
-                0x0000000080041870                env_s = .
  build/asm/env.s.o(.text)
  .text          0x0000000080041870      0xc60 build/asm/env.s.o
                 0x0000000080041870                _ldexpf
@@ -2944,21 +2806,17 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080041c34                _pullSubFrame
                 0x0000000080041ecc                _getVol
                 0x0000000080041f7c                alEnvmixerPull
-                0x00000000800424d0                auxbus_s = .
  build/asm/auxbus.s.o(.text)
  .text          0x00000000800424d0      0x110 build/asm/auxbus.s.o
                 0x00000000800424d0                alAuxBusParam
                 0x0000000080042500                alAuxBusPull
-                0x00000000800425e0                save_s = .
  build/asm/save.s.o(.text)
  .text          0x00000000800425e0       0xc0 build/asm/save.s.o
                 0x00000000800425e0                alSaveParam
                 0x0000000080042614                alSavePull
-                0x00000000800426a0                ai_s = .
  build/asm/ai.s.o(.text)
  .text          0x00000000800426a0       0x30 build/asm/ai.s.o
                 0x00000000800426a0                __osAiDeviceBusy
-                0x00000000800426d0                seqplayer_s = .
  build/asm/seqplayer.s.o(.text)
  .text          0x00000000800426d0     0x1940 build/asm/seqplayer.s.o
                 0x00000000800426d0                __setInstChanState
@@ -2982,64 +2840,50 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080043d10                __seqpStopOsc
                 0x0000000080043e14                __initChanState
                 0x0000000080043e84                alSeqpNew
-                0x0000000080044010                synaddplayer_s = .
  build/asm/synaddplayer.s.o(.text)
  .text          0x0000000080044010       0x50 build/asm/synaddplayer.s.o
                 0x0000000080044010                alSynAddPlayer
-                0x0000000080044060                synstopvoice_s = .
  build/asm/synstopvoice.s.o(.text)
  .text          0x0000000080044060       0x80 build/asm/synstopvoice.s.o
                 0x0000000080044060                alSynStopVoice
-                0x00000000800440e0                synfreevoice_s = .
  build/asm/synfreevoice.s.o(.text)
  .text          0x00000000800440e0       0xb0 build/asm/synfreevoice.s.o
                 0x00000000800440e0                alSynFreeVoice
-                0x0000000080044190                synsetvol_s = .
  build/asm/synsetvol.s.o(.text)
  .text          0x0000000080044190       0xa0 build/asm/synsetvol.s.o
                 0x0000000080044190                alSynSetVol
-                0x0000000080044230                synsetpitch_s = .
  build/asm/synsetpitch.s.o(.text)
  .text          0x0000000080044230       0x90 build/asm/synsetpitch.s.o
                 0x0000000080044230                alSynSetPitch
-                0x00000000800442c0                synallocvoice_s = .
  build/asm/synallocvoice.s.o(.text)
  .text          0x00000000800442c0      0x230 build/asm/synallocvoice.s.o
                 0x00000000800442c0                _allocatePVoice
                 0x00000000800443a8                alSynAllocVoice
-                0x00000000800444f0                cents2ratio_s = .
  build/asm/cents2ratio.s.o(.text)
  .text          0x00000000800444f0       0x50 build/asm/cents2ratio.s.o
                 0x00000000800444f0                alCents2Ratio
-                0x0000000080044540                synstartvoiceparam_s = .
  build/asm/synstartvoiceparam.s.o(.text)
  .text          0x0000000080044540       0xf0 build/asm/synstartvoiceparam.s.o
                 0x0000000080044540                alSynStartVoiceParams
-                0x0000000080044630                synsetpan_s = .
  build/asm/synsetpan.s.o(.text)
  .text          0x0000000080044630       0x90 build/asm/synsetpan.s.o
                 0x0000000080044630                alSynSetPan
-                0x00000000800446c0                synsetfxmix_s = .
  build/asm/synsetfxmix.s.o(.text)
  .text          0x00000000800446c0       0xa0 build/asm/synsetfxmix.s.o
                 0x00000000800446c0                alSynSetFXMix
-                0x0000000080044760                synstartvoice_s = .
  build/asm/synstartvoice.s.o(.text)
  .text          0x0000000080044760       0x90 build/asm/synstartvoice.s.o
                 0x0000000080044760                alSynStartVoice
-                0x00000000800447f0                siacs_s = .
  build/asm/siacs.s.o(.text)
  .text          0x00000000800447f0       0xc0 build/asm/siacs.s.o
                 0x00000000800447f0                func_800447F0
                 0x0000000080044840                __osSiGetAccess
                 0x0000000080044884                __osSiRelAccess
-                0x00000000800448b0                pfsgetstatus_s = .
  build/asm/pfsgetstatus.s.o(.text)
  .text          0x00000000800448b0      0x240 build/asm/pfsgetstatus.s.o
                 0x00000000800448b0                __osPfsGetStatus
                 0x0000000080044994                __osPfsRequestOneChannel
                 0x0000000080044a54                __osPfsGetOneChannelData
-                0x0000000080044af0                contpfs_s = .
  build/asm/contpfs.s.o(.text)
  .text          0x0000000080044af0      0xd60 build/asm/contpfs.s.o
                 0x0000000080044af0                __osSumcalc
@@ -3050,102 +2894,80 @@ LOAD build/assets/trailer.bin.o
                 0x00000000800453c0                __osCheckId
                 0x00000000800454bc                __osPfsRWInode
                 0x00000000800457dc                __osPfsSelectBank
-                0x0000000080045850                contramread_s = .
  build/asm/contramread.s.o(.text)
  .text          0x0000000080045850      0x360 build/asm/contramread.s.o
                 0x0000000080045850                __osContRamRead
                 0x0000000080045a6c                __osPackRamReadData
-                0x0000000080045bb0                pfschecker_s = .
  build/asm/pfschecker.s.o(.text)
  .text          0x0000000080045bb0      0xa60 build/asm/pfschecker.s.o
                 0x0000000080045bb0                osPfsChecker
                 0x0000000080046274                corrupted_init
                 0x0000000080046428                corrupted
-                0x0000000080046610                pfsisplug_s = .
  build/asm/pfsisplug.s.o(.text)
  .text          0x0000000080046610      0x340 build/asm/pfsisplug.s.o
                 0x0000000080046610                osPfsIsPlug
                 0x00000000800467b0                __osPfsRequestData
                 0x0000000080046880                __osPfsGetInitData
-                0x0000000080046950                sirawdma_s = .
  build/asm/sirawdma.s.o(.text)
  .text          0x0000000080046950       0xb0 build/asm/sirawdma.s.o
                 0x0000000080046950                __osSiRawStartDma
-                0x0000000080046a00                crc_s = .
  build/asm/crc.s.o(.text)
  .text          0x0000000080046a00      0x180 build/asm/crc.s.o
                 0x0000000080046a00                __osContAddressCrc
                 0x0000000080046ab0                __osContDataCrc
-                0x0000000080046b80                contramwrite_s = .
  build/asm/contramwrite.s.o(.text)
  .text          0x0000000080046b80      0x360 build/asm/contramwrite.s.o
                 0x0000000080046b80                __osContRamWrite
                 0x0000000080046d84                _osPackRamWriteData
-                0x0000000080046ee0                settimer_s = .
  build/asm/settimer.s.o(.text)
  .text          0x0000000080046ee0       0xe0 build/asm/settimer.s.o
                 0x0000000080046ee0                osSetTimer
-                0x0000000080046fc0                pfssearchfile_s = .
  build/asm/pfssearchfile.s.o(.text)
  .text          0x0000000080046fc0      0x1c0 build/asm/pfssearchfile.s.o
                 0x0000000080046fc0                osPfsFindFile
-                0x0000000080047180                si_s = .
  build/asm/si.s.o(.text)
  .text          0x0000000080047180       0x30 build/asm/si.s.o
                 0x0000000080047180                __osSiDeviceBusy
-                0x00000000800471b0                leointerrupt_s = .
  build/asm/leointerrupt.s.o(.text)
  .text          0x00000000800471b0      0x880 build/asm/leointerrupt.s.o
                 0x00000000800471b0                __osLeoInterrupt
                 0x0000000080047854                __osLeoResume
                 0x000000008004793c                _osLeoAbnormalResume
-                0x0000000080047a30                destroythread_s = .
  build/asm/destroythread.s.o(.text)
  .text          0x0000000080047a30      0x100 build/asm/destroythread.s.o
                 0x0000000080047a30                osDestroyThread
-                0x0000000080047b30                resetglobalintmask_s = .
  build/asm/resetglobalintmask.s.o(.text)
  .text          0x0000000080047b30       0x60 build/asm/resetglobalintmask.s.o
                 0x0000000080047b30                __osResetGlobalIntMask
-                0x0000000080047b90                epirawwrite_s = .
  build/asm/epirawwrite.s.o(.text)
  .text          0x0000000080047b90       0x50 build/asm/epirawwrite.s.o
                 0x0000000080047b90                osEPiRawWriteIo
-                0x0000000080047be0                epirawread_s = .
  build/asm/epirawread.s.o(.text)
  .text          0x0000000080047be0       0x50 build/asm/epirawread.s.o
                 0x0000000080047be0                osEPiRawReadIo
-                0x0000000080047c30                setglobalintmask_s = .
  build/asm/setglobalintmask.s.o(.text)
  .text          0x0000000080047c30       0x50 build/asm/setglobalintmask.s.o
                 0x0000000080047c30                __osSetGlobalIntMask
-                0x0000000080047c80                yieldthread_s = .
  build/asm/yieldthread.s.o(.text)
  .text          0x0000000080047c80       0x50 build/asm/yieldthread.s.o
                 0x0000000080047c80                osYieldThread
-                0x0000000080047cd0                setcompare_s = .
  build/asm/setcompare.s.o(.text)
  .text          0x0000000080047cd0       0x10 build/asm/setcompare.s.o
                 0x0000000080047cd0                __osSetCompare
-                0x0000000080047ce0                xlitob_s = .
  build/asm/xlitob.s.o(.text)
  .text          0x0000000080047ce0      0x2a0 build/asm/xlitob.s.o
                 0x0000000080047ce0                _Litob
-                0x0000000080047f80                xldtob_s = .
  build/asm/xldtob.s.o(.text)
  .text          0x0000000080047f80      0xac0 build/asm/xldtob.s.o
                 0x0000000080047f80                _Ldtob
                 0x00000000800484e8                _Ldunscale
                 0x00000000800484f0                _Genld
-                0x0000000080048a40                copy_s = .
  build/asm/copy.s.o(.text)
  .text          0x0000000080048a40       0x80 build/asm/copy.s.o
                 0x0000000080048a40                alCopy
-                0x0000000080048ac0                filter_s = .
  build/asm/filter.s.o(.text)
  .text          0x0000000080048ac0       0x20 build/asm/filter.s.o
                 0x0000000080048ac0                alFilterNew
-                0x0000000080048ae0                reverb_s = .
  build/asm/reverb.s.o(.text)
  .text          0x0000000080048ae0      0xc50 build/asm/reverb.s.o
                 0x0000000080048ae0                _doModFunc
@@ -3156,7 +2978,6 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080049178                alFxParamHdl
                 0x00000000800493d4                alFxParam
                 0x00000000800493ec                alFxPull
-                0x0000000080049730                seq_s = .
  build/asm/seq.s.o(.text)
  .text          0x0000000080049730      0x620 build/asm/seq.s.o
                 0x0000000080049730                alSeqGetLoc
@@ -3172,39 +2993,112 @@ LOAD build/assets/trailer.bin.o
                 0x0000000080049bf8                read32
                 0x0000000080049c48                read16
                 0x0000000080049c78                alSeqNew
-                0x0000000080049d50                synsetpriority_s = .
  build/asm/synsetpriority.s.o(.text)
  .text          0x0000000080049d50      0x1a0 build/asm/synsetpriority.s.o
                 0x0000000080049d50                alSynSetPriority
                 0x0000000080049d60                func_80049D60
                 0x0000000080049e60                ldiv
+                0x0000000080049ef0                main_TEXT_END = .
+                0x0000000080049ef0                main_DATA_START = .
+                0x0000000080049ef0                main_DATA_END = .
+                0x0000000080049ef0                main_BSS_START = .
+                0x0000000080049ef0                main_BSS_END = .
                 0x000000000004aaf0                main_ROM_END = 0x4aaf0
                 0x0000000001000000                __romPos = 0x4aaf0
                 0x0000000001000000                __romPos = 0x4aaf0
                 0x0000000001000000                . = __romPos
-                0x000000000004aaf0                _4AAF0_ROM_START = __romPos
-                0x000000000004aaf0                _4AAF0_VRAM = ADDR (._4AAF0)
+                0x000000000004aaf0                ucode_boot_ROM_START = __romPos
+                0x000000000004aaf0                ucode_boot_VRAM = ADDR (.ucode_boot)
 
-._4AAF0         0x000000000004aaf0      0x230
-                0x000000000004aaf0                _4AAF0_bin = .
- build/assets/4AAF0.bin.o(.data)
- .data          0x000000000004aaf0      0x230 build/assets/4AAF0.bin.o
-                0x000000000004aaf0                _binary_assets_4AAF0_bin_start
-                0x000000000004ad20                _binary_assets_4AAF0_bin_end
-                0x000000000004ad20                _4AAF0_ROM_END = 0x4ad20
-                0x0000000001000000                __romPos = 0x4ad20
-                0x0000000001000000                __romPos = 0x4ad20
+.ucode_boot     0x000000000004aaf0       0xd0
+                0x000000000004aaf0                ucode_boot_TEXT_START = .
+                0x000000000004aaf0                ucode_boot_TEXT_END = .
+                0x000000000004aaf0                ucode_boot_DATA_START = .
+                0x000000000004aaf0                ucode_boot_bin = .
+ build/assets/ucode_boot.bin.o(.data)
+ .data          0x000000000004aaf0       0xd0 build/assets/ucode_boot.bin.o
+                0x000000000004aaf0                _binary_assets_ucode_boot_bin_start
+                0x000000000004abc0                _binary_assets_ucode_boot_bin_end
+                0x000000000004abc0                ucode_boot_DATA_END = .
+                0x000000000004abc0                ucode_boot_BSS_START = .
+                0x000000000004abc0                ucode_boot_BSS_END = .
+                0x000000000004abc0                ucode_boot_ROM_END = 0x4abc0
+                0x0000000001000000                __romPos = 0x4abc0
+                0x0000000001000000                __romPos = 0x4abc0
                 0x0000000001000000                . = __romPos
-                0x000000000004ad20                _4AD20_ROM_START = __romPos
-                0x000000000004ad20                _4AD20_VRAM = ADDR (._4AD20)
+                0x000000000004abc0                ucode_ROM_START = __romPos
+                0x000000000004abc0                ucode_VRAM = ADDR (.ucode)
 
-._4AD20         0x000000000004ad20    0x28d70
-                0x000000000004ad20                _4AD20_bin = .
- build/assets/4AD20.bin.o(.data)
- .data          0x000000000004ad20    0x28d70 build/assets/4AD20.bin.o
-                0x000000000004ad20                _binary_assets_4AD20_bin_start
-                0x0000000000073a90                _binary_assets_4AD20_bin_end
-                0x0000000000073a90                _4AD20_ROM_END = 0x73a90
+.ucode          0x000000000004abc0     0x1430
+                0x000000000004abc0                ucode_TEXT_START = .
+                0x000000000004abc0                ucode_TEXT_END = .
+                0x000000000004abc0                ucode_DATA_START = .
+                0x000000000004abc0                ucode_bin = .
+ build/assets/ucode.bin.o(.data)
+ .data          0x000000000004abc0     0x1430 build/assets/ucode.bin.o
+                0x000000000004abc0                _binary_assets_ucode_bin_start
+                0x000000000004bff0                _binary_assets_ucode_bin_end
+                0x000000000004bff0                ucode_DATA_END = .
+                0x000000000004bff0                ucode_BSS_START = .
+                0x000000000004bff0                ucode_BSS_END = .
+                0x000000000004bff0                ucode_ROM_END = 0x4bff0
+                0x0000000001000000                __romPos = 0x4bff0
+                0x0000000001000000                __romPos = 0x4bff0
+                0x0000000001000000                . = __romPos
+                0x000000000004bff0                _4BFF0_ROM_START = __romPos
+                0x000000000004bff0                _4BFF0_VRAM = ADDR (._4BFF0)
+
+._4BFF0         0x000000000004bff0    0x26fe0
+                0x000000000004bff0                _4BFF0_TEXT_START = .
+                0x000000000004bff0                _4BFF0_TEXT_END = .
+                0x000000000004bff0                _4BFF0_DATA_START = .
+                0x000000000004bff0                _4BFF0_bin = .
+ build/assets/4BFF0.bin.o(.data)
+ .data          0x000000000004bff0    0x26fe0 build/assets/4BFF0.bin.o
+                0x000000000004bff0                _binary_assets_4BFF0_bin_start
+                0x0000000000072fd0                _binary_assets_4BFF0_bin_end
+                0x0000000000072fd0                _4BFF0_DATA_END = .
+                0x0000000000072fd0                _4BFF0_BSS_START = .
+                0x0000000000072fd0                _4BFF0_BSS_END = .
+                0x0000000000072fd0                _4BFF0_ROM_END = 0x72fd0
+                0x0000000001000000                __romPos = 0x72fd0
+                0x0000000001000000                __romPos = 0x72fd0
+                0x0000000001000000                . = __romPos
+                0x0000000000072fd0                ucode_data_ROM_START = __romPos
+                0x0000000000072fd0                ucode_data_VRAM = ADDR (.ucode_data)
+
+.ucode_data     0x0000000000072fd0      0x800
+                0x0000000000072fd0                ucode_data_TEXT_START = .
+                0x0000000000072fd0                ucode_data_TEXT_END = .
+                0x0000000000072fd0                ucode_data_DATA_START = .
+                0x0000000000072fd0                ucode_data_bin = .
+ build/assets/ucode_data.bin.o(.data)
+ .data          0x0000000000072fd0      0x800 build/assets/ucode_data.bin.o
+                0x0000000000072fd0                _binary_assets_ucode_data_bin_start
+                0x00000000000737d0                _binary_assets_ucode_data_bin_end
+                0x00000000000737d0                ucode_data_DATA_END = .
+                0x00000000000737d0                ucode_data_BSS_START = .
+                0x00000000000737d0                ucode_data_BSS_END = .
+                0x00000000000737d0                ucode_data_ROM_END = 0x737d0
+                0x0000000001000000                __romPos = 0x737d0
+                0x0000000001000000                __romPos = 0x737d0
+                0x0000000001000000                . = __romPos
+                0x00000000000737d0                _737D0_ROM_START = __romPos
+                0x00000000000737d0                _737D0_VRAM = ADDR (._737D0)
+
+._737D0         0x00000000000737d0      0x2c0
+                0x00000000000737d0                _737D0_TEXT_START = .
+                0x00000000000737d0                _737D0_TEXT_END = .
+                0x00000000000737d0                _737D0_DATA_START = .
+                0x00000000000737d0                _737D0_bin = .
+ build/assets/737D0.bin.o(.data)
+ .data          0x00000000000737d0      0x2c0 build/assets/737D0.bin.o
+                0x00000000000737d0                _binary_assets_737D0_bin_start
+                0x0000000000073a90                _binary_assets_737D0_bin_end
+                0x0000000000073a90                _737D0_DATA_END = .
+                0x0000000000073a90                _737D0_BSS_START = .
+                0x0000000000073a90                _737D0_BSS_END = .
+                0x0000000000073a90                _737D0_ROM_END = 0x73a90
                 0x0000000001000000                __romPos = 0x73a90
                 0x0000000001000000                __romPos = 0x73a90
                 0x0000000001000000                . = __romPos
@@ -3212,11 +3106,17 @@ LOAD build/assets/trailer.bin.o
                 0x0000000000073a90                _73A90_VRAM = ADDR (._73A90)
 
 ._73A90         0x0000000000073a90   0xcd7930
+                0x0000000000073a90                _73A90_TEXT_START = .
+                0x0000000000073a90                _73A90_TEXT_END = .
+                0x0000000000073a90                _73A90_DATA_START = .
                 0x0000000000073a90                _73A90_bin = .
  build/assets/73A90.bin.o(.data)
  .data          0x0000000000073a90   0xcd7930 build/assets/73A90.bin.o
                 0x0000000000073a90                _binary_assets_73A90_bin_start
                 0x0000000000d4b3c0                _binary_assets_73A90_bin_end
+                0x0000000000d4b3c0                _73A90_DATA_END = .
+                0x0000000000d4b3c0                _73A90_BSS_START = .
+                0x0000000000d4b3c0                _73A90_BSS_END = .
                 0x0000000000d4b3c0                _73A90_ROM_END = 0xd4b3c0
                 0x0000000001000000                __romPos = 0xd4b3c0
                 0x0000000001000000                __romPos = 0xd4b3c0
@@ -3224,13 +3124,97 @@ LOAD build/assets/trailer.bin.o
                 0x0000000000d4b3c0                D4B3C0_ROM_START = __romPos
                 0x0000000000d4b3c0                D4B3C0_VRAM = ADDR (.D4B3C0)
 
-.D4B3C0         0x0000000000d4b3c0   0x248fc0
+.D4B3C0         0x0000000000d4b3c0   0x133440
+                0x0000000000d4b3c0                D4B3C0_TEXT_START = .
+                0x0000000000d4b3c0                D4B3C0_TEXT_END = .
+                0x0000000000d4b3c0                D4B3C0_DATA_START = .
                 0x0000000000d4b3c0                D4B3C0_bin = .
  build/assets/D4B3C0.bin.o(.data)
- .data          0x0000000000d4b3c0   0x248fc0 build/assets/D4B3C0.bin.o
+ .data          0x0000000000d4b3c0   0x133440 build/assets/D4B3C0.bin.o
                 0x0000000000d4b3c0                _binary_assets_D4B3C0_bin_start
-                0x0000000000f94380                _binary_assets_D4B3C0_bin_end
-                0x0000000000f94380                D4B3C0_ROM_END = 0xf94380
+                0x0000000000e7e800                _binary_assets_D4B3C0_bin_end
+                0x0000000000e7e800                D4B3C0_DATA_END = .
+                0x0000000000e7e800                D4B3C0_BSS_START = .
+                0x0000000000e7e800                D4B3C0_BSS_END = .
+                0x0000000000e7e800                D4B3C0_ROM_END = 0xe7e800
+                0x0000000001000000                __romPos = 0xe7e800
+                0x0000000001000000                __romPos = 0xe7e800
+                0x0000000001000000                . = __romPos
+                0x0000000000e7e800                Instrument_ctl_ROM_START = __romPos
+                0x0000000000e7e800                Instrument_ctl_VRAM = ADDR (.Instrument_ctl)
+
+.Instrument_ctl
+                0x0000000000e7e800     0x2e10
+                0x0000000000e7e800                Instrument_ctl_TEXT_START = .
+                0x0000000000e7e800                Instrument_ctl_TEXT_END = .
+                0x0000000000e7e800                Instrument_ctl_DATA_START = .
+                0x0000000000e7e800                Instrument_ctl_bin = .
+ build/assets/Instrument_ctl.bin.o(.data)
+ .data          0x0000000000e7e800     0x2e10 build/assets/Instrument_ctl.bin.o
+                0x0000000000e7e800                _binary_assets_Instrument_ctl_bin_start
+                0x0000000000e81610                _binary_assets_Instrument_ctl_bin_end
+                0x0000000000e81610                Instrument_ctl_DATA_END = .
+                0x0000000000e81610                Instrument_ctl_BSS_START = .
+                0x0000000000e81610                Instrument_ctl_BSS_END = .
+                0x0000000000e81610                Instrument_ctl_ROM_END = 0xe81610
+                0x0000000001000000                __romPos = 0xe81610
+                0x0000000001000000                __romPos = 0xe81610
+                0x0000000001000000                . = __romPos
+                0x0000000000e81610                Instrument_tbl_ROM_START = __romPos
+                0x0000000000e81610                Instrument_tbl_VRAM = ADDR (.Instrument_tbl)
+
+.Instrument_tbl
+                0x0000000000e81610    0x6ca10
+                0x0000000000e81610                Instrument_tbl_TEXT_START = .
+                0x0000000000e81610                Instrument_tbl_TEXT_END = .
+                0x0000000000e81610                Instrument_tbl_DATA_START = .
+                0x0000000000e81610                Instrument_tbl_bin = .
+ build/assets/Instrument_tbl.bin.o(.data)
+ .data          0x0000000000e81610    0x6ca10 build/assets/Instrument_tbl.bin.o
+                0x0000000000e81610                _binary_assets_Instrument_tbl_bin_start
+                0x0000000000eee020                _binary_assets_Instrument_tbl_bin_end
+                0x0000000000eee020                Instrument_tbl_DATA_END = .
+                0x0000000000eee020                Instrument_tbl_BSS_START = .
+                0x0000000000eee020                Instrument_tbl_BSS_END = .
+                0x0000000000eee020                Instrument_tbl_ROM_END = 0xeee020
+                0x0000000001000000                __romPos = 0xeee020
+                0x0000000001000000                __romPos = 0xeee020
+                0x0000000001000000                . = __romPos
+                0x0000000000eee020                SE_ctl_ROM_START = __romPos
+                0x0000000000eee020                SE_ctl_VRAM = ADDR (.SE_ctl)
+
+.SE_ctl         0x0000000000eee020     0x1cc0
+                0x0000000000eee020                SE_ctl_TEXT_START = .
+                0x0000000000eee020                SE_ctl_TEXT_END = .
+                0x0000000000eee020                SE_ctl_DATA_START = .
+                0x0000000000eee020                SE_ctl_bin = .
+ build/assets/SE_ctl.bin.o(.data)
+ .data          0x0000000000eee020     0x1cc0 build/assets/SE_ctl.bin.o
+                0x0000000000eee020                _binary_assets_SE_ctl_bin_start
+                0x0000000000eefce0                _binary_assets_SE_ctl_bin_end
+                0x0000000000eefce0                SE_ctl_DATA_END = .
+                0x0000000000eefce0                SE_ctl_BSS_START = .
+                0x0000000000eefce0                SE_ctl_BSS_END = .
+                0x0000000000eefce0                SE_ctl_ROM_END = 0xeefce0
+                0x0000000001000000                __romPos = 0xeefce0
+                0x0000000001000000                __romPos = 0xeefce0
+                0x0000000001000000                . = __romPos
+                0x0000000000eefce0                SE_tbl_ROM_START = __romPos
+                0x0000000000eefce0                SE_tbl_VRAM = ADDR (.SE_tbl)
+
+.SE_tbl         0x0000000000eefce0    0xa46a0
+                0x0000000000eefce0                SE_tbl_TEXT_START = .
+                0x0000000000eefce0                SE_tbl_TEXT_END = .
+                0x0000000000eefce0                SE_tbl_DATA_START = .
+                0x0000000000eefce0                SE_tbl_bin = .
+ build/assets/SE_tbl.bin.o(.data)
+ .data          0x0000000000eefce0    0xa46a0 build/assets/SE_tbl.bin.o
+                0x0000000000eefce0                _binary_assets_SE_tbl_bin_start
+                0x0000000000f94380                _binary_assets_SE_tbl_bin_end
+                0x0000000000f94380                SE_tbl_DATA_END = .
+                0x0000000000f94380                SE_tbl_BSS_START = .
+                0x0000000000f94380                SE_tbl_BSS_END = .
+                0x0000000000f94380                SE_tbl_ROM_END = 0xf94380
                 0x0000000001000000                __romPos = 0xf94380
                 0x0000000001000000                __romPos = 0xf94380
                 0x0000000001000000                . = __romPos
@@ -3238,11 +3222,17 @@ LOAD build/assets/trailer.bin.o
                 0x0000000000f94380                trailer_VRAM = ADDR (.trailer)
 
 .trailer        0x0000000000f94380    0x6bc80
+                0x0000000000f94380                trailer_TEXT_START = .
+                0x0000000000f94380                trailer_TEXT_END = .
+                0x0000000000f94380                trailer_DATA_START = .
                 0x0000000000f94380                trailer_bin = .
  build/assets/trailer.bin.o(.data)
  .data          0x0000000000f94380    0x6bc80 build/assets/trailer.bin.o
                 0x0000000000f94380                _binary_assets_trailer_bin_start
                 0x0000000001000000                _binary_assets_trailer_bin_end
+                0x0000000001000000                trailer_DATA_END = .
+                0x0000000001000000                trailer_BSS_START = .
+                0x0000000001000000                trailer_BSS_END = .
                 0x0000000001000000                trailer_ROM_END = 0x1000000
                 0x0000000001000000                __romPos = 0x1000000
 
