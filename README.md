@@ -1,7 +1,10 @@
-# Quest 64 Decompilation
+# splat
+A binary splitting tool to assist with decompilation and modding projects
 
-Clone with `--recursive` flag.
+Currently, only N64 roms in the .z64 format are supported.
 
-Drop the US ROM into the base of this repo, name it `baserom.us.z64`
+For example usage, see https://github.com/pmret/papermario
+The Makefile `setup` target calls splat with a config file that you can use for reference. More documentation coming soon.
 
-`make extract && make`
+### Requirements
+Python package requirements can be installed via `pip3 install -r requirements.txt`

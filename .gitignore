@@ -1,12 +1,6 @@
-# folders
-assets/
-build/
-expected/
-junk/
+.idea/
+venv/
+.vscode/
 __pycache__/
-
-# files
-*.ld
-*.ok
-*auto.txt
-*.z64
+.mypy_cache/
+util/n64/Yay0decompress
