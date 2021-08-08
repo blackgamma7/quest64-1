@@ -5,5 +5,5 @@ __pycache__/
 .mypy_cache/
 util/n64/Yay0decompress
 *.old
-build
-expected
+build/
+expected/
