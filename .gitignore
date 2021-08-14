@@ -1,13 +1,12 @@
-# folders
-assets/
+.idea/
+venv/
+.vscode/
+.mypy_cache/
+util/n64/Yay0decompress
+*.old
 build/
 expected/
 junk/
 __pycache__/
 include/ghidradump.h
 
-# files
-*.ld
-*.ok
-*auto.txt
-*.z64
