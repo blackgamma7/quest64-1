@@ -40,8 +40,8 @@ glabel useItemIfAble
 /* 21F74 80021374 00C80019 */  multu      $a2, $t0
 /* 21F78 80021378 A3A60023 */  sb         $a2, 0x23($sp)
 /* 21F7C 8002137C 3C198005 */  lui        $t9, 0x8005
-/* 21F80 80021380 3C048008 */  lui        $a0, %hi(BrianPos)
-/* 21F84 80021384 2484BACC */  addiu      $a0, $a0, %lo(BrianPos)
+/* 21F80 80021380 3C048008 */  lui        $a0, %hi(BrianActor)
+/* 21F84 80021384 2484BACC */  addiu      $a0, $a0, %lo(BrianActor)
 /* 21F88 80021388 00007012 */  mflo       $t6
 /* 21F8C 8002138C 00EE2821 */  addu       $a1, $a3, $t6
 /* 21F90 80021390 94AF0002 */  lhu        $t7, 2($a1)

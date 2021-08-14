@@ -255,8 +255,8 @@ glabel func_80018918
 .L80018968:
 /* 19568 80018968 24637250 */  addiu      $v1, $v1, 0x7250
 .L8001896C:
-/* 1956C 8001896C 3C028008 */  lui        $v0, %hi(gCameraFuncIndex)
-/* 19570 80018970 24426DC0 */  addiu      $v0, $v0, %lo(gCameraFuncIndex)
+/* 1956C 8001896C 3C028008 */  lui        $v0, %hi(gCamera)
+/* 19570 80018970 24426DC0 */  addiu      $v0, $v0, %lo(gCamera)
 /* 19574 80018974 C446000C */  lwc1       $f6, 0xc($v0)
 /* 19578 80018978 C44A0014 */  lwc1       $f10, 0x14($v0)
 /* 1957C 8001897C AFA30018 */  sw         $v1, 0x18($sp)
@@ -267,8 +267,8 @@ glabel func_80018918
 /* 19590 80018990 460A4381 */   sub.s     $f14, $f8, $f10
 /* 19594 80018994 3C018007 */  lui        $at, %hi(D_80071548)
 /* 19598 80018998 D42E1548 */  ldc1       $f14, %lo(D_80071548)($at)
-/* 1959C 8001899C 3C018008 */  lui        $at, %hi(D_80086DEC)
-/* 195A0 800189A0 C4306DEC */  lwc1       $f16, %lo(D_80086DEC)($at)
+/* 1959C 8001899C 3C018008 */  lui        $at, %hi(gCamera+0x2C)
+/* 195A0 800189A0 C4306DEC */  lwc1       $f16, %lo(gCamera+0x2C)($at)
 /* 195A4 800189A4 3C018007 */  lui        $at, %hi(D_80071550)
 /* 195A8 800189A8 D4281550 */  ldc1       $f8, %lo(D_80071550)($at)
 /* 195AC 800189AC 46100481 */  sub.s      $f18, $f0, $f16
@@ -1622,12 +1622,12 @@ glabel drawBattleFence_and_something
 /* 1A938 80019D38 AC580004 */  sw         $t8, 4($v0)
 /* 1A93C 80019D3C 3C178009 */  lui        $s7, %hi(BattleFenceToggle)
 /* 1A940 80019D40 24190004 */  addiu      $t9, $zero, 4
-/* 1A944 80019D44 3C168008 */  lui        $s6, %hi(gCameraFuncIndex)
+/* 1A944 80019D44 3C168008 */  lui        $s6, %hi(gCamera)
 /* 1A948 80019D48 3C148008 */  lui        $s4, %hi(DLToLoad)
 /* 1A94C 80019D4C 26F780A8 */  addiu      $s7, $s7, %lo(BattleFenceToggle)
 /* 1A950 80019D50 AFB90154 */  sw         $t9, 0x154($sp)
 /* 1A954 80019D54 2694B2F8 */  addiu      $s4, $s4, %lo(DLToLoad)
-/* 1A958 80019D58 26D66DC0 */  addiu      $s6, $s6, %lo(gCameraFuncIndex)
+/* 1A958 80019D58 26D66DC0 */  addiu      $s6, $s6, %lo(gCamera)
 /* 1A95C 80019D5C 27B500E0 */  addiu      $s5, $sp, 0xe0
 .L80019D60:
 /* 1A960 80019D60 96EB0000 */  lhu        $t3, ($s7)
@@ -1706,7 +1706,7 @@ glabel drawBattleFence_and_something
 /* 1AA80 80019E80 3C014000 */  lui        $at, 0x4000
 /* 1AA84 80019E84 4481E000 */  mtc1       $at, $f28
 /* 1AA88 80019E88 E7BE0014 */  swc1       $f30, 0x14($sp)
-/* 1AA8C 80019E8C 0C004618 */  jal        drawSomeShadow
+/* 1AA8C 80019E8C 0C004618 */  jal        setShadowTrans
 /* 1AA90 80019E90 E7BC0018 */   swc1      $f28, 0x18($sp)
 /* 1AA94 80019E94 3C0140A0 */  lui        $at, 0x40a0
 /* 1AA98 80019E98 44818000 */  mtc1       $at, $f16
@@ -1868,7 +1868,7 @@ glabel drawBattleFence_and_something
 /* 1AD00 8001A100 461E3601 */  sub.s      $f24, $f6, $f30
 /* 1AD04 8001A104 4406B000 */  mfc1       $a2, $f22
 /* 1AD08 8001A108 4407C000 */  mfc1       $a3, $f24
-/* 1AD0C 8001A10C 0C008E82 */  jal        func_80023A08
+/* 1AD0C 8001A10C 0C008E82 */  jal        matrix_rotate
 /* 1AD10 8001A110 00000000 */   nop
 /* 1AD14 8001A114 4614A202 */  mul.s      $f8, $f20, $f20
 /* 1AD18 8001A118 00000000 */  nop
@@ -2238,7 +2238,7 @@ glabel func_8001A620
 /* 1B26C 8001A66C 3C018007 */   lui       $at, 0x8007
 /* 1B270 8001A670 8E450028 */  lw         $a1, 0x28($s2)
 /* 1B274 8001A674 8E46002C */  lw         $a2, 0x2c($s2)
-/* 1B278 8001A678 0C008E82 */  jal        func_80023A08
+/* 1B278 8001A678 0C008E82 */  jal        matrix_rotate
 /* 1B27C 8001A67C 8E470030 */   lw        $a3, 0x30($s2)
 /* 1B280 8001A680 C644000C */  lwc1       $f4, 0xc($s2)
 /* 1B284 8001A684 3C018007 */  lui        $at, %hi(D_800715C8)

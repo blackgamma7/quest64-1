@@ -17,7 +17,7 @@ void func_80000450(s32 arg0) {
 }
 
 void func_800004B0(void *arg0) {
-    osCreatePiManager(150, &D_800781F0, &D_80078208, 50);
+    osCreatePiManager(OS_PRIORITY_PIMGR, &D_800781F0, &D_80078208, 50);
     osCreateThread(&D_80075040, 6, (void*)gameMain, arg0, &D_800781F0, 5);
     osStartThread(&D_80075040);
     do {} while (TRUE);

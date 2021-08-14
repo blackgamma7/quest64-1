@@ -7,7 +7,7 @@
 
 .section .text, "ax"
 
-glabel func_8003D750
+glabel __osPiCreateAccessQueue
 /* 3E350 8003D750 27BDFFE8 */  addiu      $sp, $sp, -0x18
 /* 3E354 8003D754 AFBF0014 */  sw         $ra, 0x14($sp)
 /* 3E358 8003D758 240E0001 */  addiu      $t6, $zero, 1
@@ -36,7 +36,7 @@ glabel __osSiGetAccess_8003d7a0
 /* 3E3AC 8003D7AC AFBF0014 */  sw         $ra, 0x14($sp)
 /* 3E3B0 8003D7B0 15C00003 */  bnez       $t6, .L8003D7C0
 /* 3E3B4 8003D7B4 00000000 */   nop
-/* 3E3B8 8003D7B8 0C00F5D4 */  jal        func_8003D750
+/* 3E3B8 8003D7B8 0C00F5D4 */  jal        __osPiCreateAccessQueue
 /* 3E3BC 8003D7BC 00000000 */   nop
 .L8003D7C0:
 /* 3E3C0 8003D7C0 3C048009 */  lui        $a0, %hi(__osSiAccessQueue)

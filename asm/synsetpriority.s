@@ -13,7 +13,7 @@ glabel alSynSetPriority
 /* 4A958 80049D58 03E00008 */  jr         $ra
 /* 4A95C 80049D5C A4A60016 */   sh        $a2, 0x16($a1)
 
-glabel func_80049D60
+glabel lldiv
 /* 4A960 80049D60 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* 4A964 80049D64 AFA40030 */  sw         $a0, 0x30($sp)
 /* 4A968 80049D68 AFBF0014 */  sw         $ra, 0x14($sp)
@@ -29,7 +29,7 @@ glabel func_80049D60
 /* 4A990 80049D90 8FA40040 */  lw         $a0, 0x40($sp)
 /* 4A994 80049D94 8FA50044 */  lw         $a1, 0x44($sp)
 /* 4A998 80049D98 00403025 */  or         $a2, $v0, $zero
-/* 4A99C 80049D9C 0C00E70E */  jal        func_80039C38
+/* 4A99C 80049D9C 0C00E70E */  jal        u64_multi
 /* 4A9A0 80049DA0 00603825 */   or        $a3, $v1, $zero
 /* 4A9A4 80049DA4 8FAE0038 */  lw         $t6, 0x38($sp)
 /* 4A9A8 80049DA8 8FAF003C */  lw         $t7, 0x3c($sp)

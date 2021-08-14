@@ -395,7 +395,7 @@ glabel _Ldtob
 /* 490E0 800484E0 03E00008 */  jr         $ra
 /* 490E4 800484E4 00000000 */   nop
 
-glabel _Ldunscale
+glabel func_800484E8
 /* 490E8 800484E8 03E00008 */  jr         $ra
 /* 490EC 800484EC 00000000 */   nop
 

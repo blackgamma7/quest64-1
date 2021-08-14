@@ -18,10 +18,10 @@ glabel osGetTime
 /* 35AEC 80034EEC 3C0F8009 */  lui        $t7, %hi(__osBaseCounter)
 /* 35AF0 80034EF0 8DEF5628 */  lw         $t7, %lo(__osBaseCounter)($t7)
 /* 35AF4 80034EF4 8FAE0034 */  lw         $t6, 0x34($sp)
-/* 35AF8 80034EF8 3C088009 */  lui        $t0, %hi(D_80095620)
+/* 35AF8 80034EF8 3C088009 */  lui        $t0, %hi(__osCurrentTime_80095620)
 /* 35AFC 80034EFC 3C098009 */  lui        $t1, %hi(__osCurrentTime)
 /* 35B00 80034F00 8D295624 */  lw         $t1, %lo(__osCurrentTime)($t1)
-/* 35B04 80034F04 8D085620 */  lw         $t0, %lo(D_80095620)($t0)
+/* 35B04 80034F04 8D085620 */  lw         $t0, %lo(__osCurrentTime_80095620)($t0)
 /* 35B08 80034F08 01CFC023 */  subu       $t8, $t6, $t7
 /* 35B0C 80034F0C AFB80030 */  sw         $t8, 0x30($sp)
 /* 35B10 80034F10 02002025 */  or         $a0, $s0, $zero

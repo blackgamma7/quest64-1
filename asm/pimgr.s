@@ -31,7 +31,7 @@ glabel osCreatePiManager
 /* 349D0 80033DD0 8DEF0A10 */  lw         $t7, %lo(__osSiAccessQueueEnabled)($t7)
 /* 349D4 80033DD4 15E00003 */  bnez       $t7, .L80033DE4
 /* 349D8 80033DD8 00000000 */   nop
-/* 349DC 80033DDC 0C00F5D4 */  jal        func_8003D750
+/* 349DC 80033DDC 0C00F5D4 */  jal        __osPiCreateAccessQueue
 /* 349E0 80033DE0 00000000 */   nop
 .L80033DE4:
 /* 349E4 80033DE4 3C058009 */  lui        $a1, %hi(piEventQueue)

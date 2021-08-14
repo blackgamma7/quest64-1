@@ -17,8 +17,8 @@ glabel osSetIntMask
 /* 34D78 80034178 01614026 */  xor        $t0, $t3, $at
 /* 34D7C 8003417C 3108FF00 */  andi       $t0, $t0, 0xff00
 /* 34D80 80034180 00481025 */  or         $v0, $v0, $t0
-/* 34D84 80034184 3C0AA430 */  lui        $t2, %hi(D_A430000C)
-/* 34D88 80034188 8D4A000C */  lw         $t2, %lo(D_A430000C)($t2)
+/* 34D84 80034184 3C0AA430 */  lui        $t2, %hi(MI_INTR_MASK_REG)
+/* 34D88 80034188 8D4A000C */  lw         $t2, %lo(MI_INTR_MASK_REG)($t2)
 /* 34D8C 8003418C 11400005 */  beqz       $t2, .L800341A4
 /* 34D90 80034190 000B4C02 */   srl       $t1, $t3, 0x10
 /* 34D94 80034194 2401FFFF */  addiu      $at, $zero, -1
@@ -35,8 +35,8 @@ glabel osSetIntMask
 /* 34DBC 800341BC 3C0A8007 */  lui        $t2, %hi(__osRcpImTable)
 /* 34DC0 800341C0 01485021 */  addu       $t2, $t2, $t0
 /* 34DC4 800341C4 954A1AB0 */  lhu        $t2, %lo(__osRcpImTable)($t2)
-/* 34DC8 800341C8 3C01A430 */  lui        $at, %hi(D_A430000C)
-/* 34DCC 800341CC AC2A000C */  sw         $t2, %lo(D_A430000C)($at)
+/* 34DC8 800341C8 3C01A430 */  lui        $at, %hi(MI_INTR_MASK_REG)
+/* 34DCC 800341CC AC2A000C */  sw         $t2, %lo(MI_INTR_MASK_REG)($at)
 /* 34DD0 800341D0 3088FF01 */  andi       $t0, $a0, 0xff01
 /* 34DD4 800341D4 3169FF00 */  andi       $t1, $t3, 0xff00
 /* 34DD8 800341D8 01094024 */  and        $t0, $t0, $t1
