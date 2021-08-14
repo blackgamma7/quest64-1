@@ -8,3 +8,4 @@ util/n64/Yay0decompress
 build/
 expected/
 /tools
+tools/splat
