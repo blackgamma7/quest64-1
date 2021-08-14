@@ -7,5 +7,4 @@ util/n64/Yay0decompress
 *.old
 build/
 expected/
-/tools
-tools/splat
+
