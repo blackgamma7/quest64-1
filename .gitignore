@@ -9,4 +9,7 @@ expected/
 junk/
 __pycache__/
 include/ghidradump.h
-
+*.ld
+*.ok
+*auto.txt
+*.z64
