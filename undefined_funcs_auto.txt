@@ -1,4 +1,0 @@
-displayTitleScreen = 0x8010004C;
-func_8010009C = 0x8010009C;
-func_8010008C = 0x8010008C;
-func_80100000 = 0x80100000;

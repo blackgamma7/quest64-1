@@ -43,7 +43,7 @@ segments:
       - [0x21D70, c, inventory]
       - [0x234E0, asm, screen_dim]
       - [0x23740, asm]
-      - [0x23BD0, asm, math]
+      - [0x23BD0, c, math]
       - [0x24E60, asm,LoadData]
       - [0x24f30, asm]
       - [0x25290, c,Sound]

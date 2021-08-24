@@ -1,4 +1,0 @@
-#line 1 "src/bzero.c"
-#include "common.h"
-
-void _asmpp_func1(void) {*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;*(volatile int*)0 = 0;}
