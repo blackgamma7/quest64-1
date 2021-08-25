@@ -1,10 +1,10 @@
 //some common float values seen in code
-#define PI_d 3.141592653589793d
+#define PI_d (double)3.141592653589793
 #define TAU_d 6.283185307179586d
 #define NegPI_d -3.141592653589793d
 #define PIOver2_f 1.5707964f
-#define PIOver2_d 1.5707963267948966d
-#define NegPIOver2_d -1.5707963267948966d
+#define PIOver2_d (double)1.5707963267948966
+#define NegPIOver2_d (double)-1.5707963267948966
 #define PIOver4_f 0.7853982f
 #define NegPIOver4_f -0.7853982f
 #define PIOver8_d 0.39269908169872414d

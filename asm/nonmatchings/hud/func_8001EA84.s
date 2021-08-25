@@ -10,9 +10,9 @@ glabel func_8001EA84
 /* 1F6A4 8001EAA4 240F0018 */  addiu      $t7, $zero, 0x18
 /* 1F6A8 8001EAA8 44050000 */  mfc1       $a1, $f0
 /* 1F6AC 8001EAAC 44060000 */  mfc1       $a2, $f0
-/* 1F6B0 8001EAB0 3C078008 */  lui        $a3, %hi(D_80086DEC)
+/* 1F6B0 8001EAB0 3C078008 */  lui        $a3, %hi(gCamera+0x2C)
 /* 1F6B4 8001EAB4 AC2FC64C */  sw         $t7, %lo(D_8008C64C)($at)
-/* 1F6B8 8001EAB8 8CE76DEC */  lw         $a3, %lo(D_80086DEC)($a3)
+/* 1F6B8 8001EAB8 8CE76DEC */  lw         $a3, %lo(gCamera+0x2C)($a3)
 /* 1F6BC 8001EABC 0C008D5C */  jal        func_80023570
 /* 1F6C0 8001EAC0 27A40038 */   addiu     $a0, $sp, 0x38
 /* 1F6C4 8001EAC4 3C188009 */  lui        $t8, %hi(D_8008C648)

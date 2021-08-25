@@ -1,4 +1,4 @@
-glabel func_8001F3DC
+glabel set_element_upgrade
 /* 1FFDC 8001F3DC 27BDFFD0 */  addiu      $sp, $sp, -0x30
 /* 1FFE0 8001F3E0 3C038008 */  lui        $v1, %hi(DLPtr)
 /* 1FFE4 8001F3E4 2463B2FC */  addiu      $v1, $v1, %lo(DLPtr)

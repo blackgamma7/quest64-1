@@ -179,9 +179,9 @@ glabel HUDSometing
 /* 1F100 8001E500 AC2CC64C */  sw         $t4, %lo(D_8008C64C)($at)
 /* 1F104 8001E504 15A00008 */  bnez       $t5, .L8001E528
 /* 1F108 8001E508 01A01025 */   or        $v0, $t5, $zero
-/* 1F10C 8001E50C 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 1F10C 8001E50C 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 1F110 8001E510 0C0079FF */  jal        func_8001E7FC
-/* 1F114 8001E514 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 1F114 8001E514 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 1F118 8001E518 3C028008 */  lui        $v0, %hi(gHUDState)
 /* 1F11C 8001E51C 8C42B2E4 */  lw         $v0, %lo(gHUDState)($v0)
 /* 1F120 8001E520 304E0C00 */  andi       $t6, $v0, 0xc00
@@ -197,9 +197,9 @@ glabel HUDSometing
 /* 1F144 8001E544 240A00C5 */  addiu      $t2, $zero, 0xc5
 /* 1F148 8001E548 14400004 */  bnez       $v0, .L8001E55C
 /* 1F14C 8001E54C AC2AC64C */   sw        $t2, %lo(D_8008C64C)($at)
-/* 1F150 8001E550 3C048008 */  lui        $a0, %hi(ptr_BrianData)
+/* 1F150 8001E550 3C048008 */  lui        $a0, %hi(brianAction+0x10)
 /* 1F154 8001E554 0C007AF7 */  jal        func_8001EBDC
-/* 1F158 8001E558 8C84BAC8 */   lw        $a0, %lo(ptr_BrianData)($a0)
+/* 1F158 8001E558 8C84BAC8 */   lw        $a0, %lo(brianAction+0x10)($a0)
 .L8001E55C:
 /* 1F15C 8001E55C 3C028009 */  lui        $v0, %hi(BattleState)
 /* 1F160 8001E560 3C0C8008 */  lui        $t4, %hi(mapFlags)
@@ -254,7 +254,7 @@ glabel HUDSometing
 /* 1F218 8001E618 304E0008 */  andi       $t6, $v0, 8
 /* 1F21C 8001E61C 11C00003 */  beqz       $t6, .L8001E62C
 /* 1F220 8001E620 3C048008 */   lui       $a0, %hi(brianAction)
-/* 1F224 8001E624 0C007CF7 */  jal        func_8001F3DC
+/* 1F224 8001E624 0C007CF7 */  jal        set_element_upgrade
 /* 1F228 8001E628 2484BAB8 */   addiu     $a0, $a0, %lo(brianAction)
 .L8001E62C:
 /* 1F22C 8001E62C 3C018009 */  lui        $at, %hi(D_8008C64C)
@@ -310,9 +310,9 @@ glabel HUDSometing
 /* 1F2F0 8001E6F0 0C007EE5 */  jal        func_8001FB94
 /* 1F2F4 8001E6F4 00000000 */   nop
 .L8001E6F8:
-/* 1F2F8 8001E6F8 3C048008 */  lui        $a0, %hi(BrianPos)
+/* 1F2F8 8001E6F8 3C048008 */  lui        $a0, %hi(BrianActor)
 /* 1F2FC 8001E6FC 0C007FBB */  jal        loadBattle_UNCONFIRMED
-/* 1F300 8001E700 2484BACC */   addiu     $a0, $a0, %lo(BrianPos)
+/* 1F300 8001E700 2484BACC */   addiu     $a0, $a0, %lo(BrianActor)
 /* 1F304 8001E704 3C028008 */  lui        $v0, %hi(NumberOfEnemies)
 /* 1F308 8001E708 8C42C990 */  lw         $v0, %lo(NumberOfEnemies)($v0)
 /* 1F30C 8001E70C 3C038008 */  lui        $v1, %hi(EnemyData)

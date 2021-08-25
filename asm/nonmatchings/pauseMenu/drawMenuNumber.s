@@ -1,4 +1,4 @@
-glabel func_8002AB64
+glabel drawMenuNumber
 /* 2B764 8002AB64 27BDFF30 */  addiu      $sp, $sp, -0xd0
 /* 2B768 8002AB68 AFB5002C */  sw         $s5, 0x2c($sp)
 /* 2B76C 8002AB6C AFB20020 */  sw         $s2, 0x20($sp)
@@ -65,7 +65,7 @@ glabel func_8002AB64
 /* 2B848 8002AC48 8FA500C4 */  lw         $a1, 0xc4($sp)
 /* 2B84C 8002AC4C 8FA400C0 */  lw         $a0, 0xc0($sp)
 /* 2B850 8002AC50 24060000 */  addiu      $a2, $zero, 0
-/* 2B854 8002AC54 0C00E6CE */  jal        func_80039B38
+/* 2B854 8002AC54 0C00E6CE */  jal        u64_div
 /* 2B858 8002AC58 2407000A */   addiu     $a3, $zero, 0xa
 /* 2B85C 8002AC5C 26100001 */  addiu      $s0, $s0, 1
 /* 2B860 8002AC60 2A010009 */  slti       $at, $s0, 9

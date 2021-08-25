@@ -1,4 +1,4 @@
-glabel drawMenues
+glabel drawMenuItem
 /* 2A758 80029B58 27BDFF28 */  addiu      $sp, $sp, -0xd8
 /* 2A75C 80029B5C AFB00004 */  sw         $s0, 4($sp)
 /* 2A760 80029B60 00A08025 */  or         $s0, $a1, $zero
